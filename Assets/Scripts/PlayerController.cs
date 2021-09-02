@@ -21,6 +21,13 @@ public class PlayerController : MonoBehaviour
     {
         if (collider.CompareTag("Goal"))
             StageManager.NextStage();
+        else if (collider.CompareTag("Spikes"))
+            Die();
+    }
+
+    public void Die()
+    {
+        StageManager.RestartStage();
     }
 
     public void Respawn(Vector3 position)
