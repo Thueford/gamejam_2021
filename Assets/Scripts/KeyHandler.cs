@@ -49,7 +49,7 @@ public class KeyHandler : MonoBehaviour
     {
         if (!enableMovement) return Vector3.zero;
         Vector2 dir = Vector3.zero;
-        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Space)) dir.y += 1;
+        if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space)) dir.y += 1;
         return dir;
     }
 
