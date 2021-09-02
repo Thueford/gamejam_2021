@@ -1,3 +1,3 @@
-# Cubix
+# Gamejam 2021
 
-A game where you dominate a world of geometric shapes.
+Spiel für die Alpha Gamejam der HS Mittweida
