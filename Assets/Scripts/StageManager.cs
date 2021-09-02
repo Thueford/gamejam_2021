@@ -40,12 +40,12 @@ public class StageManager : MonoBehaviour
         if (curStage) Destroy(curStage.gameObject);
         curStageNo++;
 
-
         if (curStageNo == GetStageContainer().childCount)
         {
             SceneManager.LoadScene("StartScene");
             return;
         }
+
         PlayerPrefs.SetInt("maxStage", ++maxStage);
         LoadStage(curStageNo);
     }
@@ -58,6 +58,8 @@ public class StageManager : MonoBehaviour
 
         curStage = Instantiate(curStage);
         curStage.transform.position = Vector3.zero;
-        curStage.gameObject.SetActive(true);
+        PlayerController.self.Respawn(curStage.spawn.transform.position);
     }
+
+    public static void RestartStage() => LoadStage(curStageNo);
 }

@@ -11,9 +11,8 @@ public class LvlChoosePanel : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
         Transform stageContainer = StageManager.GetStageContainer();
-        
+
         for(int i = 0; i < stageContainer.childCount; i++)
         {
             Image btn = Instantiate(btnPrefab, new Vector3(200*i,100*i,0), Quaternion.identity, panel.transform);
@@ -26,7 +25,7 @@ public class LvlChoosePanel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void btnPressed_chooseLvl()
