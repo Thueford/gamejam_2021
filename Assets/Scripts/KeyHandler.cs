@@ -64,4 +64,9 @@ public class KeyHandler : MonoBehaviour
         return false;
     }
 
+    public static bool ReadRespawnButtonDown()
+    {
+        return Input.GetKey(KeyCode.Backspace);
+    }
+
 }
