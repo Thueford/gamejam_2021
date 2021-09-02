@@ -26,6 +26,7 @@ public class GravityButtonHandler : MonoBehaviour
                 //ButtonImage
                 Debug.Log("changeGravity");
                 rb.gravityScale = rb.gravityScale * -1;
+                PlayerController.InvertGravity();
             }
         }
     }
