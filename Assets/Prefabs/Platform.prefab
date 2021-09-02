@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 9089832604928116792}
   - component: {fileID: 4040398010094394267}
   - component: {fileID: 8230068245693091424}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Platform
   m_TagString: Platform
   m_Icon: {fileID: 0}
@@ -160,6 +160,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 954771bee4539ab47a3350092be4f87f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  points: []
   speed: 2
-  dist: 0
+  startOnContact: 1
+  points: []

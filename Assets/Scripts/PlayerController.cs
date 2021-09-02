@@ -4,52 +4,35 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public GameObject respawnPoint;
+    public static PlayerController self;
+
     public GameObject InvertGravityPanel;
     public bool triggerRespawn = false;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    void Awake() => self = this;
 
     // Update is called once per frame
     void Update()
     {
-        if (KeyHandler.ReadRespawnButtonDown()) Respawn();
+        if (KeyHandler.ReadRespawnButtonDown()) StageManager.RestartStage();
     }
 
-    /*
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.tag == "Tag_GravityButton")
-        {
-            // show context help -> press e to change gravity
-            gravityButton = collider;
-            //InvertGravityPanel.SetActive(true);
-            //Debug.Log("press e to change gravity");
-        }       
+        if (collider.CompareTag("Goal"))
+            StageManager.NextStage();
+        else if (collider.CompareTag("Spikes"))
+            Die();
     }
 
-    private void OnTriggerExit2D(Collider2D collider)
+    public void Die()
     {
-        if (collider.tag == "Tag_GravityButton")
-        {
-            // hide context help
-            gravityButton = null;
-            //InvertGravityPanel.SetActive(false);
-            
-        }
-    }*/
+        StageManager.RestartStage();
+    }
 
-    private void Respawn()
+    public void Respawn(Vector3 position)
     {
-        //Debug.Log("move to respawn!");
-        if (respawnPoint)
-        {
-            transform.position = respawnPoint.transform.position;
-            GetComponent<Rigidbody2D>().velocity = Vector2.zero;
-        }
+        transform.position = position;
+        GetComponent<Rigidbody2D>().velocity = Vector2.zero;
     }
 }

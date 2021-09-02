@@ -123,24 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &308476647 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7097116376284559529, guid: 13844089149ebad449ee3e094de8d51d, type: 3}
-  m_PrefabInstance: {fileID: 789672446}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &308476648
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 308476647}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c97c13fbb93bfad49b4ed9cc38fc9d98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -152,6 +134,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420030}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -167,6 +150,20 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
+--- !u!114 &519420030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 014e76e38974d7841bae6244025f2ac4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerNextStage: 0
+  stageContainer: {fileID: 0}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -193,7 +190,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 1
+  orthographic: 0
   orthographic size: 5
   m_Depth: -1
   m_CullingMask:
@@ -218,7 +215,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: -0.8, y: 2.8, z: -18.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -231,6 +228,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1168459300538440043, guid: 13844089149ebad449ee3e094de8d51d, type: 3}
+      propertyPath: m_LinearDrag
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1168459300538440043, guid: 13844089149ebad449ee3e094de8d51d, type: 3}
+      propertyPath: m_GravityScale
+      value: 6.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4313118347095905676, guid: 13844089149ebad449ee3e094de8d51d, type: 3}
+      propertyPath: jumpMult
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 4313118347095905676, guid: 13844089149ebad449ee3e094de8d51d, type: 3}
+      propertyPath: moveMult
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4313118347095905676, guid: 13844089149ebad449ee3e094de8d51d, type: 3}
+      propertyPath: maxHSpeed
+      value: 12.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4313118347095905676, guid: 13844089149ebad449ee3e094de8d51d, type: 3}
+      propertyPath: pfLayerMask.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
     - target: {fileID: 7097116376284559529, guid: 13844089149ebad449ee3e094de8d51d, type: 3}
       propertyPath: m_Name
       value: Player
@@ -241,7 +262,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7097116376284559531, guid: 13844089149ebad449ee3e094de8d51d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.30153775
+      value: 0.302
       objectReference: {fileID: 0}
     - target: {fileID: 7097116376284559531, guid: 13844089149ebad449ee3e094de8d51d, type: 3}
       propertyPath: m_LocalPosition.y
