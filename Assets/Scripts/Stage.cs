@@ -4,10 +4,4 @@ using UnityEngine;
 
 public class Stage : MonoBehaviour
 {
-    public Stage nextStage;
-
-    public void Load()
-    {
-        
-    }
 }
