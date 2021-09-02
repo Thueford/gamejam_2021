@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public Collider2D gravityButton;
     public GameObject respawnPoint;
+    public GameObject InvertGravityPanel;
     public bool triggerRespawn = false;
 
     // Start is called before the first frame update
@@ -18,24 +18,17 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         if (KeyHandler.ReadRespawnButtonDown()) Respawn();
-
-        if (gravityButton)
-        {
-            if (KeyHandler.ReadGravityButtonDown())
-            {
-                // show press button interface
-            }
-            
-        }
     }
 
+    /*
     private void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.tag == "Tag_GravityButton")
         {
             // show context help -> press e to change gravity
             gravityButton = collider;
-            Debug.Log("press e to change gravity");
+            //InvertGravityPanel.SetActive(true);
+            //Debug.Log("press e to change gravity");
         }       
     }
 
@@ -45,12 +38,14 @@ public class PlayerController : MonoBehaviour
         {
             // hide context help
             gravityButton = null;
+            //InvertGravityPanel.SetActive(false);
+            
         }
-    }
+    }*/
 
     private void Respawn()
     {
-        Debug.Log("move to respawn!");
+        //Debug.Log("move to respawn!");
         if (respawnPoint)
         {
             transform.position = respawnPoint.transform.position;
