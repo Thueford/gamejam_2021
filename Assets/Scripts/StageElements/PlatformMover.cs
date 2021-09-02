@@ -15,11 +15,10 @@ public class PlatformMover : MonoBehaviour
     private void Awake()
     {
         if (points.Length == 0) Destroy(this);
+        if (points.Length == 1) transform.position = points[0].transform.position;
 
         rb = GetComponent<Rigidbody2D>();
         active = !startOnContact;
-
-        Debug.Log("P " + name + " " + pnum);
     }
 
     private void NextCheckpoint()
@@ -28,7 +27,6 @@ public class PlatformMover : MonoBehaviour
         pnum += pdir;
         if (pnum == 0 || pnum == points.Length - 1) pdir = -pdir;
         pnext = pnum + pdir;
-        // Debug.Log("P " + name + " " + pnum + ":" + pnext);
     }
 
     void FixedUpdate()
