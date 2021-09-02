@@ -16,7 +16,7 @@ public class LvlChoosePanel : MonoBehaviour
         
         for(int i = 0; i < stageContainer.childCount; i++)
         {
-            Image btn = Instantiate(btnPrefab, new Vector3(200*i,100*i,0), Quaternion.identity, panel.transform);
+            Image btn = Instantiate(btnPrefab, new Vector3(150 + 150*(i%5),320 - 100*(i/5),0), Quaternion.identity, panel.transform);
             btn.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = i.ToString();
         }
         panel.gameObject.SetActive(false);
@@ -32,5 +32,10 @@ public class LvlChoosePanel : MonoBehaviour
     public void btnPressed_chooseLvl()
     {
         panel.gameObject.SetActive(true);
+    }
+
+    public void btnPressed_CloseChooseLvl()
+    {
+        panel.gameObject.SetActive(false);
     }
 }
