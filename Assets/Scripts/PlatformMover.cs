@@ -10,14 +10,14 @@ public class PlatformMover : MonoBehaviour
 
     private int pnum = 0, pnext = 1, pdir = 1;
     private Rigidbody2D rb;
-    private bool enabled = true;
+    private bool active = true;
 
     private void Awake()
     {
         if (points.Length == 0) Destroy(this);
 
         rb = GetComponent<Rigidbody2D>();
-        enabled = !startOnContact;
+        active = !startOnContact;
 
         Debug.Log("P " + name + " " + pnum);
     }
@@ -34,7 +34,7 @@ public class PlatformMover : MonoBehaviour
     void FixedUpdate()
     {
         // skip if no checkpoints
-        if (!enabled || points.Length <= 1) return;
+        if (!active || points.Length <= 1) return;
 
         Vector2 dir = (points[pnext].position - points[pnum].position).normalized;
         rb.MovePosition(rb.position + dir * speed * Time.fixedDeltaTime);
@@ -45,6 +45,6 @@ public class PlatformMover : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D c)
     {
-        if (!enabled && c.gameObject.CompareTag("Player")) enabled = true;
+        if (!active && c.gameObject.CompareTag("Player")) active = true;
     }
 }
