@@ -19,8 +19,10 @@ public class PlayerMovement : MonoBehaviour
     [Range(0, 100)]
     public float maxHSpeed = 10;
 
+    public int jumps { get; private set; } = 10;
+
     private int jumpCounter = 0;
-    private int jumpsLeft = 0;
+    private int airJumpsLeft = 0;
     private List<bool> groundedFrames = new List<bool>();
 
     private bool grounded => groundedFrames[0] || groundedFrames[1] || groundedFrames[2];
@@ -36,30 +38,16 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        if (jumps <= 0) return;
+
         if (grounded && jumpCounter == 0)
         {
-            jumpsLeft = 1;
-            Vector2 jumpForce = KeyHandler.ReadJumpInput() * jumpMult;
-            if (jumpForce.y > 0)
-            {
-                jumpCounter = 3;
-                Vector2 vel = rb.velocity;
-                vel.y = 0;
-                rb.velocity = vel;
-                rb.AddForce(jumpForce, ForceMode2D.Impulse);
-            }
+            airJumpsLeft = 1;
+            Jump();
         }
-        else if (!grounded && jumpsLeft > 0)
+        else if (!grounded && airJumpsLeft > 0)
         {
-            Vector2 jumpForce = KeyHandler.ReadJumpInput() * jumpMult;
-            if (jumpForce.y > 0)
-            {
-                jumpsLeft--;
-                Vector2 vel = rb.velocity;
-                vel.y = 0;
-                rb.velocity = vel;
-                rb.AddForce(jumpForce, ForceMode2D.Impulse);
-            }
+            if (Jump()) airJumpsLeft--;
         }
     }
 
@@ -81,11 +69,31 @@ public class PlayerMovement : MonoBehaviour
         groundedFrames.Add(gr);
     }
 
+    private bool Jump()
+    {
+        Vector2 jumpForce = KeyHandler.ReadJumpInput() * jumpMult;
+        if (jumpForce.y > 0)
+        {
+            jumpCounter = 3;
+            jumps--;
+            Vector2 vel = rb.velocity;
+            vel.y = 0;
+            rb.velocity = vel;
+            rb.AddForce(jumpForce, ForceMode2D.Impulse);
+        }
+        return jumpForce.y > 0;
+    }
+
     private bool IsGrounded()
     {
         // TODO: Change Cast direction on Gravity Change
         RaycastHit2D rcHit = Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0, Vector2.down, 0.15f, pfLayerMask);
         return rcHit.collider != null;
+    }
+
+    public void AddJumps(int n)
+    {
+        if (n > 0) jumps += n;
     }
 
 }
