@@ -13,7 +13,7 @@ public class Pause : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        panel = GetComponent<Image>();
+        //panel = GetComponent<Image>();
         panel.gameObject.SetActive(false);
     }
 

@@ -500,7 +500,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57c954d1e182b024ba078058f8a387ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panel: {fileID: 0}
+  panel: {fileID: 4823851089625250642}
   audioSource: {fileID: 0}
   audioClips: []
 --- !u!1 &4823851091012432861
