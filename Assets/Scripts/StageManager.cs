@@ -37,10 +37,7 @@ public class StageManager : MonoBehaviour
 
     public static void NextStage()
     {
-        if (curStage) Destroy(curStage.gameObject);
-        curStageNo++;
-
-        if (curStageNo == GetStageContainer().childCount)
+        if (++curStageNo == GetStageContainer().childCount)
         {
             SceneManager.LoadScene("StartScene");
             return;
@@ -52,6 +49,8 @@ public class StageManager : MonoBehaviour
 
     public static void LoadStage(int index)
     {
+        if (curStage) Destroy(curStage.gameObject);
+
         Debug.Log("Load Stage " + index);
         curStageNo = index;
         curStage = GetStageContainer().GetChild(curStageNo).GetComponent<Stage>();
@@ -61,5 +60,8 @@ public class StageManager : MonoBehaviour
         PlayerController.self.Respawn(curStage.spawn.transform.position);
     }
 
-    public static void RestartStage() => LoadStage(curStageNo);
+    public static void RestartStage()
+    {
+        LoadStage(curStageNo);
+    }
 }
