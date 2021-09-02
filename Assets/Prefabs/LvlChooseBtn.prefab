@@ -254,10 +254,10 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 7126616401997386458, guid: 072a24c88e4e5ce4ca71eeb5d7143169, type: 3}
-          m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-          m_MethodName: SetActive
-          m_Mode: 6
+        - m_Target: {fileID: 4530608744087386566, guid: 829b68b83cbff89448d69a5d8d5602c1, type: 3}
+          m_TargetAssemblyTypeName: LvlChoosePanel, Assembly-CSharp
+          m_MethodName: btnPressed_CloseChooseLvl
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

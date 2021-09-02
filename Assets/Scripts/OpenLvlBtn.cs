@@ -21,5 +21,7 @@ public class OpenLvlBtn : MonoBehaviour
     public void btnPressed_LoadLvl()
     {
         StageManager.LoadStage(int.Parse(tmpro.text));
+        GameObject.Find("LvlChooser").GetComponent<LvlChoosePanel>().btnPressed_CloseChooseLvl();
     }
+
 }

@@ -35,6 +35,7 @@ public class LvlChoosePanel : MonoBehaviour
 
     public void btnPressed_CloseChooseLvl()
     {
+        Debug.Log("aaaaaaaaaaaaaaaaaaaa");
         panel.gameObject.SetActive(false);
     }
 }
