@@ -26,4 +26,10 @@ public class ChangeScene : MonoBehaviour
     {
         SceneManager.LoadScene("GameScene");
     }
+
+    public void btnPressed_Close()
+    {
+        Debug.Log("Goodbye");
+        Application.Quit();
+    }
 }
