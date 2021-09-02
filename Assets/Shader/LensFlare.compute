@@ -1,0 +1,96 @@
+// Each #kernel tells which function to compile; you can have many kernels
+#pragma kernel CSFlare
+#pragma kernel CSWriteBack
+
+// Create a RenderTexture with enableRandomWrite flag and set it
+// with cs.SetTexture
+RWTexture2D<float4> Source;
+RWTexture2D<float4> Result;
+Texture2D<float4> lensDirt;
+
+static const int numThreads = 24;
+
+uniform int ghostCount;
+uniform float ghostSpacing, threshold, caStrength;
+
+float3 getTexColor(float2 texcoords, float2 iResolution)
+{
+    float amount = length(.5 - texcoords) * caStrength;
+    // works like ca, offset is in Direction of Image Center
+    float2 offset = normalize(.5 - texcoords) * amount;
+    return float3(
+		Source[(texcoords + offset) * iResolution].r,
+		Source[texcoords * iResolution].g,
+		Source[(texcoords - offset) * iResolution].b
+		);
+}
+
+float3 generateGhosts(float2 texcoord, float2 ghostVec, float2 iResolution)
+{
+    float3 col = 0;
+    float2 offset = texcoord;
+    
+    for (int i = 0; i < ghostCount; ++i)
+    {
+        //Coordinates to look at for a bright spot 
+        offset += ghostVec;
+        //create ghosts
+        float3 texColor = getTexColor(offset, iResolution);
+        texColor = max(texColor - threshold, 0);
+        if (any(texColor))
+        {
+            //Bright spots at the edge of the screen matter less;
+            float weight = 1 - length(.5 - offset);
+            weight = pow(abs(weight), 10);
+            col += texColor * weight;
+        }
+    }
+    return col;
+}
+
+float3 generateHalo(float2 texcoord, float2 ghostVec, float2 iResolution)
+{
+    float3 col = 0;
+    // Works like ghostVec but has a constant length (radius of the Halo)
+    float2 haloVec = normalize(ghostVec) * 0.35;
+    float3 texColor = getTexColor(texcoord + haloVec, iResolution);
+    texColor = max(texColor - threshold, 0);
+    
+    if (any(texColor))
+    {
+        // Halo gets dimmer closer to the edges
+        float weight = length(.5 - texcoord);
+        col += texColor * weight;
+    }
+    return col;
+}
+
+[numthreads(numThreads, numThreads, 1)]
+void CSFlare(uint3 id : SV_DispatchThreadID)
+{
+    uint width, height;
+    Source.GetDimensions(width, height);
+    float2 iResolution = float2(width, height); // Size of Source
+    
+    //coordinates transformed to [0, 1]
+    float2 texcoord = (id.xy / iResolution);
+    //vector from texcoord to the image center;
+    float2 ghostVec = ( -texcoord + .5 ) * ghostSpacing;
+    
+    float3 col = 0;
+    col += generateGhosts(texcoord, ghostVec, iResolution);
+    col += generateHalo(texcoord, ghostVec, iResolution);
+    
+    Result[id.xy] = float4(col, 1);
+}
+
+[numthreads(numThreads, numThreads, 1)]
+void CSWriteBack(uint3 id : SV_DispatchThreadID)
+{
+    float3 col = Result[id.xy].rgb;
+    if (any(col))
+    {
+        col *= lensDirt[id.xy].rgb + .1;
+    }
+    Source[id.xy] += float4(col, 0); // additive blending
+}
