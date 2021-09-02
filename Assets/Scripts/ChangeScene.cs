@@ -1,3 +1,8 @@
+
+///////////////////////
+//Do not touch this!!//
+///////////////////////
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -31,5 +36,10 @@ public class ChangeScene : MonoBehaviour
     {
         Debug.Log("Goodbye");
         Application.Quit();
+    }
+
+    public void btnPressed_BackToStartScene()
+    {
+        SceneManager.LoadScene("StartScene");
     }
 }
