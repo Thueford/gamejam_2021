@@ -40,10 +40,16 @@ public class KeyHandler : MonoBehaviour
     {
         if (!enableMovement) return Vector3.zero;
         Vector2 dir = Vector3.zero;
-        if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S)) dir.y -= 1;
         if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) dir.x += 1;
-        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Space)) dir.y += 1;
         if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A)) dir.x -= 1;
+        return dir;
+    }
+
+    public static Vector2 ReadJumpInput()
+    {
+        if (!enableMovement) return Vector3.zero;
+        Vector2 dir = Vector3.zero;
+        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.Space)) dir.y += 1;
         return dir;
     }
 

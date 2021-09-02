@@ -1,0 +1,27 @@
+fileFormatVersion: 2
+guid: 1f4248aeed648db4ca800cfb488f4ae4
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - bloom: {instanceID: 0}
+  - lensFlare: {instanceID: 0}
+  - MatBlur: {fileID: 2100000, guid: 5e973568fada50f4ca2be47433005579, type: 2}
+  - MatBloom: {fileID: 2100000, guid: 58d98c104d9035f408d532ff69e8c746, type: 2}
+  - MatCA: {fileID: 2100000, guid: 23002e5450099ab4d8875b8ec638af24, type: 2}
+  - MatLensFLare: {fileID: 2100000, guid: 1acde55715ac3cd4fbf4fcb52ae625b4, type: 2}
+  - MatCRT: {fileID: 2100000, guid: c09266b306b37024dab3648a15838ffe, type: 2}
+  - postProcMat: {instanceID: 0}
+  - lensDirtTex: {fileID: 2800000, guid: 1d561adfdeba8d540abff609cdb9bc7c, type: 3}
+  - starburstTex: {fileID: 2800000, guid: a41a4b1fd3574674ba44a10ae5241dd9, type: 3}
+  - sourceTex: {instanceID: 0}
+  - brightTex: {instanceID: 0}
+  - blurBuff: {instanceID: 0}
+  - caResult: {instanceID: 0}
+  - lfResult: {instanceID: 0}
+  - lensTex: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
