@@ -143,13 +143,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c97c13fbb93bfad49b4ed9cc38fc9d98, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
   rb: {fileID: 0}
   coll: {fileID: 0}
   pfLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   moveMult: 100
   jumpMult: 18.9
   maxHSpeed: 12.4
@@ -163,8 +163,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4157d090dd20def44bd2714b5007ab9c, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
-  respawnPoint: {fileID: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
   InvertGravityPanel: {fileID: 0}
   triggerRespawn: 0
