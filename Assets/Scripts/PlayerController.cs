@@ -11,7 +11,6 @@ public class PlayerController : MonoBehaviour
     public bool triggerRespawn = false;
     public SpriteRenderer sr;
 
-    private float T;
 
     void Awake() => self = this;
 
