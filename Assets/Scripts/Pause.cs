@@ -52,5 +52,6 @@ public class Pause : MonoBehaviour
     public void restart()
     {
         StageManager.RestartStage();
+        panel.gameObject.SetActive(false);
     }
 }
