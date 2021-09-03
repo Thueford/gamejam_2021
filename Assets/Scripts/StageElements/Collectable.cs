@@ -18,6 +18,7 @@ public class Collectable : MonoBehaviour
             case Type.NONE: break;
         }
 
+        c.gameObject.GetComponent<PlayerMovement>().AddJumps(1);
         Destroy(gameObject);
     }
 }
