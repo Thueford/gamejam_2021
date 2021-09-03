@@ -381,6 +381,90 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
+    - target: {fileID: 4823851091012432860, guid: 8bf6728223ee26148bbeb7636d2d18b6, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4823851091012432860, guid: 8bf6728223ee26148bbeb7636d2d18b6, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4823851091012432860, guid: 8bf6728223ee26148bbeb7636d2d18b6, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4823851091012432860, guid: 8bf6728223ee26148bbeb7636d2d18b6, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4823851091012432860, guid: 8bf6728223ee26148bbeb7636d2d18b6, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 48.679596
+      objectReference: {fileID: 0}
+    - target: {fileID: 4823851091012432860, guid: 8bf6728223ee26148bbeb7636d2d18b6, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 134.33981
+      objectReference: {fileID: 0}
+    - target: {fileID: 4823851091012432860, guid: 8bf6728223ee26148bbeb7636d2d18b6, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -38.339813
+      objectReference: {fileID: 0}
+    - target: {fileID: 4823851091165572531, guid: 8bf6728223ee26148bbeb7636d2d18b6, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4823851091165572531, guid: 8bf6728223ee26148bbeb7636d2d18b6, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4823851091165572531, guid: 8bf6728223ee26148bbeb7636d2d18b6, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4823851091165572531, guid: 8bf6728223ee26148bbeb7636d2d18b6, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4823851091165572531, guid: 8bf6728223ee26148bbeb7636d2d18b6, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 340
+      objectReference: {fileID: 0}
+    - target: {fileID: 4823851091165572531, guid: 8bf6728223ee26148bbeb7636d2d18b6, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 95
+      objectReference: {fileID: 0}
+    - target: {fileID: 7865803617896763282, guid: 8bf6728223ee26148bbeb7636d2d18b6, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7865803617896763282, guid: 8bf6728223ee26148bbeb7636d2d18b6, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7865803617896763282, guid: 8bf6728223ee26148bbeb7636d2d18b6, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7865803617896763282, guid: 8bf6728223ee26148bbeb7636d2d18b6, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7865803617896763282, guid: 8bf6728223ee26148bbeb7636d2d18b6, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 158.98486
+      objectReference: {fileID: 0}
+    - target: {fileID: 7865803617896763282, guid: 8bf6728223ee26148bbeb7636d2d18b6, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 48.679993
+      objectReference: {fileID: 0}
+    - target: {fileID: 7865803617896763282, guid: 8bf6728223ee26148bbeb7636d2d18b6, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7865803617896763282, guid: 8bf6728223ee26148bbeb7636d2d18b6, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -38.339996
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8bf6728223ee26148bbeb7636d2d18b6, type: 3}
 --- !u!1001 &2745062580949041281
