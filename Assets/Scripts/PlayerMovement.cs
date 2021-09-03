@@ -28,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
     private List<bool> groundedFrames = new List<bool>();
 
     private Animator anim;
+    public bool gaaaaaaa;
 
     private bool grounded => groundedFrames[0] || groundedFrames[1] || groundedFrames[2];
 
@@ -43,6 +44,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        gaaaaaaa = grounded;
         if (jumps <= 0) return;
 
         //Debug.Log(grounded);
@@ -57,10 +59,7 @@ public class PlayerMovement : MonoBehaviour
             if (Jump()) airJumpsLeft--;
         }
 
-        if (grounded)
-        {
-            anim.SetBool("isJumping", false);
-        }
+        
     }
 
     void FixedUpdate()
@@ -88,11 +87,12 @@ public class PlayerMovement : MonoBehaviour
         }
 
         if (!grounded) {
-            if (-vel.y * PlayerController.inverted > 0)
+            if (-vel.y * PlayerController.inverted >= 0)
             {
                 anim.SetBool("isFalling", false);
             } else if (-vel.y * PlayerController.inverted < 0) {
                 anim.SetBool("isFalling", true);
+                //anim.SetBool("isJumping", false);
             } 
         }
 
@@ -107,10 +107,11 @@ public class PlayerMovement : MonoBehaviour
 
     private bool Jump()
     {
-        anim.SetBool("isJumping", true);
         Vector2 jumpForce = jumpMult * PlayerController.inverted * KeyHandler.ReadJumpInput();
         if (jumpForce.y != 0)
         {
+            anim.SetBool("isJumping", true);
+            Invoke("SetJumpingToFalse", 0.283f);
             jumpCounter = 3;
             jumps--;
             Vector2 vel = rb.velocity;
@@ -119,6 +120,11 @@ public class PlayerMovement : MonoBehaviour
             rb.AddForce(jumpForce, ForceMode2D.Impulse);
         }
         return jumpForce.y > 0;
+    }
+
+    private void SetJumpingToFalse()
+    {
+        anim.SetBool("isJumping", false);
     }
 
     private bool IsGrounded()
