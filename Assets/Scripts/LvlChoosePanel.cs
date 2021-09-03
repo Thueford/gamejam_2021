@@ -20,6 +20,13 @@ public class LvlChoosePanel : MonoBehaviour
         {
             Image btn = Instantiate(btnPrefab, panel.rectTransform);
             btn.rectTransform.position = new Vector2(/*Screen.width / 6 + */2.4f * (i%5)-4.8f, /*4*Screen.height/6 + */200*(i/5)+2);
+            if (StageManager.isEnabled(i))
+            {
+                btn.color = Color.green;
+            } else
+            {
+                btn.color = Color.red;
+            }
             btn.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = i.ToString();
         }
         panel.gameObject.SetActive(false);
