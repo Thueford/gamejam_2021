@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class OpenLvlBtn : MonoBehaviour
 {
@@ -20,7 +21,9 @@ public class OpenLvlBtn : MonoBehaviour
 
     public void btnPressed_LoadLvl()
     {
-        StageManager.LoadStage(int.Parse(tmpro.text));
+        PlayerPrefs.SetInt("choosenlvl", int.Parse(tmpro.text));
+        SceneManager.LoadScene("main");
+        //StageManager.LoadStage(int.Parse(tmpro.text));
         GameObject.Find("LvlChooser").GetComponent<LvlChoosePanel>().btnPressed_CloseChooseLvl();
     }
 
