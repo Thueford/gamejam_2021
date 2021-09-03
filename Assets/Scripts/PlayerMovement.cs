@@ -18,6 +18,8 @@ public class PlayerMovement : MonoBehaviour
 
     [Range(0, 100)]
     public float maxHSpeed = 10;
+    [Range(0, 100)]
+    public float terminalVelocity = 10;
 
     public int jumps { get; private set; } = 10;
 
@@ -61,12 +63,16 @@ public class PlayerMovement : MonoBehaviour
         if (Mathf.Abs(vel.x) > maxHSpeed) 
         { 
             vel.x = Mathf.Sign(vel.x) * maxHSpeed;
-            rb.velocity = vel;
         }
 
-        bool gr = IsGrounded();
+        if (-vel.y * PlayerController.inverted > terminalVelocity)
+        {
+            vel.y = Mathf.Sign(vel.y) * terminalVelocity;
+        }
 
-        //Debug.Log(gr);
+        rb.velocity = vel;
+
+        bool gr = IsGrounded();
 
         jumpCounter = Mathf.Max(0, jumpCounter-1);
         groundedFrames.RemoveAt(0);
@@ -75,10 +81,9 @@ public class PlayerMovement : MonoBehaviour
 
     private bool Jump()
     {
-        Vector2 jumpForce = KeyHandler.ReadJumpInput() * jumpMult;
-        if (jumpForce.y > 0)
+        Vector2 jumpForce = jumpMult * PlayerController.inverted * KeyHandler.ReadJumpInput();
+        if (jumpForce.y != 0)
         {
-            jumpForce = jumpForce * PlayerController.inverted;
             jumpCounter = 3;
             jumps--;
             Vector2 vel = rb.velocity;
@@ -92,7 +97,7 @@ public class PlayerMovement : MonoBehaviour
     private bool IsGrounded()
     {
         // TODO: Change Cast direction on Gravity Change
-        RaycastHit2D rcHit = Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0, Vector2.down, 0.15f, pfLayerMask);
+        RaycastHit2D rcHit = Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0, Vector2.down * PlayerController.inverted, 0.15f, pfLayerMask);
         return rcHit.collider != null;
     }
 

@@ -11,6 +11,7 @@ public class PlatformMover : MonoBehaviour
     private int pnum = 0, pnext = 1, pdir = 1;
     private Rigidbody2D rb;
     private bool active = true;
+    private int lastGravity;
 
     private void Awake()
     {
@@ -19,6 +20,22 @@ public class PlatformMover : MonoBehaviour
 
         rb = GetComponent<Rigidbody2D>();
         active = !startOnContact;
+
+    }
+
+    private void Start()
+    {
+        lastGravity = PlayerController.inverted;
+    }
+
+    private void Update()
+    {
+        if (lastGravity != PlayerController.inverted)
+        {
+            transform.rotation *= Quaternion.Euler(Vector3.forward * 180);
+            lastGravity = PlayerController.inverted;
+        }
+
     }
 
     private void NextCheckpoint()

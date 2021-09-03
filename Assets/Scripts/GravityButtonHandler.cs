@@ -6,6 +6,8 @@ public class GravityButtonHandler : MonoBehaviour
 {
     public GameObject ButtonImage;
     public GameObject ButtonText;
+    [Range(1, 50)]
+    public float GravityDuration = 2f;
     public static float GravityTimer = 2f;
     public static bool isGravityTimer = false;
     private Rigidbody2D rb;
@@ -42,7 +44,7 @@ public class GravityButtonHandler : MonoBehaviour
                 //ButtonImage
                 Debug.Log("changeGravity");
                 isGravityTimer = true;
-                GravityTimer = 2f;
+                GravityTimer = GravityDuration;
                 rb.gravityScale = rb.gravityScale * -1;
                 PlayerController.InvertGravity();
             }
