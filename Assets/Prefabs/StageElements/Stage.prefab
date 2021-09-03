@@ -325,6 +325,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawn: {fileID: 1822966243472537628}
+  DefaulJumps: 10
   index: 0
 --- !u!1 &4366104102102081590
 GameObject:
@@ -388,6 +389,36 @@ Transform:
   - {fileID: 7500051464288967360}
   - {fileID: 7500051464557477099}
   m_Father: {fileID: 5359302196924371772}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6783405117088825274
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7459606872042711119}
+  m_Layer: 0
+  m_Name: Collectables
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7459606872042711119
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6783405117088825274}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5359302196924371772}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7468822727878284947
@@ -419,6 +450,7 @@ Transform:
   m_Children:
   - {fileID: 7838908345847065269}
   - {fileID: 1679011589020124372}
+  - {fileID: 7459606872042711119}
   - {fileID: 2155926429723554120}
   - {fileID: 4570923472055345010}
   m_Father: {fileID: 4109920025841966295}
@@ -437,7 +469,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3942488296353373119, guid: 1aed260fbb3256b49874096ef6352bc1, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3942488296353373119, guid: 1aed260fbb3256b49874096ef6352bc1, type: 3}
       propertyPath: m_LocalScale.x
