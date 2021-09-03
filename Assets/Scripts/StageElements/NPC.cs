@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Speaker : StageButtonHandler
+public class NPC : StageButtonHandler
 {
     public TMPro.TextMeshPro text;
     private string s;
