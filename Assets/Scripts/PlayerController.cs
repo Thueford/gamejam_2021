@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
 
     public GameObject InvertGravityPanel;
     public bool triggerRespawn = false;
+    public SpriteRenderer sr;
 
     void Awake() => self = this;
 
@@ -41,5 +42,6 @@ public class PlayerController : MonoBehaviour
     {
         if (inverted > 0) inverted = -1;
         else inverted = 1;
+        self.sr.flipY = !self.sr.flipY;
     }
 }

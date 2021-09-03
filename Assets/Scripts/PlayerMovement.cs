@@ -57,7 +57,12 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.AddForce(KeyHandler.ReadDirInput() * moveMult);
+        Vector2 moveForce = KeyHandler.ReadDirInput() * moveMult;
+        if (moveForce.x != 0)
+        {
+            rb.AddForce(moveForce);
+            PlayerController.self.sr.flipX = moveForce.x < 0;
+        }
 
         Vector2 vel = rb.velocity;
         if (Mathf.Abs(vel.x) > maxHSpeed) 

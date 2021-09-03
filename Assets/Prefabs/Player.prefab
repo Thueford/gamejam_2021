@@ -155,6 +155,7 @@ MonoBehaviour:
   moveMult: 100
   jumpMult: 18.9
   maxHSpeed: 12.4
+  terminalVelocity: 13.2
 --- !u!114 &1835358560219958457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,6 +170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InvertGravityPanel: {fileID: 0}
   triggerRespawn: 0
+  sr: {fileID: 7097116376284559530}
 --- !u!95 &3968968321657194967
 Animator:
   serializedVersion: 3
