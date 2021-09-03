@@ -181,9 +181,9 @@ GameObject:
   - component: {fileID: 5902430299570238991}
   - component: {fileID: 5902430299570238992}
   - component: {fileID: 5902430299570238990}
-  - component: {fileID: 2994806622055031472}
+  - component: {fileID: 5119649311543644200}
   m_Layer: 0
-  m_Name: GravityButton 1
+  m_Name: StageButton
   m_TagString: Tag_GravityButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -197,8 +197,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5902430299570238993}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.39, y: -0.59, z: 0}
-  m_LocalScale: {x: 0.80908275, y: 2.3655298, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 2, z: 1}
   m_Children:
   - {fileID: 5902430300548251229}
   m_Father: {fileID: 0}
@@ -245,7 +245,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  m_Color: {r: 0.1509434, g: 0.056485094, b: 0.056485094, a: 1}
+  m_Color: {r: 1, g: 0, b: 0.8503313, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -281,7 +281,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &2994806622055031472
+--- !u!114 &5119649311543644200
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -290,9 +290,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 5902430299570238993}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 426e66e98a7052041affe3c7825793f5, type: 3}
+  m_Script: {fileID: 11500000, guid: 7aea75dac23cbdd4f86bf7e60689682d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ButtonImage: {fileID: 5902430300548251230}
+  ButtonText: {fileID: 5902430299455864881}
+  isToggle: 0
+  status: 0
+  key: 101
 --- !u!1 &5902430300548251230
 GameObject:
   m_ObjectHideFlags: 0
