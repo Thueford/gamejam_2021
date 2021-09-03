@@ -55,11 +55,6 @@ public class PostProcessing : MonoBehaviour
 
     private Light dirLight; 
 
-    private const int threadsPerGroup = 24;
-
-    private int xThreadGroups = Mathf.CeilToInt(Screen.width / threadsPerGroup);
-    private int yThreadGroups = Mathf.CeilToInt(Screen.height / threadsPerGroup);
-
     private int lastWidth = Screen.width;
     private int lastHeight = Screen.height;
 
@@ -69,17 +64,10 @@ public class PostProcessing : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         MatLensFlare.SetTexture("_StarburstTex", starburstTex);
-
-        //BlurPass = postProcMat.FindPass("Blur");
 
         createTextures();
         setTextures();
-
-        setBloomUniforms();
-        setLensFlareUniforms();
-
     }
 
     private void OnRenderImage(RenderTexture source, RenderTexture destination)
@@ -95,32 +83,27 @@ public class PostProcessing : MonoBehaviour
         {
             lastWidth = Screen.width;
             lastHeight = Screen.height;
-            //xThreadGroups = Mathf.CeilToInt(Screen.width / threadsPerGroup);
-            //yThreadGroups = Mathf.CeilToInt(Screen.height / threadsPerGroup);
 
             createTextures();
             setTextures();
         }
 
-        //Graphics.Blit(source, sourceTex);
-
         //Perform Bloom, Result: 'sourceTex'
         if (useBloom)
         {
             setBloomUniforms();
-            //bloom.Dispatch(0, xThreadGroups, yThreadGroups, 1);
+
             Graphics.Blit(source, brightTex, MatBloom, 0);
             blur(brightTex, bloomBlurrAmount);
-            Graphics.Blit(source, writeBackBuff);
-            Graphics.Blit(writeBackBuff, source, MatBloom, 1);
-            //bloom.Dispatch(1, xThreadGroups, yThreadGroups, 1);
-        }
+            Graphics.Blit(source, sourceTex, MatBloom, 1);
+
+        } else Graphics.Blit(source, sourceTex);
 
         //Perform Chromatic Aberration, Result: 'caResult'
         if (useCA)
         {
             setCAUniforms();
-            //Graphics.Blit(sourceTex, caResult, postProcMat, CAPass);
+            Graphics.Blit(sourceTex, caResult, MatCA);
         } 
         else Graphics.Blit(sourceTex, caResult);
 
@@ -128,18 +111,20 @@ public class PostProcessing : MonoBehaviour
         if (useLensFlare)
         {
             setLensFlareUniforms();
-            lensFlare.Dispatch(0, xThreadGroups, yThreadGroups, 1);
+
+            Graphics.Blit(sourceTex, lfResult, MatLensFlare, 0);
             blur(lfResult, lfBlurrCount);
-            lensFlare.Dispatch(1, xThreadGroups, yThreadGroups, 1);
+            Graphics.Blit(caResult, writeBackBuff);
+            Graphics.Blit(writeBackBuff, caResult, MatLensFlare, 1);
+            //lensFlare.Dispatch(1, xThreadGroups, yThreadGroups, 1);
         }
 
         //Perform CRT Effect, Result: 'destination'
         if (useCRTEffect)
         {
             setCRTUniforms();
-            //Graphics.Blit(caResult, destination, postProcMat, CRTPass);
+            Graphics.Blit(caResult, destination, MatCRT);
         }
-
         else Graphics.Blit(caResult, destination);
 
     }
@@ -158,7 +143,6 @@ public class PostProcessing : MonoBehaviour
     private RenderTexture createTexture()
     {
         RenderTexture tex = new RenderTexture(Screen.width, Screen.height, 24);
-        //tex.enableRandomWrite = SystemInfo.supportsComputeShaders;
         tex.Create();
         return tex;
     }
@@ -172,57 +156,48 @@ public class PostProcessing : MonoBehaviour
         lfResult = createTexture();
         lensTex = createTexture();
         writeBackBuff = createTexture();
-        Graphics.Blit(lensDirtTex, lensTex, MatLensFlare, 1);
+        Graphics.Blit(lensDirtTex, lensTex, MatLensFlare, 2);
     }
 
     private void setTextures()
     {
-        if (useBloom) setBloomTextures();
-        if (useLensFlare) setLensFlareTextures();
+        setBloomTextures();
+        setLensFlareTextures();
     }
 
     private void setBloomUniforms()
     {
-        //bloom.SetFloat("threshold", bloomThreshold);
+        MatBloom.SetFloat("_Threshold", bloomThreshold);
     }
 
     private void setBloomTextures()
     {
-        /*bloom.SetTexture(0, "Source", sourceTex);
-        bloom.SetTexture(0, "BrightSpots", brightTex);
-
-        bloom.SetTexture(1, "Source", sourceTex);
-        bloom.SetTexture(1, "BrightSpots", brightTex);*/
-        MatBloom.SetTexture("BrightTex", brightTex);
+        MatBloom.SetTexture("_BrightTex", brightTex);
     }
 
     private void setLensFlareUniforms()
     {
-        lensFlare.SetInt("ghostCount", lfGhostCount);
-        lensFlare.SetFloat("ghostSpacing", lfGhostSpacing);
-        lensFlare.SetFloat("threshold", lfThreshold);
-        lensFlare.SetFloat("caStrength", lfCAStrength);
+        MatLensFlare.SetInt("_GhostCount", lfGhostCount);
+        MatLensFlare.SetFloat("_GhostSpacing", lfGhostSpacing);
+        MatLensFlare.SetFloat("_Threshold", lfThreshold);
+        MatLensFlare.SetFloat("_CaStrength", lfCAStrength);
     }
 
     private void setLensFlareTextures()
     {
-        lensFlare.SetTexture(0, "Source", sourceTex);
-        lensFlare.SetTexture(0, "Result", lfResult);
-        lensFlare.SetTexture(1, "lensDirt", lensTex);
-        lensFlare.SetTexture(1, "Source", caResult);
-        lensFlare.SetTexture(1, "Result", lfResult);
-        //MatLensFlare.SetTexture();
+        MatLensFlare.SetTexture("_LensTex", lensTex);
+        MatLensFlare.SetTexture("_ResultTex", lfResult);
     }
 
     private void setCAUniforms()
     {
-        //postProcMat.SetFloat("_CAAmount", caAmount);
+        MatCA.SetFloat("_CAAmount", caAmount);
     }
 
     private void setCRTUniforms()
     {
-        //postProcMat.SetFloat("_vignetteAmount", vignetteAmount);
-        //postProcMat.SetFloat("_vignetteWidth", vignetteWidth);
+        MatCRT.SetFloat("_vignetteAmount", vignetteAmount);
+        MatCRT.SetFloat("_vignetteWidth", vignetteWidth);
     }
 
     public void StartPlayerHitEffect(float duration)
