@@ -8,7 +8,7 @@ public class CamController : MonoBehaviour
     public float lazyness = 10;
     public GameObject target;
 
-    private void LateUpdate()
+    private void FixedUpdate()
     {
         if (!target) return;
         Vector2 dir = target.transform.position - transform.position;
