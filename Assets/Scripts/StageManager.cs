@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -49,6 +50,11 @@ public class StageManager : MonoBehaviour
 
         PlayerPrefs.SetInt("maxStage", ++maxStage);
         LoadStage(curStageNo);
+    }
+
+    public static void EndGame()
+    {
+        SceneManager.LoadScene("CreditScene");
     }
 
     public static void LoadStage(int index)

@@ -5,6 +5,7 @@ using UnityEngine;
 public class NPC : StageButtonHandler
 {
     public TMPro.TextMeshPro text;
+    public bool repeat = true;
     private string[] s;
     private int iText, iChar;
 
@@ -17,7 +18,8 @@ public class NPC : StageButtonHandler
         }
 
         text.gameObject.SetActive(false);
-        s = text.text.Trim().Split('\n');
+        s = text.text.Trim().Replace("\n", "%\n").Split('%');
+        Debug.Log(string.Join("\n", s));
     }
 
     public override void Toggle(bool status, Collider2D c)
@@ -25,33 +27,51 @@ public class NPC : StageButtonHandler
         // start talking
         if (!text.IsActive())
         {
+            if (!repeat && iText > 0) return;
             text.gameObject.SetActive(true);
             iText = iChar = 0;
+            text.text = "";
             InvokeRepeating(nameof(DisplayText), 0, 0.03f);
         }
         // skip talking
         else if (iChar < s[iText].Length)
         {
-            iChar = s[iText].Length;
-            text.text = s[iText];
             CancelInvoke();
+            while (iChar < s[iText].Length) DisplayText();
         }
-        // continue talking
+        // stop talking
         else if (++iText == s.Length)
         {
             text.text = "";
             text.gameObject.SetActive(false);
         }
+        // continue talking
         else
         {
             iChar = 0;
             InvokeRepeating(nameof(DisplayText), 0, 0.03f);
         }
     }
-
+    
     private void DisplayText()
     {
-        text.text = s[iText].Substring(0, ++iChar);
-        if (iChar == s[iText].Length) CancelInvoke();
+        // Events
+        if (text.text == "" && s[iText][iChar] == '[')
+            handleEvent(s[iText].Substring(iChar + 1, s[iText++].IndexOf(']') - iChar - 1));
+
+        // mid pause
+        if (iChar == s[iText].Length || s[iText][iChar] == '%') CancelInvoke();
+        // next line
+        else if (s[iText][iChar] == '\n') text.text = "";
+        // space delays
+        else if (!(s[iText][iChar] == ' ' && (text.text == "" || text.text.EndsWith(" "))))
+            text.text += s[iText][iChar];
+        iChar++;
+    }
+
+    public void handleEvent(string name)
+    {
+        ScriptedStage s = StageManager.curStage.GetComponent<ScriptedStage>();
+        if(s) s.Invoke("ev_" + name, 0);
     }
 }
