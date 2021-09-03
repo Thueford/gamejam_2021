@@ -107,7 +107,7 @@ public class PlayerMovement : MonoBehaviour
                 anim.SetBool("isFalling", false);
             } else if (-vel.y * PlayerController.inverted < 0) {
                 anim.SetBool("isFalling", true);
-                //anim.SetBool("isJumping", false);
+                anim.SetBool("isJumping", false);
             } 
         }
 
