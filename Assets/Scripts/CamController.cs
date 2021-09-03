@@ -5,7 +5,7 @@ using UnityEngine;
 public class CamController : MonoBehaviour
 {
     [Range(1,50)]
-    public float lazyness;
+    public float lazyness = 10;
     public GameObject target;
 
     private void LateUpdate()
