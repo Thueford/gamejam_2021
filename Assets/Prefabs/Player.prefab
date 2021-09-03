@@ -156,6 +156,7 @@ MonoBehaviour:
   jumpMult: 18.9
   maxHSpeed: 12.4
   terminalVelocity: 13.2
+  gaaaaaaa: 0
 --- !u!114 &1835358560219958457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,4 +205,4 @@ Animation:
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
-  m_CullingType: 0
+  m_CullingType: 1

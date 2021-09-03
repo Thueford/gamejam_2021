@@ -40,6 +40,7 @@ public class Pause : MonoBehaviour
     public void Exit()
     {
         playClickSound();
+        Time.timeScale = 1;
         SceneManager.LoadScene("StartScene");
     }
 
