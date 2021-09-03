@@ -30,6 +30,10 @@ public class PlayerController : MonoBehaviour
 
     public void Die()
     {
+        if(inverted < 0)
+        {
+            inverted = 1;
+        }
         StageManager.RestartStage();
         int dfj = StageManager.curStage.GetComponent<Stage>().DefaulJumps;
         GetComponent<PlayerMovement>().SetJumps(dfj);

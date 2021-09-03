@@ -32,7 +32,6 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 platformVel;
 
     private Animator anim;
-    public bool gaaaaaaa;
 
     private bool grounded => groundedFrames[0] || groundedFrames[1] || groundedFrames[2];
 
@@ -53,7 +52,6 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        gaaaaaaa = grounded;
         if (jumps <= 0) return;
 
         //Debug.Log(grounded);
