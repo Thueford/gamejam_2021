@@ -5,4 +5,5 @@ using UnityEngine;
 public class Stage : MonoBehaviour
 {
     public GameObject spawn;
+    public int index;
 }
