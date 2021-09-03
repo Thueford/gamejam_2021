@@ -37,8 +37,6 @@ public class PlatformMover : MonoBehaviour
             transform.rotation *= Quaternion.Euler(Vector3.forward * 180);
             lastGravity = PlayerController.inverted;
         }
-
-
     }
 
     private void NextCheckpoint()
@@ -50,7 +48,7 @@ public class PlatformMover : MonoBehaviour
         {
             pnum = pnext;
             pnext = ((pnum + 1) % points.Length) -1;
-            
+
             Array.Reverse(points);
         } else
         {
@@ -58,7 +56,7 @@ public class PlatformMover : MonoBehaviour
             pnext = pnum + 1;
         }*/
 
-        
+
         pnum += pdir;
         if (pnum == 0 || pnum == points.Length - 1) pdir = -pdir;
         pnext = pnum + pdir;
@@ -69,7 +67,7 @@ public class PlatformMover : MonoBehaviour
         // skip if no checkpoints
         if (!active || points.Length <= 1) return;
 
-        
+
 
         Vector2 dir = (points[pnext].position - points[pnum].position).normalized;
         rb.MovePosition(rb.position + dir * speed * Time.fixedDeltaTime);
@@ -80,7 +78,7 @@ public class PlatformMover : MonoBehaviour
             Debug.Log(checkpointDistance);
             NextCheckpoint();
         }
-            
+
     }
 
     private void OnCollisionEnter2D(Collision2D c)

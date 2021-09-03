@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StageButton : MonoBehaviour
 {
-    public GameObject ButtonImage, ButtonText;
+    public TMPro.TextMeshPro ButtonText;
     public bool isToggle = false, status = false;
     public KeyCode key = KeyCode.E;
 
@@ -12,11 +12,11 @@ public class StageButton : MonoBehaviour
     private Collider2D coll;
     private bool buttonActive = false, initStatus;
 
-    private void Awake() => handler = GetComponent<StageButtonHandler>();
+    private void Awake() => handler = transform.parent.GetComponent<StageButtonHandler>();
 
     private void Start()
     {
-        ButtonImage.SetActive(false);
+        ButtonText.gameObject.SetActive(false);
         initStatus = status;
     }
 
@@ -37,7 +37,7 @@ public class StageButton : MonoBehaviour
         {
             coll = c;
             buttonActive = true;
-            if (ButtonImage) ButtonImage.SetActive(true);
+            if (ButtonText) ButtonText.gameObject.SetActive(true);
         }
     }
 
@@ -47,7 +47,7 @@ public class StageButton : MonoBehaviour
         {
             coll = null;
             buttonActive = false;
-            if (ButtonImage) ButtonImage.SetActive(false);
+            if (ButtonText) ButtonText.gameObject.SetActive(false);
         }
     }
 }

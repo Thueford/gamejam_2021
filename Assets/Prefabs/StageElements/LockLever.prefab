@@ -20,17 +20,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4259885518561130629, guid: 073565e837244a64089746c797538e4a, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4259885518561130629, guid: 073565e837244a64089746c797538e4a, type: 3}
+      propertyPath: m_Color.g
+      value: 0.23921569
+      objectReference: {fileID: 0}
+    - target: {fileID: 4259885518561130629, guid: 073565e837244a64089746c797538e4a, type: 3}
+      propertyPath: m_Color.r
+      value: 0.54509807
+      objectReference: {fileID: 0}
     - target: {fileID: 5902430299570238991, guid: 073565e837244a64089746c797538e4a, type: 3}
       propertyPath: m_RootOrder
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5902430299570238991, guid: 073565e837244a64089746c797538e4a, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5902430299570238991, guid: 073565e837244a64089746c797538e4a, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5902430299570238991, guid: 073565e837244a64089746c797538e4a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -58,7 +62,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5902430299570238993, guid: 073565e837244a64089746c797538e4a, type: 3}
       propertyPath: m_Name
-      value: NewLockLever
+      value: LockLever
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 073565e837244a64089746c797538e4a, type: 3}

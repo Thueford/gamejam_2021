@@ -12,11 +12,8 @@ public class Locklever : StageButtonHandler
     {
         foreach(GameObject Lock in Locks)
         {
-
-            bool isActiv = Lock.transform.Find("Blocker").gameObject.active;
-            Lock.transform.Find("Blocker").gameObject.SetActive(!isActiv);
+            GameObject b = Lock.transform.Find("Blocker").gameObject;
+            b.SetActive(!b.activeSelf);
         }
-
-        
     }
 }
