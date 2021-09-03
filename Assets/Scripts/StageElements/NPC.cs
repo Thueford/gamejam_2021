@@ -5,8 +5,8 @@ using UnityEngine;
 public class NPC : StageButtonHandler
 {
     public TMPro.TextMeshPro text;
-    private string s;
-    private int displayed;
+    private string[] s;
+    private int iText, iChar;
 
     private void Start()
     {
@@ -17,19 +17,41 @@ public class NPC : StageButtonHandler
         }
 
         text.gameObject.SetActive(false);
-        s = text.text;
+        s = text.text.Trim().Split('\n');
     }
 
     public override void Toggle(bool status, Collider2D c)
     {
-        text.gameObject.SetActive(status);
-        displayed = 0;
-        if (status) InvokeRepeating(nameof(DisplayText), 0, 0.1f);
+        // start talking
+        if (!text.IsActive())
+        {
+            text.gameObject.SetActive(true);
+            iText = iChar = 0;
+            InvokeRepeating(nameof(DisplayText), 0, 0.03f);
+        }
+        // skip talking
+        else if (iChar < s[iText].Length)
+        {
+            iChar = s[iText].Length;
+            text.text = s[iText];
+            CancelInvoke();
+        }
+        // continue talking
+        else if (++iText == s.Length)
+        {
+            text.text = "";
+            text.gameObject.SetActive(false);
+        }
+        else
+        {
+            iChar = 0;
+            InvokeRepeating(nameof(DisplayText), 0, 0.03f);
+        }
     }
 
     private void DisplayText()
     {
-        text.text = s.Substring(0, ++displayed);
-        if (displayed == s.Length) CancelInvoke();
+        text.text = s[iText].Substring(0, ++iChar);
+        if (iChar == s[iText].Length) CancelInvoke();
     }
 }
