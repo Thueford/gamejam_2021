@@ -161,5 +161,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
-  startOnContact: 1
+  startOnContact: 0
+  activated: 0
   points: []
+  checkpointDistance: 0
