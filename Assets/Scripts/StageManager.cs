@@ -11,7 +11,7 @@ public class StageManager : MonoBehaviour
     private static int curStageNo = -1;
 
     public static int maxStage = 0;
-    public bool triggerNextStage = false;
+    public bool autoStart = true, triggerNextStage = false;
     public GameObject stageContainer;
 
     public static Transform GetStageContainer() => self.stageContainer.transform;
@@ -24,7 +24,11 @@ public class StageManager : MonoBehaviour
         maxStage = PlayerPrefs.GetInt("maxStage", 0);
     }
 
-    private void Start() => NextStage();
+    private void Start()
+    {
+        if (autoStart) NextStage();
+    }
+
     private void Update()
     {
         if (triggerNextStage)
