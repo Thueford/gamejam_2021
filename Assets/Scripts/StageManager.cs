@@ -11,7 +11,7 @@ public class StageManager : MonoBehaviour
     private static int curStageNo = -1;
 
     public static int maxStage = 0;
-    public bool autoStart = true, triggerNextStage = false;
+    public bool autoStart = false, triggerNextStage = false;
     public GameObject stageContainer;
 
     public static Transform GetStageContainer() => self.stageContainer.transform;
@@ -60,6 +60,7 @@ public class StageManager : MonoBehaviour
         curStage = GetStageContainer().GetChild(curStageNo).GetComponent<Stage>();
 
         curStage = Instantiate(curStage);
+        curStage.index = index;
         curStage.transform.position = Vector3.zero;
         PlayerController.self.Respawn(curStage.spawn.transform.position);
     }
