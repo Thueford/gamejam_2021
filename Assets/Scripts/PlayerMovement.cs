@@ -87,6 +87,15 @@ public class PlayerMovement : MonoBehaviour
             vel.y = Mathf.Sign(vel.y) * terminalVelocity;
         }
 
+        if (!grounded) {
+            if (-vel.y * PlayerController.inverted > 0)
+            {
+                anim.SetBool("isFalling", false);
+            } else if (-vel.y * PlayerController.inverted < 0) {
+                anim.SetBool("isFalling", true);
+            } 
+        }
+
         rb.velocity = vel;
 
         bool gr = IsGrounded();
