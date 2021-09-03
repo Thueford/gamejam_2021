@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GravityButtonHandler : Leverable
+public class GravityButtonHandler : StageButtonHandler
 {
     public static float GravityTimer = 2f;
     [Range(1, 50)]

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Locklever : Leverable
+public class Locklever : StageButtonHandler
 {
     public GameObject Lock;
 

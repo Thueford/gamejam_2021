@@ -8,11 +8,11 @@ public class StageButton : MonoBehaviour
     public bool isToggle = false, status = false;
     public KeyCode key = KeyCode.E;
 
-    private Leverable handler;
+    private StageButtonHandler handler;
     private Collider2D coll;
     private bool buttonActive = false, initStatus;
 
-    private void Awake() => handler = GetComponent<Leverable>();
+    private void Awake() => handler = GetComponent<StageButtonHandler>();
 
     private void Start()
     {
