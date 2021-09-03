@@ -110,4 +110,9 @@ public class PlayerMovement : MonoBehaviour
     {
         if (n > 0) jumps += n;
     }
+
+    public void SetJumps(int n)
+    {
+        jumps = n;
+    }
 }
