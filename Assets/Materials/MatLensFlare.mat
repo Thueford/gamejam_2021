@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: MatLensFlare
   m_Shader: {fileID: 4800000, guid: 7b67dfea993ea4d489504333d7731200, type: 3}
-  m_ShaderKeywords: 
+  m_ShaderKeywords:
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -85,7 +85,7 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _Threshold: 0.895
+    - _Threshold: 0.883
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
