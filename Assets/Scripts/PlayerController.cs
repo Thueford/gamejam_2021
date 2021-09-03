@@ -30,12 +30,16 @@ public class PlayerController : MonoBehaviour
     public void Die()
     {
         StageManager.RestartStage();
+        int dfj = StageManager.curStage.GetComponent<Stage>().DefaulJumps;
+        GetComponent<PlayerMovement>().SetJumps(dfj);
     }
 
     public void Respawn(Vector3 position)
     {
         transform.position = position;
         GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+        int dfj = StageManager.curStage.GetComponent<Stage>().DefaulJumps;
+        GetComponent<PlayerMovement>().SetJumps(dfj);
     }
 
     public static void InvertGravity()
