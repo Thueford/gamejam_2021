@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed272c9019d2af14b8c2940c47a6992f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Lock: {fileID: 0}
+  Locks: []
 --- !u!1001 &1953693033790487089
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -62,7 +62,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5902430299570238993, guid: 073565e837244a64089746c797538e4a, type: 3}
       propertyPath: m_Name
-      value: LockLever
+      value: LaserButton
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 073565e837244a64089746c797538e4a, type: 3}

@@ -11,7 +11,8 @@ public class Fan : MonoBehaviour
     {
         Vector2 dir = transform.rotation * Vector2.up;
         foreach (Rigidbody2D c in affected)
-            c.AddForce(dir * force);
+            if (!PlayerMovement.self.reachedTerminal(dir * force * Time.fixedDeltaTime))
+                c.AddForce(dir * force);
     }
 
     private void OnTriggerEnter2D(Collider2D c)
