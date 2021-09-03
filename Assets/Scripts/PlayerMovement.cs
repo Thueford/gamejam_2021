@@ -119,7 +119,7 @@ public class PlayerMovement : MonoBehaviour
         if (jumpForce.y != 0)
         {
             anim.SetBool("isJumping", true);
-            Invoke("SetJumpingToFalse", 0.283f);
+            Invoke("SetJumpingToFalse", 0.4f);
             jumpCounter = 3;
             jumps--;
             Vector2 vel = rb.velocity;
