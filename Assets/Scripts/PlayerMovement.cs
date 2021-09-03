@@ -161,11 +161,16 @@ public class PlayerMovement : MonoBehaviour
 
     public void AddJumps(int n)
     {
-        if (n > 0) jumps += n;
+        if (n > 0)
+        {
+            jumps += n;
+            airJumpsLeft = 1;
+        }
     }
 
     public void SetJumps(int n)
     {
         jumps = n;
+        airJumpsLeft = 1;
     }
 }
