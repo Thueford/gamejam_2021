@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public static PlayerMovement self;
     public Rigidbody2D rb;
     public Collider2D coll;
 
@@ -20,6 +21,8 @@ public class PlayerMovement : MonoBehaviour
     public float maxHSpeed = 10;
     [Range(0, 100)]
     public float terminalVelocity = 10;
+    public bool reachedTerminal(Vector2 acc) => 
+        Mathf.Abs(rb.velocity.y + acc.y) >= terminalVelocity;
 
     public int jumps { get; private set; } = 10;
 
@@ -32,14 +35,19 @@ public class PlayerMovement : MonoBehaviour
 
     private bool grounded => groundedFrames[0] || groundedFrames[1] || groundedFrames[2];
 
+    private void Awake()
+    {
+        self = this;
+        rb = GetComponent<Rigidbody2D>();
+        coll = GetComponent<Collider2D>();
+        anim = GetComponent<Animator>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        coll = GetComponent<Collider2D>();
         for (int i = 0; i < 3; i++)
             groundedFrames.Add(true);
-        anim = GetComponent<Animator>();
     }
 
     private void Update()
