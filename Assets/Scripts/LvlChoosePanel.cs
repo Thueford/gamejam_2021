@@ -11,11 +11,15 @@ public class LvlChoosePanel : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
+
+        panel.rectTransform.sizeDelta = new Vector2(Screen.width-150, Screen.height-150);
         Transform stageContainer = StageManager.GetStageContainer();
 
         for(int i = 0; i < stageContainer.childCount; i++)
         {
-            Image btn = Instantiate(btnPrefab, new Vector3(150 + 150*(i%5),320 - 100*(i/5),0), Quaternion.identity, panel.transform);
+            Image btn = Instantiate(btnPrefab, panel.rectTransform);
+            btn.rectTransform.position = new Vector2(Screen.width / 6 + 200 * (i%5), 4*Screen.height/6 + 200*(i/5));
             btn.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = i.ToString();
         }
         panel.gameObject.SetActive(false);

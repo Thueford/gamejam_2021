@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
         StageManager.RestartStage();
         int dfj = StageManager.curStage.GetComponent<Stage>().DefaulJumps;
         GetComponent<PlayerMovement>().SetJumps(dfj);
-        KeyHandler.enableMovement = false;
+        //KeyHandler.enableMovement = false;
     }
 
     public void Respawn(Vector3 position)
@@ -43,13 +43,13 @@ public class PlayerController : MonoBehaviour
         GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         int dfj = StageManager.curStage.GetComponent<Stage>().DefaulJumps;
         GetComponent<PlayerMovement>().SetJumps(dfj);
-        Invoke("ReactivateMovement", 1);
+        //Invoke("ReactivateMovement", 1);
     }
 
-    private void ReactivateMovement()
+    /*private void ReactivateMovement()
     {
         KeyHandler.enableMovement = true;
-    }
+    }*/
 
     public static void InvertGravity()
     {
