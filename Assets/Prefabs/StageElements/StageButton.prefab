@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ButtonText: {fileID: 5902430299455864879}
-  isToggle: 0
+  isToggle: 1
   status: 0
   key: 101
 --- !u!1 &5902430299455864881
