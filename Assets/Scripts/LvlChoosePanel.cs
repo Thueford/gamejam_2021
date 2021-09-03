@@ -18,7 +18,8 @@ public class LvlChoosePanel : MonoBehaviour
 
         for(int i = 0; i < stageContainer.childCount; i++)
         {
-            Image btn = Instantiate(btnPrefab, new Vector3(200 + (Screen (i%5),Screen.height - 250*(i/5),0), Quaternion.identity, panel.rectTransform);
+            Image btn = Instantiate(btnPrefab, panel.rectTransform);
+            btn.rectTransform.position = new Vector2(Screen.width / 6 + 200 * (i%5), 4*Screen.height/6 + 200*(i/5));
             btn.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = i.ToString();
         }
         panel.gameObject.SetActive(false);
