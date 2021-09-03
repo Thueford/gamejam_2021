@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &96618288 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7097116376284559529, guid: 13844089149ebad449ee3e094de8d51d, type: 3}
+  m_PrefabInstance: {fileID: 234925783}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &234925783
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -207,8 +212,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c30d8bbae7820d3478bda12d0b161f41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
 --- !u!4 &309430482
 Transform:
   m_ObjectHideFlags: 0
@@ -260,10 +265,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1d53d6f7007df09498e30dd3253d0e34, type: 3}
-  m_Name: 
+  m_Name:
   m_EditorClassIdentifier: 
-  lazyness: 4
-  target: {fileID: 956117594}
+  lazyness: 10
+  target: {fileID: 96618288}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -400,7 +405,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2745062580654365812, guid: 8a0b41314c3161d4497aed2a17e14833, type: 3}
       propertyPath: stageContainer
-      value: 
+      value:
       objectReference: {fileID: 551982886680851831, guid: 0aa95d2fd58aaa249aa4a5c479227f15, type: 3}
     - target: {fileID: 2745062580654365813, guid: 8a0b41314c3161d4497aed2a17e14833, type: 3}
       propertyPath: m_RootOrder
