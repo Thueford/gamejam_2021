@@ -395,7 +395,7 @@ MonoBehaviour:
   useLensFlare: 1
   lfGhostCount: 6
   lfBlurrCount: 3
-  lfThreshold: 0.77
+  lfThreshold: 0.895
   lfGhostSpacing: 0.69
   lfCAStrength: 0.15
   useCRTEffect: 1

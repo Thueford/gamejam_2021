@@ -29,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
     private int jumpCounter = 0;
     private int airJumpsLeft = 0;
     private List<bool> groundedFrames = new List<bool>();
+    private Vector2 platformVel;
 
     private Animator anim;
     public bool gaaaaaaa;
@@ -84,8 +85,14 @@ public class PlayerMovement : MonoBehaviour
         }
 
         Vector2 vel = rb.velocity;
+
+        if (moveForce.x == 0)
+        {
+            vel.x = (vel.x - platformVel.x) * 0.9f + platformVel.x;
+        }
+
         if (Mathf.Abs(vel.x) > maxHSpeed) 
-        { 
+        {
             vel.x = Mathf.Sign(vel.x) * maxHSpeed;
         }
 
@@ -139,16 +146,31 @@ public class PlayerMovement : MonoBehaviour
     {
         // TODO: Change Cast direction on Gravity Change
         RaycastHit2D rcHit = Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0, Vector2.down * PlayerController.inverted, 0.15f, pfLayerMask);
+        if (rcHit.collider && rcHit.collider.gameObject.CompareTag("Platform"))
+        {
+            Rigidbody2D r = rcHit.collider.GetComponent<Rigidbody2D>();
+            if (r)
+            {
+                platformVel = new Vector2(r.velocity.x, r.velocity.y);
+                return true;
+            }
+        }
+        platformVel = Vector2.zero;
         return rcHit.collider != null;
     }
 
     public void AddJumps(int n)
     {
-        if (n > 0) jumps += n;
+        if (n > 0)
+        {
+            jumps += n;
+            airJumpsLeft = 1;
+        }
     }
 
     public void SetJumps(int n)
     {
         jumps = n;
+        airJumpsLeft = 1;
     }
 }
