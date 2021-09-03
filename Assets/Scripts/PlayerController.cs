@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
     public bool triggerRespawn = false;
     public SpriteRenderer sr;
 
+    
+
     void Awake() => self = this;
 
     // Update is called once per frame

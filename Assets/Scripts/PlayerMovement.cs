@@ -27,6 +27,8 @@ public class PlayerMovement : MonoBehaviour
     private int airJumpsLeft = 0;
     private List<bool> groundedFrames = new List<bool>();
 
+    private Animator anim;
+
     private bool grounded => groundedFrames[0] || groundedFrames[1] || groundedFrames[2];
 
     // Start is called before the first frame update
@@ -36,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
         coll = GetComponent<Collider2D>();
         for (int i = 0; i < 3; i++)
             groundedFrames.Add(true);
+        anim = GetComponent<Animator>();
     }
 
     private void Update()
@@ -53,6 +56,11 @@ public class PlayerMovement : MonoBehaviour
         {
             if (Jump()) airJumpsLeft--;
         }
+
+        if (grounded)
+        {
+            anim.SetBool("isJumping", false);
+        }
     }
 
     void FixedUpdate()
@@ -60,8 +68,12 @@ public class PlayerMovement : MonoBehaviour
         Vector2 moveForce = KeyHandler.ReadDirInput() * moveMult;
         if (moveForce.x != 0)
         {
+            anim.SetBool("isWalking", true);
             rb.AddForce(moveForce);
             PlayerController.self.sr.flipX = moveForce.x < 0;
+        } else
+        {
+            anim.SetBool("isWalking", false);
         }
 
         Vector2 vel = rb.velocity;
@@ -86,6 +98,7 @@ public class PlayerMovement : MonoBehaviour
 
     private bool Jump()
     {
+        anim.SetBool("isJumping", true);
         Vector2 jumpForce = jumpMult * PlayerController.inverted * KeyHandler.ReadJumpInput();
         if (jumpForce.y != 0)
         {
