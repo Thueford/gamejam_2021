@@ -8,12 +8,12 @@ public class LvlAnzeige : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        tmpro.text = StageManager.curStage.index;
+        tmpro.text = StageManager.curStage.index.ToString();
     }
 
     // Update is called once per frame
     void Update()
     {
-        tmpro.text = StageManager.curStage.index;
+        tmpro.text = StageManager.curStage.index.ToString();
     }
 }
