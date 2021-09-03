@@ -48,4 +48,9 @@ public class Pause : MonoBehaviour
     {
         
     }
+
+    public void restart()
+    {
+        StageManager.RestartStage();
+    }
 }
