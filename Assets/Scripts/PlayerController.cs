@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public static PlayerController self;
-    public static bool inverted = false;
+    public static int inverted = 1;
 
     public GameObject InvertGravityPanel;
     public bool triggerRespawn = false;
@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
 
     public static void InvertGravity()
     {
-        if (inverted) inverted = false;
-        else inverted = true;
+        if (inverted > 0) inverted = -1;
+        else inverted = 1;
     }
 }

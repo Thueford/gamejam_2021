@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4313118347095905676, guid: 13844089149ebad449ee3e094de8d51d, type: 3}
+      propertyPath: pfLayerMask.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7097116376284559529, guid: 13844089149ebad449ee3e094de8d51d, type: 3}
       propertyPath: m_Name
       value: Player

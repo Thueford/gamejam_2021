@@ -40,6 +40,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if (jumps <= 0) return;
 
+        //Debug.Log(grounded);
+
         if (grounded && jumpCounter == 0)
         {
             airJumpsLeft = 1;
@@ -64,6 +66,8 @@ public class PlayerMovement : MonoBehaviour
 
         bool gr = IsGrounded();
 
+        //Debug.Log(gr);
+
         jumpCounter = Mathf.Max(0, jumpCounter-1);
         groundedFrames.RemoveAt(0);
         groundedFrames.Add(gr);
@@ -74,6 +78,7 @@ public class PlayerMovement : MonoBehaviour
         Vector2 jumpForce = KeyHandler.ReadJumpInput() * jumpMult;
         if (jumpForce.y > 0)
         {
+            jumpForce = jumpForce * PlayerController.inverted;
             jumpCounter = 3;
             jumps--;
             Vector2 vel = rb.velocity;
@@ -95,5 +100,4 @@ public class PlayerMovement : MonoBehaviour
     {
         if (n > 0) jumps += n;
     }
-
 }
