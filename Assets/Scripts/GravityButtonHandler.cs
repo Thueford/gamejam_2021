@@ -23,7 +23,8 @@ public class GravityButtonHandler : MonoBehaviour
     void Update()
     {
 
-        Debug.Log(GravityTimer);
+        /*
+         * Debug.Log(GravityTimer);
         if (GravityTimer > 0 && isGravityTimer)
         {
             GravityTimer -= Time.deltaTime;
@@ -32,7 +33,7 @@ public class GravityButtonHandler : MonoBehaviour
             PlayerController.InvertGravity();
             isGravityTimer = false;
             if (rb != null) rb.gravityScale = rb.gravityScale * -1;
-        }
+        } */
         
 
         if (buttonActive)
