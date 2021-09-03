@@ -14,6 +14,6 @@ public class LvlAnzeige : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        tmpro.text = StageManager.curStage.index.ToString();
+        if(StageManager.curStage) tmpro.text = StageManager.curStage.index.ToString();
     }
 }
