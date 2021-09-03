@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlatformMover : MonoBehaviour
 {
     public float speed = 1;
-    public bool startOnContact = true;
+    public bool startOnContact = true, activated = true;
     public Transform[] points;
     public float checkpointDistance;
 
@@ -19,11 +19,12 @@ public class PlatformMover : MonoBehaviour
     {
         if (points.Length == 0) Destroy(this);
         if (points.Length >= 1) transform.position = points[0].transform.position;
-
         rb = GetComponent<Rigidbody2D>();
-        active = !startOnContact;
-
+        Activate(activated);
     }
+
+    public void Activate(bool setActive) => 
+        active = (activated = setActive) && !startOnContact;
 
     private void Start()
     {
@@ -37,8 +38,6 @@ public class PlatformMover : MonoBehaviour
             transform.rotation *= Quaternion.Euler(Vector3.forward * 180);
             lastGravity = PlayerController.inverted;
         }
-
-
     }
 
     private void NextCheckpoint()
@@ -46,19 +45,16 @@ public class PlatformMover : MonoBehaviour
         if (points.Length <= 1) return;
 
         /*
-        if (points.Length-1 == pnum+1)
-        {
+        if (points.Length-1 == pnum+1) {
             pnum = pnext;
             pnext = ((pnum + 1) % points.Length) -1;
-            
             Array.Reverse(points);
-        } else
-        {
+        } else {
             pnum = pnext;
             pnext = pnum + 1;
-        }*/
+        } */
 
-        
+
         pnum += pdir;
         if (pnum == 0 || pnum == points.Length - 1) pdir = -pdir;
         pnext = pnum + pdir;
@@ -69,22 +65,16 @@ public class PlatformMover : MonoBehaviour
         // skip if no checkpoints
         if (!active || points.Length <= 1) return;
 
-        
-
         Vector2 dir = (points[pnext].position - points[pnum].position).normalized;
         rb.MovePosition(rb.position + dir * speed * Time.fixedDeltaTime);
 
         checkpointDistance = Vector2.Distance(rb.position, points[pnext].position);
         if (checkpointDistance < 2 * speed * Time.fixedDeltaTime)
-        {
-            Debug.Log(checkpointDistance);
             NextCheckpoint();
-        }
-            
     }
 
     private void OnCollisionEnter2D(Collision2D c)
     {
-        if (!active && c.gameObject.CompareTag("Player")) active = true;
+        if (activated && !active && c.gameObject.CompareTag("Player")) active = true;
     }
 }
