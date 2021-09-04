@@ -12938,6 +12938,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8230068245693091424, guid: 71e327bfdb2dd7941b48f4af484c7127, type: 3}
+      propertyPath: startOnContact
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8230068245693091424, guid: 71e327bfdb2dd7941b48f4af484c7127, type: 3}
       propertyPath: points.Array.size
       value: 4
       objectReference: {fileID: 0}
