@@ -4841,6 +4841,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8039842618504473101}
   - component: {fileID: 8039842618504473100}
+  - component: {fileID: 4327271064701479460}
   m_Layer: 0
   m_Name: luftung
   m_TagString: Untagged
@@ -4914,3 +4915,16 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4327271064701479460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8039842618504473098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08d34b91faba2ba4f9f5dd4cabf2552c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  force: 120
