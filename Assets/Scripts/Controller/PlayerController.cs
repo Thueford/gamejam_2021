@@ -11,12 +11,15 @@ public class PlayerController : MonoBehaviour
     public bool triggerRespawn = false;
     public SpriteRenderer sr;
 
+    public int aaaaaaaaaaa;
+
 
     void Awake() => self = this;
 
     // Update is called once per frame
     void Update()
     {
+        aaaaaaaaaaa = inverted;
         if (KeyHandler.ReadRespawnButtonDown()) StageManager.RestartStage();
     }
 
@@ -32,7 +35,8 @@ public class PlayerController : MonoBehaviour
     {
         if(inverted < 0)
         {
-            inverted = 1;
+            InvertGravity();
+            GetComponent<Rigidbody2D>().gravityScale = GetComponent<Rigidbody2D>().gravityScale * -1;
         }
         StageManager.RestartStage();
         int dfj = StageManager.curStage.GetComponent<Stage>().DefaulJumps;

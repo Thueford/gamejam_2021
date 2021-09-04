@@ -44,4 +44,5 @@ public class GravityButtonHandler : StageButtonHandler
         rb.gravityScale = rb.gravityScale * -1;
         PlayerController.InvertGravity();
     }
+
 }
