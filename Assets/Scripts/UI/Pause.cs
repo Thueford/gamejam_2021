@@ -51,6 +51,7 @@ public class Pause : MonoBehaviour
 
     public void restart()
     {
+        Time.timeScale = 1;
         StageManager.RestartStage();
         panel.gameObject.SetActive(false);
     }
