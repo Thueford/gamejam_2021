@@ -446,6 +446,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lazyness: 20
   target: {fileID: 56124125}
+  offset: 7
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -655,7 +656,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1117661941
 Transform:
   m_ObjectHideFlags: 0
@@ -1827,6 +1828,10 @@ PrefabInstance:
     - target: {fileID: 551982886680851831, guid: 0aa95d2fd58aaa249aa4a5c479227f15, type: 3}
       propertyPath: m_Name
       value: LevelStages
+      objectReference: {fileID: 0}
+    - target: {fileID: 551982886680851831, guid: 0aa95d2fd58aaa249aa4a5c479227f15, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0aa95d2fd58aaa249aa4a5c479227f15, type: 3}
