@@ -72,3 +72,6 @@ crashlytics-build.properties
 build.zip
 Assets/Materials/MatLensFlare.mat
 *.mat
+
+#Dateien zeichenprogramm
+*.kra
