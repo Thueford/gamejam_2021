@@ -40,8 +40,8 @@ public class KeyHandler : MonoBehaviour
     {
         if (!enableMovement) return Vector3.zero;
         Vector2 dir = Vector3.zero;
-        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D)) dir.x += 1;
-        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A)) dir.x -= 1;
+        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D) || AndroidController.moveright) dir.x += 1;
+        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A) || AndroidController.moveleft) dir.x -= 1;
         return dir;
     }
 
@@ -50,6 +50,11 @@ public class KeyHandler : MonoBehaviour
         if (!enableMovement) return Vector3.zero;
         Vector2 dir = Vector3.zero;
         if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.Space)) dir.y += 1;
+        if (AndroidController.jump)
+        {
+            dir.y += 1;
+            AndroidController.jump = false;
+        }
         return dir;
     }
 

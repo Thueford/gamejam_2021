@@ -24,7 +24,7 @@ public class StageButton : MonoBehaviour
     public void Update()
     {
         if (buttonActive && (isToggle || status == initStatus))
-            if (Input.GetKeyDown(key))
+            if (Input.GetKeyDown(key) || AndroidController.E)
             {
                 Debug.Log("Toggle");
                 handler.Toggle(status = !status, coll);
