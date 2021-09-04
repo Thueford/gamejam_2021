@@ -27,7 +27,7 @@ public class LvlChoosePanel : MonoBehaviour
             {
                 btn.color = Color.red;
             }
-            btn.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = i.ToString();
+            btn.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = (i+1).ToString();
         }
         panel.gameObject.SetActive(false);
 

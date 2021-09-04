@@ -21,7 +21,7 @@ public class OpenLvlBtn : MonoBehaviour
 
     public void btnPressed_LoadLvl()
     {
-        int choosenStage = int.Parse(tmpro.text);
+        int choosenStage = int.Parse(tmpro.text)-1;
         /*if (StageManager.isEnabled(choosenStage))
         {*/
             PlayerPrefs.SetInt("choosenlvl", choosenStage);
