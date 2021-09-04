@@ -9,7 +9,9 @@ public class LvlStarter : MonoBehaviour
     {
         try
         {
-            StageManager.LoadStage(PlayerPrefs.GetInt("choosenlvl"));
+            int a = PlayerPrefs.GetInt("choosenlvl");
+            Debug.Log("lvl:" + a);
+            StageManager.LoadStage(a);
         } catch
         {
             StageManager.LoadStage(0);
