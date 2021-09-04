@@ -6,8 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class OpenLvlBtn : MonoBehaviour
 {
-
-    public int LevelToOpen;
+    public TMPro.TextMeshProUGUI tmpro;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,21 +21,17 @@ public class OpenLvlBtn : MonoBehaviour
 
     public void btnPressed_LoadLvl()
     {
+
         SoundHandler.PlayClick();
+
+        int choosenStage = int.Parse(tmpro.text)-1;
         /*if (StageManager.isEnabled(choosenStage))
         {*/
-            PlayerPrefs.SetInt("choosenlvl", LevelToOpen);
-        Debug.Log(LevelToOpen);
-        Debug.Log("PlayerPref: " + PlayerPrefs.GetInt("choosenlvl"));
+            PlayerPrefs.SetInt("choosenlvl", choosenStage);
             SceneManager.LoadScene("main");
             //StageManager.LoadStage(int.Parse(tmpro.text));
             GameObject.Find("LvlChooser").GetComponent<LvlChoosePanel>().btnPressed_CloseChooseLvl();
         /*}*/
-    }
-
-    public void SetLvlToOpen(int i)
-    {
-        this.LevelToOpen = i;
     }
 
 }

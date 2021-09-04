@@ -224,7 +224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7c513fda557e714aa1cfaf1cd81b14d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LevelToOpen: 0
+  tmpro: {fileID: 5554689741938506572}
 --- !u!114 &3376201238684371152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,6 +245,18 @@ MonoBehaviour:
         - m_Target: {fileID: 535872101646550759}
           m_TargetAssemblyTypeName: OpenLvlBtn, Assembly-CSharp
           m_MethodName: btnPressed_LoadLvl
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 4530608744087386566, guid: 829b68b83cbff89448d69a5d8d5602c1, type: 3}
+          m_TargetAssemblyTypeName: LvlChoosePanel, Assembly-CSharp
+          m_MethodName: btnPressed_CloseChooseLvl
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
