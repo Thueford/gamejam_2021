@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 4627357079583173987}
+  repeat: 1
 --- !u!1 &7988446464713969575
 GameObject:
   m_ObjectHideFlags: 0
