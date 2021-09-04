@@ -125,6 +125,7 @@ public class PlayerMovement : MonoBehaviour
         Vector2 jumpForce = jumpMult * PlayerController.inverted * KeyHandler.ReadJumpInput();
         if (jumpForce.y != 0)
         {
+            SoundHandler.PlayClip("jump");
             anim.SetBool("isJumping", true);
             Invoke("SetJumpingToFalse", 0.4f);
             jumpCounter = 3;
