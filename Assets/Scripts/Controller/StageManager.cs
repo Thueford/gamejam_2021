@@ -68,6 +68,7 @@ public class StageManager : MonoBehaviour
         curStage = Instantiate(curStage);
         curStage.index = index;
         curStage.transform.position = Vector3.zero;
+        CamController.Reset();
         PlayerController.self.Respawn(curStage.spawn.transform.position);
     }
 

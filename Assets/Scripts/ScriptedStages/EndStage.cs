@@ -35,7 +35,7 @@ public class EndStage : ScriptedStage
     {
         for(int i = 0; i < numAlphons; i++)
         {
-            if (i > 0) yield return new WaitForSeconds(spawnDelay);
+            if (i > 0) yield return new WaitForSeconds(spawnDelay + Random.value * 0.2f);
             else moving = true;
             GameObject a = Instantiate(alphons);
             a.SetActive(true);
