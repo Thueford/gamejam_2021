@@ -36,6 +36,7 @@ public class GravityButtonHandler : StageButtonHandler
 
     override public void Toggle(bool status, Collider2D c)
     {
+        base.Toggle(status, c);
         Debug.Log("changeGravity");
         rb = c.GetComponent<Rigidbody2D>();
         isGravityTimer = true;

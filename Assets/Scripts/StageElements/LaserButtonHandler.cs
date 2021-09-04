@@ -8,6 +8,7 @@ public class LaserButtonHandler : StageButtonHandler
 
     override public void Toggle(bool status, Collider2D c)
     {
+        base.Toggle(status, c);
         foreach(GameObject Lock in Locks)
         {
             GameObject b = Lock.transform.Find("Blocker").gameObject;

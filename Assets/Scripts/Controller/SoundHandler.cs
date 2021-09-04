@@ -10,6 +10,7 @@ public class SoundHandler : MonoBehaviour
     public AudioSource MusicSource;
     public AudioSource EffectSource;
     public AudioSource MenuSource;
+    public AudioSource WalkSource;
 
     [Range(0, 1)]
     public float volume = 1;
@@ -62,13 +63,25 @@ public class SoundHandler : MonoBehaviour
         self.MusicSource.volume = volMusic;
         self.EffectSource.volume = volEffects;
         self.MenuSource.volume = volEffects;
+        self.WalkSource.volume = volEffects;
     }
 
     public static void PlayClip(string s) => PlayClip(clips[s]);
 
     public static void PlayClick()
     {
-        self.MenuSource.PlayOneShot(clips["click"][0]);
+        self.MenuSource.Play();
+    }
+
+    public static void StartWalk()
+    {
+        if (!self.WalkSource.isPlaying)
+            self.WalkSource.Play();
+    }
+
+    public static void StopWalk()
+    {
+        self.WalkSource.Pause();
     }
 
     //public static void SetHPTarget(float frequency) => filterHighValue = frequency;

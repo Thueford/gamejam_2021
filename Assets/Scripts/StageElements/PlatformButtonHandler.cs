@@ -9,6 +9,7 @@ public class PlatformButtonHandler : StageButtonHandler
 
     override public void Toggle(bool status, Collider2D c)
     {
+        base.Toggle(status, c);
         foreach (PlatformMover p in platforms)
             p.Activate(!p.activated);
     }

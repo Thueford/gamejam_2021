@@ -21,6 +21,7 @@ public class OpenLvlBtn : MonoBehaviour
 
     public void btnPressed_LoadLvl()
     {
+        SoundHandler.PlayClick();
         int choosenStage = int.Parse(tmpro.text)-1;
         /*if (StageManager.isEnabled(choosenStage))
         {*/

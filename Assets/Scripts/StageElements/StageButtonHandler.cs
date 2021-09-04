@@ -2,7 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class StageButtonHandler : MonoBehaviour
+public class StageButtonHandler : MonoBehaviour
 {
-    public abstract void Toggle(bool status, Collider2D c);
+    public virtual void Toggle(bool status, Collider2D c) 
+    {
+        SoundHandler.PlayClip("button");
+    }
+    
 }
