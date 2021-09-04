@@ -14,17 +14,31 @@ public class PlatformMover : MonoBehaviour
     private Rigidbody2D rb;
     private bool active = true;
     private int lastGravity;
+    public SpriteRenderer sr;
 
     private void Awake()
     {
         if (points.Length == 0) Destroy(this);
         if (points.Length >= 1) transform.position = points[0].transform.position;
         rb = GetComponent<Rigidbody2D>();
+        foreach(SpriteRenderer s in GetComponentsInChildren<SpriteRenderer>())
+        {
+            if (s.gameObject != gameObject) sr = s;
+        }
         Activate(activated);
     }
 
-    public void Activate(bool setActive) => 
+    public void Activate(bool setActive)
+    {
         active = (activated = setActive) && !startOnContact;
+        if (sr)
+        {
+            if (activated)
+                sr.color = Color.white;
+            else
+                sr.color = new Color(1, .7f, .7f, 1);
+        }
+    }
 
     private void Start()
     {

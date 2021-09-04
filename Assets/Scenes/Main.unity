@@ -352,7 +352,7 @@ MonoBehaviour:
   skipAll: 0
   useBloom: 1
   bloomBlurrAmount: 4
-  bloomThreshold: 0.785
+  bloomThreshold: 0.699
   useCA: 1
   caAmount: 0.0005
   useLensFlare: 1
