@@ -79,6 +79,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.16
       objectReference: {fileID: 0}
+    - target: {fileID: 4627357079583173987, guid: a68e83cca9a24b942b82406d194585d2, type: 3}
+      propertyPath: m_margin.z
+      value: -7.501683
+      objectReference: {fileID: 0}
     - target: {fileID: 6467750609094212733, guid: a68e83cca9a24b942b82406d194585d2, type: 3}
       propertyPath: m_Sprite
       value: 
