@@ -22,13 +22,13 @@ public class OpenLvlBtn : MonoBehaviour
     public void btnPressed_LoadLvl()
     {
         int choosenStage = int.Parse(tmpro.text);
-        if (StageManager.isEnabled(choosenStage))
-        {
+        /*if (StageManager.isEnabled(choosenStage))
+        {*/
             PlayerPrefs.SetInt("choosenlvl", choosenStage);
             SceneManager.LoadScene("main");
             //StageManager.LoadStage(int.Parse(tmpro.text));
             GameObject.Find("LvlChooser").GetComponent<LvlChoosePanel>().btnPressed_CloseChooseLvl();
-        }
+        /*}*/
     }
 
 }
