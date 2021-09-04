@@ -5,15 +5,12 @@ using UnityEngine;
 public class LvlAnzeige : MonoBehaviour
 {
     public TMPro.TextMeshProUGUI tmpro;
-    // Start is called before the first frame update
-    void Start()
-    {
-        tmpro.text = StageManager.curStage.index.ToString();
-    }
 
-    // Update is called once per frame
-    void Update()
+    void Start() => SetText();
+    void Update() => SetText();
+
+    private void SetText()
     {
-        if(StageManager.curStage) tmpro.text = StageManager.curStage.index.ToString();
+        if (StageManager.curStage) tmpro.text = StageManager.curStage.index.ToString();
     }
 }
