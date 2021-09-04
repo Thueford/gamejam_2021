@@ -5,14 +5,11 @@ using UnityEngine.UI;
 
 public class LvlChoosePanel : MonoBehaviour
 {
-    public Image panel;
+    public Image panel, btnPrefab;
 
-    public Image btnPrefab;
     // Start is called before the first frame update
     void Start()
     {
-
-
         panel.rectTransform.sizeDelta = new Vector2(Screen.width-150, Screen.height-150);
         Transform stageContainer = StageManager.GetStageContainer();
 
@@ -33,20 +30,7 @@ public class LvlChoosePanel : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
+    public void btnPressed_chooseLvl() => panel.gameObject.SetActive(true);
 
-    }
-
-    public void btnPressed_chooseLvl()
-    {
-        panel.gameObject.SetActive(true);
-    }
-
-    public void btnPressed_CloseChooseLvl()
-    {
-        Debug.Log("aaaaaaaaaaaaaaaaaaaa");
-        panel.gameObject.SetActive(false);
-    }
+    public void btnPressed_CloseChooseLvl() => panel.gameObject.SetActive(false);
 }

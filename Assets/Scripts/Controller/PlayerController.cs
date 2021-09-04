@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour
 
     public void Die()
     {
+        SoundHandler.PlayClip("death");
         if(inverted < 0)
         {
             InvertGravity();
