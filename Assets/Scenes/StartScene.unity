@@ -380,6 +380,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31dbf40e12eae4d4a83808c07459ec92, type: 3}
+--- !u!114 &145791445 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7789042954391044059, guid: 31dbf40e12eae4d4a83808c07459ec92, type: 3}
+  m_PrefabInstance: {fileID: 145791444}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58927e1a1845d1e4290745ff0ecee7af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &243922326
 GameObject:
   m_ObjectHideFlags: 0
@@ -439,6 +450,18 @@ MonoBehaviour:
         - m_Target: {fileID: 528724488}
           m_TargetAssemblyTypeName: LvlChoosePanel, Assembly-CSharp
           m_MethodName: btnPressed_chooseLvl
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 145791445}
+          m_TargetAssemblyTypeName: SoundHandler, Assembly-CSharp
+          m_MethodName: PlayClick
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -773,6 +796,18 @@ MonoBehaviour:
         - m_Target: {fileID: 1640827474}
           m_TargetAssemblyTypeName: ChangeScene, Assembly-CSharp
           m_MethodName: btnPressed_Credits
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 145791445}
+          m_TargetAssemblyTypeName: SoundHandler, Assembly-CSharp
+          m_MethodName: PlayClick
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -1122,6 +1157,18 @@ MonoBehaviour:
         - m_Target: {fileID: 1640827474}
           m_TargetAssemblyTypeName: ChangeScene, Assembly-CSharp
           m_MethodName: btnPressed_Close
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 145791445}
+          m_TargetAssemblyTypeName: SoundHandler, Assembly-CSharp
+          m_MethodName: PlayClick
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
