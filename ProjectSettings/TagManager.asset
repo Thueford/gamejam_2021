@@ -10,6 +10,10 @@ TagManager:
   - Goal
   - Spikes
   - Collectable
+  - LeftWall
+  - RightWall
+  - TopWall
+  - BottomWall
   layers:
   - Default
   - TransparentFX

@@ -15,7 +15,7 @@ MonoBehaviour:
   alphons: {fileID: 3604863521415327549}
   numAlphons: 6
   alphonsSpeed: 2
-  spawnDelay: 0.7
+  spawnDelay: 0.6
   maxDist: 6
 --- !u!1 &6827146213917169689
 GameObject:
