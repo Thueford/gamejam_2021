@@ -11,6 +11,6 @@ public class LvlAnzeige : MonoBehaviour
 
     private void SetText()
     {
-        if (StageManager.curStage) tmpro.text = StageManager.curStage.index.ToString();
+        if (StageManager.curStage) tmpro.text = "Level: " + StageManager.curStage.index.ToString();
     }
 }

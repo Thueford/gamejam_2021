@@ -8,12 +8,12 @@ public class JumpAnzeige : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        tmpro.text = GameObject.Find("Player").GetComponent<PlayerMovement>().jumps.ToString();
+        tmpro.text = "Jumps: " + GameObject.Find("Player").GetComponent<PlayerMovement>().jumps.ToString();
     }
 
     // Update is called once per frame
     void Update()
     {
-        tmpro.text = GameObject.Find("Player").GetComponent<PlayerMovement>().jumps.ToString();
+        tmpro.text = "Jumps: " + GameObject.Find("Player").GetComponent<PlayerMovement>().jumps.ToString();
     }
 }
