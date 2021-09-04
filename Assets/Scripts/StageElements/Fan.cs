@@ -17,11 +17,19 @@ public class Fan : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D c)
     {
-        if (c.CompareTag("Player")) affected.Add(c.GetComponent<Rigidbody2D>());
+        if (c.CompareTag("Player")) 
+        { 
+            affected.Add(c.GetComponent<Rigidbody2D>());
+            SoundHandler.PlayClip("fanenter");
+        }
     }
 
     private void OnTriggerExit2D(Collider2D c)
     {
-        if (c.CompareTag("Player")) affected.Remove(c.GetComponent<Rigidbody2D>());
+        if (c.CompareTag("Player"))
+        {
+            affected.Remove(c.GetComponent<Rigidbody2D>());
+            SoundHandler.PlayClip("fanexit");
+        }
     }
 }

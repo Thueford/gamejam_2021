@@ -77,9 +77,11 @@ public class PlayerMovement : MonoBehaviour
             anim.SetBool("isWalking", true);
             rb.AddForce(moveForce);
             PlayerController.self.sr.flipX = moveForce.x < 0;
+            SoundHandler.StartWalk();
         } else
         {
             anim.SetBool("isWalking", false);
+            SoundHandler.StopWalk();
         }
 
         Vector2 vel = rb.velocity;

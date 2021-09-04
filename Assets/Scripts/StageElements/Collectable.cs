@@ -11,7 +11,9 @@ public class Collectable : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D c)
     {
         if (!c.CompareTag("Player")) return;
-        
+
+        SoundHandler.PlayClip("collect");
+
         // Collectable Handling
         switch(type)
         {
