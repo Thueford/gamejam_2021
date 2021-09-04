@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3942488296353373119}
   - component: {fileID: 3657909913961662175}
   - component: {fileID: 505964110707254071}
+  - component: {fileID: 7872692693402615516}
   m_Layer: 0
   m_Name: Acid
   m_TagString: Spikes
@@ -91,7 +92,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2164157362834237242}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -110,6 +111,62 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!68 &7872692693402615516
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2164157362834237242}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -0.5319463, y: -0.35779762}
+  - {x: -0.506464, y: -0.18434143}
+  - {x: -0.47065866, y: 0.039873123}
+  - {x: -0.4088192, y: 0.11409092}
+  - {x: -0.26603687, y: 0.1742115}
+  - {x: -0.14688373, y: 0.2714224}
+  - {x: -0.012494326, y: 0.38630867}
+  - {x: 0.081094444, y: 0.13525867}
+  - {x: 0.15978086, y: 0.21964455}
+  - {x: 0.1866203, y: 0.15861702}
+  - {x: 0.22548497, y: 0.20386314}
+  - {x: 0.2987463, y: 0.076919556}
+  - {x: 0.3513127, y: 0.19112587}
+  - {x: 0.3746338, y: 0.031237602}
+  - {x: 0.5134413, y: -0.11873436}
+  - {x: 0.51354384, y: -0.40911007}
+  - {x: 0.4702797, y: -0.40695095}
+  - {x: 0.46116877, y: -0.5529766}
+  - {x: 0.44308037, y: -0.37140846}
+  - {x: 0.3836497, y: -0.3722582}
+  - {x: 0.3730995, y: -0.46303844}
+  - {x: 0.27642483, y: -0.39379883}
+  - {x: 0.1380238, y: -0.4379015}
+  - {x: 0.10720891, y: -0.42830467}
+  - {x: 0.07234323, y: -0.44500256}
+  - {x: 0.047097623, y: -0.4423952}
+  - {x: 0.021257162, y: -0.3889532}
+  - {x: -0.00008261204, y: -0.44987583}
+  - {x: -0.06328797, y: -0.49982357}
+  - {x: -0.1521765, y: -0.4223051}
+  - {x: -0.16721773, y: -0.4806757}
+  - {x: -0.20004785, y: -0.41374683}
+  - {x: -0.2987864, y: -0.441185}
+  - {x: -0.40860105, y: -0.40782452}
+  - {x: -0.49515283, y: -0.43466854}
+  - {x: -0.5298141, y: -0.36865902}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
 --- !u!1 &8001181370528090970
 GameObject:
   m_ObjectHideFlags: 0
