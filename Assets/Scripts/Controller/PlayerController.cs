@@ -11,7 +11,6 @@ public class PlayerController : MonoBehaviour
     public bool triggerRespawn = false;
     public SpriteRenderer sr;
 
-    public int aaaaaaaaaaa;
 
 
     void Awake() => self = this;
@@ -19,7 +18,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        aaaaaaaaaaa = inverted;
         if (KeyHandler.ReadRespawnButtonDown()) StageManager.RestartStage();
     }
 
