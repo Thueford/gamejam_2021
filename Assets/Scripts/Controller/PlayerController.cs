@@ -24,7 +24,12 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.CompareTag("Goal"))
-            StageManager.NextStage();
+            if (inverted < 0)
+            {
+                InvertGravity();
+                GetComponent<Rigidbody2D>().gravityScale = GetComponent<Rigidbody2D>().gravityScale * -1;
+            }
+        StageManager.NextStage();
         else if (collider.CompareTag("Spikes"))
             Die();
     }
