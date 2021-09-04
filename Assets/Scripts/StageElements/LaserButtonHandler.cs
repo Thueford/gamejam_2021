@@ -17,5 +17,6 @@ public class LaserButtonHandler : StageButtonHandler
             gc.SetActive(status);
             Lock.transform.Find("laser_animated").GetComponent<Animator>().SetBool("isOff", status);
         }
+
     }
 }
