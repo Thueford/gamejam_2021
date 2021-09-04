@@ -135,7 +135,7 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = vel;
             rb.AddForce(jumpForce, ForceMode2D.Impulse);
         }
-        return jumpForce.y > 0;
+        return jumpForce.y != 0;
     }
 
     private void SetJumpingToFalse()
