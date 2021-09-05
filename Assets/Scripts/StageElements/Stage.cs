@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class Stage : MonoBehaviour
 {
-    public GameObject spawn, walls;
-    public int DefaulJumps = 10;
-    public int index;
+    public GameObject spawn, goal, walls;
+    public int DefaulJumps = 10, index;
+    [HideInInspector]
+    public bool restarted = false;
 
-    private void Start() => CamController.ResetBorders();
+    private void Start()
+    {
+        if (!restarted) CamController.self.ResetBorders();
+    }
 }

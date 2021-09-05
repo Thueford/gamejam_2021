@@ -19,7 +19,6 @@ public class NPC : StageButtonHandler
 
         text.gameObject.SetActive(false);
         s = text.text.Trim().Replace("\n", "%\n").Split('%');
-        Debug.Log(string.Join("\n", s));
     }
 
     public override void Toggle(bool status, Collider2D c)

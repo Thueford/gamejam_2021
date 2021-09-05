@@ -357,6 +357,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawn: {fileID: 1822966243472537628}
+  goal: {fileID: 1335719971034246522}
   walls: {fileID: 5619657772373181848}
   DefaulJumps: 10
   index: 0

@@ -43,6 +43,23 @@ public class PlatformMover : MonoBehaviour
     private void Start()
     {
         lastGravity = PlayerController.inverted;
+
+        for (int i = 0; i < points.Length; i++)
+        {
+            LineRenderer lr = points[i].GetComponent<LineRenderer>();
+
+            // copy checkpoint if already used. Why is drawing lines so hard...
+            if (lr.GetPosition(0) != Vector3.zero)
+            {
+                points[i] = Instantiate(points[i]);
+                lr = points[i].GetComponent<LineRenderer>();
+            }
+
+            lr.startColor = lr.endColor = new Color(0, 0, 0, 0.5f);
+            lr.SetPosition(0, points[i].position);
+            if (i == 0) lr.enabled = false;
+            else lr.SetPosition(1, points[i - 1].position);
+        }
     }
 
     private void Update()

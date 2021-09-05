@@ -61,7 +61,7 @@ public class PlayerController : MonoBehaviour
 
     private void ReactivateMovement()
     {
-        KeyHandler.enableMovement = true;
+        KeyHandler.enableMovement = CamController.allowMoving;
     }
 
     public static void InvertGravity()

@@ -9,7 +9,7 @@ public class StageManager : MonoBehaviour
     public static StageManager self;
 
     public static Stage curStage;
-    private static int curStageNo = -1;
+    private static int curStageNo = -1, lastStageNo = -1;
 
     public static int maxStage = 0;
     public bool autoStart = false, triggerNextStage = false;
@@ -67,6 +67,8 @@ public class StageManager : MonoBehaviour
 
         curStage = Instantiate(curStage);
         curStage.index = index;
+        curStage.restarted = index == lastStageNo;
+        lastStageNo = index;
         curStage.transform.position = Vector3.zero;
         PlayerController.self.Respawn(curStage.spawn.transform.position);
     }
