@@ -7,6 +7,9 @@ public class LvlStarter : MonoBehaviour
     void Start()
     {
         try { StageManager.LoadStage(PlayerPrefs.GetInt("choosenlvl")); }
-        catch { StageManager.LoadStage(0); }
+        catch { StageManager.LoadStage(5); }
+
+        // todo remove
+        // StageManager.LoadStage(3);
     }
 }

@@ -12,11 +12,28 @@ public class LvlChoosePanel : MonoBehaviour
     {
         panel.rectTransform.sizeDelta = new Vector2(Screen.width-150, Screen.height-150);
         Transform stageContainer = StageManager.GetStageContainer();
+        int levelNumber = stageContainer.childCount;
 
-        for(int i = 0; i < stageContainer.childCount; i++)
+        for (int i = 0; i < levelNumber; i++)
         {
             Image btn = Instantiate(btnPrefab, panel.rectTransform);
-            btn.rectTransform.position = new Vector2(/*Screen.width / 6 + */2.4f * (i%5)-4.8f, /*4*Screen.height/6 + */-2*(i/5)+2);
+            float multi = 1.13f; // for scalling
+            float offsetX = btn.rectTransform.rect.width/2 + 30f;
+            float offsetY = 75f;
+
+            Debug.Log((Mathf.Floor((levelNumber+1)/2)));
+            // Debug.Log(new Vector2(offsetX - (panel.rectTransform.sizeDelta.x / 2) + (i % Mathf.Round(levelNumber) / 2) * multi, i * multi));
+
+            // todo dynamicly calculate scale 
+            float scale = 1f;
+            btn.rectTransform.localScale = new Vector3(btn.rectTransform.localScale.x * scale, btn.rectTransform.localScale.y * scale, btn.rectTransform.localScale.z);
+
+            float row = Mathf.Floor(i / ((levelNumber + 1) / 2)) + 1;
+            btn.transform.localPosition = new Vector2(offsetX - (panel.rectTransform.sizeDelta.x / 2) + ((i % (Mathf.Floor((levelNumber + 1) / 2))) * btn.rectTransform.rect.width) * multi * btn.rectTransform.localScale.x, 
+                                                      offsetY - row * btn.rectTransform.rect.height/2 * 2f * multi);
+            
+
+            // btn.rectTransform.position = new Vector2(/*Screen.width / 6 + */2.4f * (i%5)-4.8f * multi, /*4*Screen.height/6 + */-2*(i/5)+2) * multi;
             if (StageManager.isEnabled(i))
             {
                 btn.color = Color.green;
