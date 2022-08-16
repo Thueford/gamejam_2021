@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
+
 public class StageManager : MonoBehaviour
 {
     public static StageManager self;
@@ -15,14 +17,24 @@ public class StageManager : MonoBehaviour
     public bool autoStart = false, triggerNextStage = false;
     public GameObject stageContainer;
 
-    public static Transform GetStageContainer() => self.stageContainer.transform;
+    public enum LevelContainer
+    {
+        STORY,
+        CUSTOM
+    };
+
+    private LevelContainer curLevel = LevelContainer.STORY;
+
+    public Dictionary<LevelContainer, GameObject> levelCointainer = new Dictionary<LevelContainer, GameObject>();
+
+    public static Transform GetStageContainer() => self.stageContainer.transform;//self.levelCointainer[self.curLevel].transform;
     public static bool isEnabled(int index) => index <= maxStage;
 
 
     private void Awake()
     {
         self = this;
-        maxStage = PlayerPrefs.GetInt("maxStage", 0);
+        this.init();
     }
 
     private void Start()
@@ -39,6 +51,10 @@ public class StageManager : MonoBehaviour
         }
     }
 
+    public void init()
+    {
+        maxStage = PlayerPrefs.GetInt("maxStage", 0);
+    }
 
     public static void NextStage()
     {
