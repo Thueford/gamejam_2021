@@ -15,19 +15,21 @@ public class StageManager : MonoBehaviour
 
     public static int maxStage = 0;
     public bool autoStart = false, triggerNextStage = false;
-    public GameObject stageContainer;
+    public GameObject stageContainer_story;
+    public GameObject stageContainer_custom;
 
-    public enum LevelContainer
+    public enum LevelContainerType
     {
         STORY,
         CUSTOM
     };
 
-    private LevelContainer curLevel = LevelContainer.STORY;
+    private LevelContainerType curLevel = LevelContainerType.STORY;
 
-    public Dictionary<LevelContainer, GameObject> levelCointainer = new Dictionary<LevelContainer, GameObject>();
+    public Dictionary<LevelContainerType, GameObject> LevelContainer = new Dictionary<LevelContainerType, GameObject>();
 
-    public static Transform GetStageContainer() => self.stageContainer.transform;//self.levelCointainer[self.curLevel].transform;
+    public static Transform GetStageContainer() => self.LevelContainer[self.curLevel].transform; // self.stageContainer_story.transform;/
+
     public static bool isEnabled(int index) => index <= maxStage;
 
 
@@ -54,6 +56,9 @@ public class StageManager : MonoBehaviour
     public void init()
     {
         maxStage = PlayerPrefs.GetInt("maxStage", 0);
+
+        self.LevelContainer.Add(LevelContainerType.STORY, this.stageContainer_story);
+        self.LevelContainer.Add(LevelContainerType.CUSTOM, this.stageContainer_custom);
     }
 
     public static void NextStage()
@@ -93,4 +98,7 @@ public class StageManager : MonoBehaviour
     {
         LoadStage(curStageNo);
     }
+
+    public void set_story() => self.curLevel = LevelContainerType.STORY;
+    public void set_custom() => self.curLevel = LevelContainerType.CUSTOM;
 }
