@@ -51,6 +51,8 @@ public class StageManager : MonoBehaviour
             triggerNextStage = false;
             NextStage();
         }
+
+        Debug.Log(self.curLevel);
     }
 
     public void init()
@@ -99,6 +101,6 @@ public class StageManager : MonoBehaviour
         LoadStage(curStageNo);
     }
 
-    public void set_story() => self.curLevel = LevelContainerType.STORY;
-    public void set_custom() => self.curLevel = LevelContainerType.CUSTOM;
+    public static void set_story() => self.curLevel = LevelContainerType.STORY;
+    public static void set_custom() => self.curLevel = LevelContainerType.CUSTOM;
 }

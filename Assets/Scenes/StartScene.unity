@@ -471,10 +471,10 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 11500000, guid: 014e76e38974d7841bae6244025f2ac4, type: 3}
-          m_TargetAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_MethodName: set_name
-          m_Mode: 5
+        - m_Target: {fileID: 1819751973}
+          m_TargetAssemblyTypeName: StageManager, Assembly-CSharp
+          m_MethodName: set_story
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -688,6 +688,7 @@ GameObject:
   - component: {fileID: 920647361}
   - component: {fileID: 920647360}
   - component: {fileID: 920647359}
+  - component: {fileID: 920647362}
   m_Layer: 5
   m_Name: CustomButton
   m_TagString: Untagged
@@ -756,9 +757,9 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 11500000, guid: 014e76e38974d7841bae6244025f2ac4, type: 3}
-          m_TargetAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_MethodName: 
+        - m_Target: {fileID: 1819751973}
+          m_TargetAssemblyTypeName: StageManager, Assembly-CSharp
+          m_MethodName: set_custom
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -806,6 +807,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 920647357}
   m_CullTransparentMesh: 1
+--- !u!114 &920647362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 920647357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 014e76e38974d7841bae6244025f2ac4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  autoStart: 0
+  triggerNextStage: 0
+  stageContainer_story: {fileID: 0}
+  stageContainer_custom: {fileID: 0}
 --- !u!1001 &1068673194
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1424,6 +1441,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 551982886680851831, guid: 0aa95d2fd58aaa249aa4a5c479227f15, type: 3}
     - target: {fileID: 2745062580654365812, guid: 8a0b41314c3161d4497aed2a17e14833, type: 3}
+      propertyPath: stageContainer_custom
+      value: 
+      objectReference: {fileID: 6827146213917169689, guid: 09e26cf71cd1916439fde8bd110cb89a, type: 3}
+    - target: {fileID: 2745062580654365812, guid: 8a0b41314c3161d4497aed2a17e14833, type: 3}
       propertyPath: Container_story_custom
       value: 
       objectReference: {fileID: 7824903333321488592, guid: 456264acd07e7004fa393208c4a988c2, type: 3}
@@ -1777,6 +1798,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1791363982}
   m_CullTransparentMesh: 1
+--- !u!114 &1819751973 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2745062580654365812, guid: 8a0b41314c3161d4497aed2a17e14833, type: 3}
+  m_PrefabInstance: {fileID: 1630809981}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 014e76e38974d7841bae6244025f2ac4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1829191424
 GameObject:
   m_ObjectHideFlags: 0

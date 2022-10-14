@@ -620,6 +620,14 @@ PrefabInstance:
       propertyPath: stageContainer
       value: 
       objectReference: {fileID: 551982886680851831, guid: 0aa95d2fd58aaa249aa4a5c479227f15, type: 3}
+    - target: {fileID: 2745062580654365812, guid: 8a0b41314c3161d4497aed2a17e14833, type: 3}
+      propertyPath: stageContainer_story
+      value: 
+      objectReference: {fileID: 551982886680851831, guid: 0aa95d2fd58aaa249aa4a5c479227f15, type: 3}
+    - target: {fileID: 2745062580654365812, guid: 8a0b41314c3161d4497aed2a17e14833, type: 3}
+      propertyPath: stageContainer_custom
+      value: 
+      objectReference: {fileID: 6827146213917169689, guid: 09e26cf71cd1916439fde8bd110cb89a, type: 3}
     - target: {fileID: 2745062580654365813, guid: 8a0b41314c3161d4497aed2a17e14833, type: 3}
       propertyPath: m_RootOrder
       value: 2
