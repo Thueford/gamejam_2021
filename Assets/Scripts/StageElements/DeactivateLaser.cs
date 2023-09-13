@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class DeactivateLaser : MonoBehaviour
 {
-    public bool aus;
+    public bool activated = false;
     // Start is called before the first frame update
     void Start()
     {
-        if (aus)
+        if (!activated)
         {
             GameObject b = transform.Find("Blocker").gameObject;
             b.SetActive(false);
@@ -23,5 +23,24 @@ public class DeactivateLaser : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void Activate(bool value)
+    {
+        GameObject blocker = transform.Find("Blocker").gameObject;
+        blocker.SetActive(value);
+
+        Animator laserAnimation = transform.Find("laser_animated").GetComponent<Animator>();
+        laserAnimation.SetBool("isOff", !laserAnimation.GetBool("isOff"));
+
+        activated = !activated;
+
+
+        /*GameObject b = Lock.transform.Find("Blocker").gameObject;
+        b.SetActive(!b.activeSelf);
+        GameObject gc = Lock.transform.Find("laser_aus_complete_0").gameObject;
+        bool aaa = Lock.transform.Find("laser_animated").GetComponent<Animator>().GetBool("isOff");
+        gc.SetActive(!aaa);
+        Lock.transform.Find("laser_animated").GetComponent<Animator>().SetBool("isOff", !aaa);*/
     }
 }

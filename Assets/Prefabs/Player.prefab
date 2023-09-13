@@ -12,10 +12,15 @@ GameObject:
   - component: {fileID: 7097116376284559530}
   - component: {fileID: 1168459300538440043}
   - component: {fileID: 3235023927727271715}
+  - component: {fileID: 6558660071288728433}
+  - component: {fileID: 5205288996446227060}
+  - component: {fileID: 3727468820539136054}
   - component: {fileID: 4313118347095905676}
   - component: {fileID: 1835358560219958457}
   - component: {fileID: 3968968321657194967}
   - component: {fileID: 7049261959918144993}
+  - component: {fileID: 2024901507346851018}
+  - component: {fileID: 4156011756310598283}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -33,6 +38,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.25792527, y: 0.2615603, z: 0.2672801}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -48,6 +54,7 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -135,7 +142,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3, y: 6.663216}
   m_EdgeRadius: 0
---- !u!114 &4313118347095905676
+--- !u!114 &6558660071288728433
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,6 +150,417 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7097116376284559529}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fbedbd82fdaad84f94fd9f0a1b411c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameplayActions:
+    m_Name: Gameplay Actions
+    m_Id: 254fc774-26cd-4fac-bb91-e619d442e6c8
+    m_Asset: {fileID: 0}
+    m_Actions:
+    - m_Name: Direction
+      m_Type: 2
+      m_ExpectedControlType: Vector2
+      m_Id: b6a65712-8b8c-4e9f-83cb-0b900ac0df73
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    - m_Name: Move
+      m_Type: 2
+      m_ExpectedControlType: Vector2
+      m_Id: 78b33d03-ad4a-46dc-958a-6dedfb94c767
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    - m_Name: PlaceBomb
+      m_Type: 1
+      m_ExpectedControlType: Button
+      m_Id: 228474b5-4151-4fd1-8c11-63ae2a921424
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    - m_Name: Pause
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 6642f750-eeab-498d-a4a2-2e8e0ff21617
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    - m_Name: Respawn
+      m_Type: 1
+      m_ExpectedControlType: Button
+      m_Id: eb7a91f6-5aa4-4b11-9e47-017e9c0b9844
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Bindings:
+    - m_Name: Gamepad
+      m_Id: 4c9d003c-da62-4f85-8efb-fc66ca74b31f
+      m_Path: 2DVector(mode=1)
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Direction
+      m_Flags: 4
+    - m_Name: up
+      m_Id: 3289430c-5747-451c-83c4-4552f40df0c0
+      m_Path: <Gamepad>/leftStick/up
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: ;Gamepad
+      m_Action: Direction
+      m_Flags: 8
+    - m_Name: down
+      m_Id: c070bef9-0158-4a9b-8994-a890dccb5588
+      m_Path: <Gamepad>/leftStick/down
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: ;Gamepad
+      m_Action: Direction
+      m_Flags: 8
+    - m_Name: left
+      m_Id: ab7e3b4a-d7c4-4e23-8517-e21679d4450c
+      m_Path: <Gamepad>/leftStick/left
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: ;Gamepad
+      m_Action: Direction
+      m_Flags: 8
+    - m_Name: right
+      m_Id: 11fab7e9-44d2-4899-87ef-184e4123d6e1
+      m_Path: <Gamepad>/leftStick/right
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: ;Gamepad
+      m_Action: Direction
+      m_Flags: 8
+    - m_Name: 
+      m_Id: 03959fe5-76d5-4ea5-89f3-ad2273835383
+      m_Path: <Gamepad>/dpad
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: ;Gamepad
+      m_Action: Direction
+      m_Flags: 0
+    - m_Name: Joystick
+      m_Id: bbbb230a-e822-49b1-bb7a-9a58b2f112c4
+      m_Path: 2DVector(mode=1)
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Direction
+      m_Flags: 4
+    - m_Name: up
+      m_Id: a27a0d84-0c46-45e0-ad03-30d7a4f83cbb
+      m_Path: <Joystick>/stick/up
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: Joystick
+      m_Action: Direction
+      m_Flags: 8
+    - m_Name: down
+      m_Id: c4e9e544-daac-45c2-972c-de6d0737a539
+      m_Path: <Joystick>/stick/down
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: Joystick
+      m_Action: Direction
+      m_Flags: 8
+    - m_Name: left
+      m_Id: 953751fb-a9da-4455-a221-ee532e13420b
+      m_Path: <Joystick>/stick/left
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: Joystick
+      m_Action: Direction
+      m_Flags: 8
+    - m_Name: right
+      m_Id: 1e84e303-62fc-4d07-a8fa-bfd711638412
+      m_Path: <Joystick>/stick/right
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: Joystick
+      m_Action: Direction
+      m_Flags: 8
+    - m_Name: Keyboard
+      m_Id: 469603f3-d240-49dc-a53e-ddd6f9fef710
+      m_Path: 2DVector(mode=1)
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Direction
+      m_Flags: 4
+    - m_Name: up
+      m_Id: ecbfaf0d-f84a-4062-a73e-1ea88e5d18b2
+      m_Path: <Keyboard>/w
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: Keyboard&Mouse
+      m_Action: Direction
+      m_Flags: 8
+    - m_Name: down
+      m_Id: 99b41a10-39ad-455e-8933-009cf75a6db8
+      m_Path: <Keyboard>/s
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: Keyboard&Mouse
+      m_Action: Direction
+      m_Flags: 8
+    - m_Name: left
+      m_Id: 75d2ee2e-109d-4bc6-a448-09a237cbe5fb
+      m_Path: <Keyboard>/a
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: Keyboard&Mouse
+      m_Action: Direction
+      m_Flags: 8
+    - m_Name: right
+      m_Id: 24001b26-9178-40fa-bfcc-03b65ad2dc97
+      m_Path: <Keyboard>/d
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: Keyboard&Mouse
+      m_Action: Direction
+      m_Flags: 8
+    - m_Name: 
+      m_Id: db4fe9af-4fc7-4729-84d1-b11ea7aedff4
+      m_Path: <Gamepad>/leftTrigger
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: PlaceBomb
+      m_Flags: 0
+    - m_Name: 
+      m_Id: 552b304e-76ad-4f78-8cd9-a221e372b776
+      m_Path: <Keyboard>/space
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: PlaceBomb
+      m_Flags: 0
+    - m_Name: 
+      m_Id: 59fecc6d-8c85-4b87-8fcd-ec9e3cd0b0ae
+      m_Path: <Gamepad>/leftShoulder
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: PlaceBomb
+      m_Flags: 0
+    - m_Name: 
+      m_Id: df3f64a5-01fa-4795-910b-2cf232c554ad
+      m_Path: <Mouse>/press
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: PlaceBomb
+      m_Flags: 0
+    - m_Name: 
+      m_Id: 0c50c0f7-747f-468d-8f99-f9aa0bbc7f6e
+      m_Path: <Touchscreen>/Press
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: PlaceBomb
+      m_Flags: 0
+    - m_Name: Gamepad
+      m_Id: 93455c17-e885-4483-b252-2f716c816e5e
+      m_Path: 2DVector(mode=1)
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 4
+    - m_Name: up
+      m_Id: be6060de-7849-4d1e-b006-f121094a1678
+      m_Path: <Gamepad>/rightStick/up
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: ;Gamepad
+      m_Action: Move
+      m_Flags: 8
+    - m_Name: down
+      m_Id: bc7745f3-34af-4d4b-8dc4-1d690f035da0
+      m_Path: <Gamepad>/rightStick/down
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: ;Gamepad
+      m_Action: Move
+      m_Flags: 8
+    - m_Name: left
+      m_Id: 60d845ba-2759-4324-ab2d-c7b6e5fb1917
+      m_Path: <Gamepad>/rightStick/left
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: ;Gamepad
+      m_Action: Move
+      m_Flags: 8
+    - m_Name: right
+      m_Id: 47dc6b60-1656-4cb0-9c0c-5076e7a37f7f
+      m_Path: <Gamepad>/rightStick/right
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: ;Gamepad
+      m_Action: Move
+      m_Flags: 8
+    - m_Name: 
+      m_Id: 1106032d-f362-4162-a9b3-b3d02acebbef
+      m_Path: <Gamepad>/dpad
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: ;Gamepad
+      m_Action: Move
+      m_Flags: 0
+    - m_Name: Joystick
+      m_Id: 9be62935-9fd1-430a-8e82-33ec5914bb96
+      m_Path: 2DVector(mode=1)
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 4
+    - m_Name: up
+      m_Id: b8881826-2b10-43f7-8828-459a2a9a8376
+      m_Path: <Joystick>/stick/up
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: Joystick
+      m_Action: Move
+      m_Flags: 8
+    - m_Name: down
+      m_Id: 32421441-d0ce-4ff6-944c-3d1c42ebfff6
+      m_Path: <Joystick>/stick/down
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: Joystick
+      m_Action: Move
+      m_Flags: 8
+    - m_Name: left
+      m_Id: c20b5d80-f678-4ce0-bd7b-3b448bc34226
+      m_Path: <Joystick>/stick/left
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: Joystick
+      m_Action: Move
+      m_Flags: 8
+    - m_Name: right
+      m_Id: b4d588d9-147a-42ba-ab57-e294b1d9512c
+      m_Path: <Joystick>/stick/right
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: Joystick
+      m_Action: Move
+      m_Flags: 8
+    - m_Name: Keyboard
+      m_Id: e6f3825a-ef72-4be1-8f00-24131d0d349a
+      m_Path: 2DVector(mode=1)
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move
+      m_Flags: 4
+    - m_Name: up
+      m_Id: 9936fc4a-089c-425e-9188-fa6e8ac596b3
+      m_Path: <Keyboard>/upArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: Keyboard&Mouse
+      m_Action: Move
+      m_Flags: 8
+    - m_Name: down
+      m_Id: 6fd8083f-86c6-4263-9bac-f660a4de21ad
+      m_Path: <Keyboard>/downArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: Keyboard&Mouse
+      m_Action: Move
+      m_Flags: 8
+    - m_Name: left
+      m_Id: c34a9058-c003-496d-baa0-fa8fccd7da85
+      m_Path: <Keyboard>/leftArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: Keyboard&Mouse
+      m_Action: Move
+      m_Flags: 8
+    - m_Name: right
+      m_Id: e8a897c5-dcc0-4aed-8456-7c70786f2bba
+      m_Path: <Keyboard>/rightArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: Keyboard&Mouse
+      m_Action: Move
+      m_Flags: 8
+    - m_Name: 
+      m_Id: 547e4e8c-3510-4ea8-af62-a080ee335bf8
+      m_Path: <Keyboard>/backspace
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Respawn
+      m_Flags: 0
+    - m_Name: 
+      m_Id: 543338f4-3e0c-40a6-87fb-ab213881a61e
+      m_Path: <Gamepad>/select
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Respawn
+      m_Flags: 0
+    - m_Name: 
+      m_Id: b70d9f53-77e4-4699-b2fc-aad94cbf09cf
+      m_Path: <Keyboard>/escape
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Pause
+      m_Flags: 0
+    - m_Name: 
+      m_Id: 260040c7-2ee8-426b-aeb0-50e4dda0a0ef
+      m_Path: <Gamepad>/start
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Pause
+      m_Flags: 0
+  pause: {fileID: 0}
+--- !u!114 &5205288996446227060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7097116376284559529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddd3abc00064bbd4f8f3e3413fec7523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3727468820539136054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7097116376284559529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff78d3044e111e445aa61cc82c3c270f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4313118347095905676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7097116376284559529}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c97c13fbb93bfad49b4ed9cc38fc9d98, type: 3}
   m_Name: 
@@ -163,7 +581,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7097116376284559529}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4157d090dd20def44bd2714b5007ab9c, type: 3}
   m_Name: 
@@ -171,10 +589,9 @@ MonoBehaviour:
   InvertGravityPanel: {fileID: 0}
   triggerRespawn: 0
   sr: {fileID: 7097116376284559530}
-  aaaaaaaaaaa: 0
 --- !u!95 &3968968321657194967
 Animator:
-  serializedVersion: 3
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -187,6 +604,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
@@ -206,3 +624,27 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 1
+--- !u!114 &2024901507346851018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7097116376284559529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff78d3044e111e445aa61cc82c3c270f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4156011756310598283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7097116376284559529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddd3abc00064bbd4f8f3e3413fec7523, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

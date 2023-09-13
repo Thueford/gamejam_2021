@@ -13,9 +13,9 @@ public class BackgroundParallax : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        Vector3 pos = -(MainCamera.transform.position * 0.05f);
+        Vector3 pos = -(MainCamera.transform.position * 0.09f);
         pos.z = 300;
         transform.localPosition = pos;
     }

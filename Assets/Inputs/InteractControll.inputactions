@@ -1,0 +1,34 @@
+{
+    "name": "InteractControll",
+    "maps": [
+        {
+            "name": "InteractMap",
+            "id": "543b2588-3bbb-4ce7-8640-f8e85a537da3",
+            "actions": [
+                {
+                    "name": "Interact",
+                    "type": "Button",
+                    "id": "ea7f8c7c-cf3f-4cfd-8995-7b527dc0aa67",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "48d4ace8-9492-45c5-a347-2c2eada8b0a4",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
