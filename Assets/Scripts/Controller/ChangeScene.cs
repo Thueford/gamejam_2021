@@ -10,36 +10,13 @@ using UnityEngine.SceneManagement;
 
 public class ChangeScene : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public void ChangeToScene(string scene)
     {
-        
+        SceneManager.LoadScene(scene);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Exit()
     {
-        
-    }
-
-    public void btnPressed_Credits()
-    {
-        SceneManager.LoadScene("CreditScene");
-    }
-
-    public void btnPressed_Start()
-    {
-        SceneManager.LoadScene("GameScene");
-    }
-
-    public void btnPressed_Close()
-    {
-        Debug.Log("Goodbye");
         Application.Quit();
-    }
-
-    public void btnPressed_BackToStartScene()
-    {
-        SceneManager.LoadScene("StartScene");
     }
 }
