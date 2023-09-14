@@ -1008,7 +1008,7 @@ GameObject:
   - component: {fileID: 1362372447010753725}
   - component: {fileID: 1362372447010753724}
   m_Layer: 5
-  m_Name: Button (2)
+  m_Name: Restart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1174,6 +1174,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1362372447295568245}
+  - component: {fileID: 2688212989294315152}
   m_Layer: 5
   m_Name: UI New
   m_TagString: UI
@@ -1198,6 +1199,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2688212989294315152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1362372447295568244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcf64d903b81b1f4a81d8126a3b213bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1362372447368721006
 GameObject:
   m_ObjectHideFlags: 0
@@ -1211,7 +1224,7 @@ GameObject:
   - component: {fileID: 1362372447368721005}
   - component: {fileID: 1362372447368721004}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: Resume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1483,7 +1496,7 @@ GameObject:
   - component: {fileID: 1362372447578637269}
   - component: {fileID: 1362372447578637268}
   m_Layer: 5
-  m_Name: Button (3)
+  m_Name: Exit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1591,7 +1604,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1362372447578637269}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2688212989294315152}
+        m_TargetAssemblyTypeName: ChangeScene, Assembly-CSharp
+        m_MethodName: ChangeToScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: StartScene
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1362372447851136164
 GameObject:
   m_ObjectHideFlags: 0
