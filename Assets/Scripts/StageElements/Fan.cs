@@ -11,8 +11,8 @@ public class Fan : MonoBehaviour
     {
         Vector2 dir = transform.rotation * Vector2.up;
         foreach (Rigidbody2D c in affected)
-            if (!PlayerMovement.self.reachedTerminal(dir * force * Time.fixedDeltaTime))
-                c.AddForce(dir * force);
+            //if (!PlayerMovement.self.reachedTerminal(dir * force * Time.fixedDeltaTime))
+            c.AddForce(dir * force);
     }
 
     private void OnTriggerEnter2D(Collider2D c)
@@ -20,7 +20,7 @@ public class Fan : MonoBehaviour
         if (c.CompareTag("Player")) 
         { 
             affected.Add(c.GetComponent<Rigidbody2D>());
-            SoundHandler.PlayClip("fanenter");
+            //SoundHandler.PlayClip("fanenter");
         }
     }
 
@@ -29,7 +29,7 @@ public class Fan : MonoBehaviour
         if (c.CompareTag("Player"))
         {
             affected.Remove(c.GetComponent<Rigidbody2D>());
-            SoundHandler.PlayClip("fanexit");
+            //SoundHandler.PlayClip("fanexit");
         }
     }
 }

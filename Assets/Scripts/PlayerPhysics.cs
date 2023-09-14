@@ -11,7 +11,7 @@ public class PlayerPhysics : MonoBehaviour
     public static Player player => Player.player;
     public static PlayerPhysics self;
     public Rigidbody2D rb { get; private set; }
-
+    public Collider2D playerCollider;
     //[SerializeField]
     //LayerMask pfLayerMask;
 
@@ -44,8 +44,10 @@ public class PlayerPhysics : MonoBehaviour
     {
         self = this;
         rb = GetComponent<Rigidbody2D>();
+        playerCollider = GetComponent<CapsuleCollider2D >();
 
         playerInput = player.GetComponent<PlayerInput>();
+        
 
 
     }
@@ -75,6 +77,11 @@ public class PlayerPhysics : MonoBehaviour
         Vector3 max_velocity = Vector3.ClampMagnitude(rb.velocity, maxHSpeed * maxSpeedModifier);
         max_velocity.y = rb.velocity.y;
         rb.velocity = max_velocity;
+
+        if (player.transform.position.y < PlayerCamera.self.bottom)
+        {
+            player.Die();
+        }
     }
 
     public void InvertJump()
@@ -92,6 +99,10 @@ public class PlayerPhysics : MonoBehaviour
     {
         player.spriteRenderer.flipY = !player.spriteRenderer.flipY;
         rb.gravityScale = rb.gravityScale * -1;
+    }
+    public void AddJump()
+    {
+        jumps++;
     }
 
     public void ResetPhysics()
@@ -113,6 +124,7 @@ public class PlayerPhysics : MonoBehaviour
 
         jumps--;
         if (!grounded) airjump = false;
+        player.UpdateUI();
 
         //Vector2 jumpForce = jumpMult * PlayerController.inverted * KeyHandler.ReadJumpInput();
         //SoundHandler.PlayClip("jump");
@@ -135,17 +147,24 @@ public class PlayerPhysics : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision)
     {
         
-        if (collision.gameObject.CompareTag("Platform") || collision.gameObject.CompareTag("Floor"))
+        /*if (collision.gameObject.CompareTag("Platform") || collision.gameObject.CompareTag("Floor"))
         {
-            grounded = true;
-            airjump = true;
+            RaycastHit2D rcHit = Physics2D.BoxCast(playerCollider.bounds.center, playerCollider.bounds.size, 0, Vector2.down * jump_inverted, 0.15f);
+            if (rcHit.collider)
+            {
+                Debug.Log("Hit");
+                grounded = true;
+                airjump = true;
+            }
+
+            //todo: Fix when player jumps from the bottom against a wall and gets a free jump
         }
-        else if (collision.gameObject.CompareTag("Kill"))
+        else */if (collision.gameObject.CompareTag("Kill"))
         {
             player.Die();
         }
     }
-
+    /*
     void OnCollisionExit2D(Collision2D collision)
     {
         
@@ -153,10 +172,20 @@ public class PlayerPhysics : MonoBehaviour
         {
             grounded = false;
         }
-    }
+    }*/
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.CompareTag("Spikes") || collider.CompareTag("Kill")) player.Die();
+        else if (collider.CompareTag("Platform") || collider.CompareTag("Floor"))
+        {
+            grounded = true;
+            airjump = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collider)
+    {
+        if (collider.CompareTag("Platform") || collider.CompareTag("Floor")) grounded = false;
     }
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlatformMover : MonoBehaviour
 {
+    public static Player player => Player.player;
     public float speed = 1;
     public bool startOnContact = true, activated = true;
     public Transform[] points;
@@ -13,7 +14,7 @@ public class PlatformMover : MonoBehaviour
     private int pnum = 0, pnext = 1, pdir = 1;
     private Rigidbody2D rb;
     private bool active = true;
-    private int lastGravity;
+    private int inverted;
     public SpriteRenderer sr;
 
     private void Awake()
@@ -42,32 +43,32 @@ public class PlatformMover : MonoBehaviour
 
     private void Start()
     {
-        lastGravity = PlayerController.inverted;
-
+        inverted = player.physics.jump_inverted;
         for (int i = 0; i < points.Length; i++)
         {
             LineRenderer lr = points[i].GetComponent<LineRenderer>();
-
-            // copy checkpoint if already used. Why is drawing lines so hard...
-            if (lr.GetPosition(0) != Vector3.zero)
+            if(lr)
             {
-                points[i] = Instantiate(points[i]);
-                lr = points[i].GetComponent<LineRenderer>();
-            }
+                if (lr.GetPosition(0) != Vector3.zero)
+                {
+                    points[i] = Instantiate(points[i]);
+                    lr = points[i].GetComponent<LineRenderer>();
+                }
 
-            lr.startColor = lr.endColor = new Color(0, 0, 0, 0.5f);
-            lr.SetPosition(0, points[i].position);
-            if (i == 0) lr.enabled = false;
-            else lr.SetPosition(1, points[i - 1].position);
+                lr.startColor = lr.endColor = new Color(0, 0, 0, 0.5f);
+                lr.SetPosition(0, points[i].position);
+                if (i == 0) lr.enabled = false;
+                else lr.SetPosition(1, points[i - 1].position);
+            }
         }
     }
 
     private void Update()
     {
-        if (lastGravity != PlayerController.inverted)
+        if (inverted != player.physics.jump_inverted)
         {
             transform.rotation *= Quaternion.Euler(Vector3.forward * 180);
-            lastGravity = PlayerController.inverted;
+            inverted = player.physics.jump_inverted;
         }
     }
 

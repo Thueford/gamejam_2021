@@ -9,10 +9,18 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     public static Player player { get; private set; }
-    public static PlayerCamera playerCamera => PlayerCamera.self;
+    public static PlayerCamera playerCamera
+    {
+        get { return PlayerCamera.self; }
+    }
     public Door spawn;
 
-    internal PlayerPhysics physics;
+    public PlayerPhysics physics;
+    /*public static PlayerPhysics physics
+    {
+        get { return PlayerPhysics.self; }
+    }*/
+
     public SpriteRenderer spriteRenderer;
     internal Collider coll;
 
@@ -82,6 +90,16 @@ public class Player : MonoBehaviour
         UpdateUI();
     }
 
+    public void OnResume()
+    {
+        
+    }
+
+    public void OnPause()
+    {
+        
+    }
+
     public void OnRespawn()
     {
         Die();
@@ -94,8 +112,6 @@ public class Player : MonoBehaviour
             physics.InvertGravity();
         }
         physics.jump_inverted = 1;
-        // TODO: Set gravity to normal here
-
 
         Vector3 pos = spawn.transform.position;
         pos.z -= .1f;
@@ -105,6 +121,11 @@ public class Player : MonoBehaviour
         deaths++;
         physics.ResetPhysics();
         UpdateUI();
+    }
+
+    public static void GlobalRespawn()
+    {
+        player.Respawn();
     }
 
     public void OnCameraZoom()

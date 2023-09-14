@@ -12,11 +12,11 @@ GameObject:
   - component: {fileID: 2514808893139947072}
   - component: {fileID: 5813957366148607873}
   - component: {fileID: 6580768814528570176}
+  - component: {fileID: 5578280486721740066}
   - component: {fileID: 8614536475028111165}
   - component: {fileID: 2399401036965853963}
   - component: {fileID: 9112774640676346978}
   - component: {fileID: 7301543872564065769}
-  - component: {fileID: 2937878831180560879}
   - component: {fileID: 1751933612752783413}
   m_Layer: 0
   m_Name: PlayerNewMain
@@ -105,7 +105,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 1
+  m_LinearDrag: 3
   m_AngularDrag: 0.05
   m_GravityScale: 6.5
   m_Material: {fileID: 0}
@@ -129,6 +129,22 @@ CapsuleCollider2D:
   m_Offset: {x: 0.2, y: 0.05}
   m_Size: {x: 3.3, y: 6.6}
   m_Direction: 0
+--- !u!58 &5578280486721740066
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2514808893139947075}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.2, y: -2.4}
+  serializedVersion: 2
+  m_Radius: 1
 --- !u!95 &8614536475028111165
 Animator:
   serializedVersion: 4
@@ -176,9 +192,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff78d3044e111e445aa61cc82c3c270f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveMult: 80
+  playerCollider: {fileID: 0}
+  moveMult: 92
   moveModifier: 1
-  jumpMult: 20
+  jumpMult: 21
   maxHSpeed: 10
   maxSpeedModifier: 1
   maxJumps: 100
@@ -202,50 +219,6 @@ MonoBehaviour:
   health: 100
   statusPanelValue: {fileID: 0}
   healthBar: {fileID: 0}
---- !u!114 &2937878831180560879
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2514808893139947075}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 621567455fd1c4ceb811cc8a00b6a1a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_NotificationBehavior: 0
-  m_MaxPlayerCount: -1
-  m_AllowJoining: 1
-  m_JoinBehavior: 0
-  m_PlayerJoinedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_PlayerLeftEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_JoinAction:
-    m_UseReference: 0
-    m_Action:
-      m_Name: 
-      m_Type: 0
-      m_ExpectedControlType: 
-      m_Id: 
-      m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings: []
-      m_Flags: 0
-    m_Reference: {fileID: 0}
-  m_PlayerPrefab: {fileID: 2514808893139947075}
-  m_SplitScreen: 0
-  m_MaintainAspectRatioInSplitScreen: 0
-  m_FixedNumberOfSplitScreens: -1
-  m_SplitScreenRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
 --- !u!114 &1751933612752783413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -292,7 +265,7 @@ MonoBehaviour:
     m_ActionId: 4f53584e-c6d7-4812-b535-f2beb14713a7
     m_ActionName: PlayerControll/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
+  m_DefaultControlScheme: PlayerControll
   m_DefaultActionMap: PlayerControll
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}

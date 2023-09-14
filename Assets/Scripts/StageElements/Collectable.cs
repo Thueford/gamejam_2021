@@ -5,6 +5,7 @@ using UnityEngine;
 public class Collectable : MonoBehaviour
 {
     public enum Type { NONE };
+    public static Player player => Player.player;
 
     public Type type;
 
@@ -12,15 +13,10 @@ public class Collectable : MonoBehaviour
     {
         if (!c.CompareTag("Player")) return;
 
-        SoundHandler.PlayClip("collect");
+        //SoundHandler.PlayClip("collect");
 
-        // Collectable Handling
-        switch(type)
-        {
-            case Type.NONE: break;
-        }
-
-        c.gameObject.GetComponent<PlayerMovement>().AddJumps(1);
+        player.physics.AddJump();
+        player.UpdateUI();
         Destroy(gameObject);
     }
 }
