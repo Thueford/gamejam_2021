@@ -19,6 +19,7 @@ TagManager:
   - UI
   - Fire
   - Acid
+  - Spawn
   layers:
   - Default
   - TransparentFX

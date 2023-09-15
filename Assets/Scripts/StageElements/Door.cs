@@ -68,7 +68,7 @@ public class Door : MonoBehaviour
     {
         if (collider.gameObject.CompareTag("Player") && open)
         {
-            player.OnGoal();
+            player.Goal();
         }
     }
 }

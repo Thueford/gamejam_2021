@@ -142,9 +142,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.2, y: -2.4}
+  m_Offset: {x: 0.2, y: -2.7}
   serializedVersion: 2
-  m_Radius: 1
+  m_Radius: 0.7
 --- !u!95 &8614536475028111165
 Animator:
   serializedVersion: 4
@@ -214,6 +214,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawn: {fileID: 0}
+  LevelContainer: {fileID: 0}
+  physics: {fileID: 0}
   spriteRenderer: {fileID: 0}
   maxHealth: 100
   health: 100

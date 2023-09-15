@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
         get { return PlayerCamera.self; }
     }
     public Door spawn;
+    public GameObject LevelContainer;
 
     public PlayerPhysics physics;
     /*public static PlayerPhysics physics
@@ -56,14 +57,18 @@ public class Player : MonoBehaviour
         
     }
 
-    public void OnGoal()
+    public void Goal()
     {
-        Debug.Log("Goal");
         Respawn();
         ResetStatistic();
+
+        if (LevelContainer)
+        {
+            LevelContainer.GetComponent<ChapterStarter>().NextLevel();
+        }
     }
 
-    private void ResetStatistic()
+    public void ResetStatistic()
     {
         deaths = 0;
     }
@@ -121,6 +126,12 @@ public class Player : MonoBehaviour
         deaths++;
         physics.ResetPhysics();
         UpdateUI();
+    }
+
+    public void ResetCamera()
+    {
+        //playerCamera.transform.position = spawn.transform.position;
+        playerCamera.Initialize();
     }
 
     public static void GlobalRespawn()

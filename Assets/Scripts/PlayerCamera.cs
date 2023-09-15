@@ -6,7 +6,7 @@ public class PlayerCamera : MonoBehaviour
 {
     public static PlayerCamera self;
     public static Player player => Player.player;
-    public static Camera camera;
+    public Camera camera;
 
     [Range(1, 50)]
     public float lazyness = 10;
@@ -28,6 +28,17 @@ public class PlayerCamera : MonoBehaviour
 
     void Start()
     {
+        Initialize();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    public void Initialize()
+    {
         Transform
             l = FindChildWithTag(GameObject.Find("Borders"), "LeftWall"),
             t = FindChildWithTag(GameObject.Find("Borders"), "TopWall"),
@@ -38,12 +49,6 @@ public class PlayerCamera : MonoBehaviour
         top = t ? t.transform.position.y : 0;
         right = r ? r.transform.position.x : 0;
         bottom = b ? b.transform.position.y : 0;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     private void FixedUpdate()
@@ -63,8 +68,6 @@ public class PlayerCamera : MonoBehaviour
     {
         cameraZoom += cameraZoomSteps;
         if (cameraZoom > cameraZoomMax) cameraZoom = cameraZoomMin;
-        Debug.Log(cameraZoom);
-        Debug.Log(camera.fieldOfView);
         camera.orthographicSize = cameraZoom;
         offset = baseOffset + cameraZoom;
     }
