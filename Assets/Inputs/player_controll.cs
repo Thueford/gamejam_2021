@@ -62,6 +62,15 @@ public partial class @Player_controll : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""75565b15-2a67-4e02-82fa-2a57d318ef7f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -172,6 +181,28 @@ public partial class @Player_controll : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Respawn"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c62054d4-adca-4d45-b3d9-10726b8d5e8d"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""07fcaaf0-f4ab-4bf0-b0bd-ca181a54dd02"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -412,6 +443,7 @@ public partial class @Player_controll : IInputActionCollection2, IDisposable
         m_PlayerControll_Move = m_PlayerControll.FindAction("Move", throwIfNotFound: true);
         m_PlayerControll_CameraZoom = m_PlayerControll.FindAction("CameraZoom", throwIfNotFound: true);
         m_PlayerControll_Respawn = m_PlayerControll.FindAction("Respawn", throwIfNotFound: true);
+        m_PlayerControll_Interact = m_PlayerControll.FindAction("Interact", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -481,6 +513,7 @@ public partial class @Player_controll : IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerControll_Move;
     private readonly InputAction m_PlayerControll_CameraZoom;
     private readonly InputAction m_PlayerControll_Respawn;
+    private readonly InputAction m_PlayerControll_Interact;
     public struct PlayerControllActions
     {
         private @Player_controll m_Wrapper;
@@ -489,6 +522,7 @@ public partial class @Player_controll : IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_PlayerControll_Move;
         public InputAction @CameraZoom => m_Wrapper.m_PlayerControll_CameraZoom;
         public InputAction @Respawn => m_Wrapper.m_PlayerControll_Respawn;
+        public InputAction @Interact => m_Wrapper.m_PlayerControll_Interact;
         public InputActionMap Get() { return m_Wrapper.m_PlayerControll; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -510,6 +544,9 @@ public partial class @Player_controll : IInputActionCollection2, IDisposable
                 @Respawn.started -= m_Wrapper.m_PlayerControllActionsCallbackInterface.OnRespawn;
                 @Respawn.performed -= m_Wrapper.m_PlayerControllActionsCallbackInterface.OnRespawn;
                 @Respawn.canceled -= m_Wrapper.m_PlayerControllActionsCallbackInterface.OnRespawn;
+                @Interact.started -= m_Wrapper.m_PlayerControllActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_PlayerControllActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_PlayerControllActionsCallbackInterface.OnInteract;
             }
             m_Wrapper.m_PlayerControllActionsCallbackInterface = instance;
             if (instance != null)
@@ -526,6 +563,9 @@ public partial class @Player_controll : IInputActionCollection2, IDisposable
                 @Respawn.started += instance.OnRespawn;
                 @Respawn.performed += instance.OnRespawn;
                 @Respawn.canceled += instance.OnRespawn;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
             }
         }
     }
@@ -602,6 +642,7 @@ public partial class @Player_controll : IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnCameraZoom(InputAction.CallbackContext context);
         void OnRespawn(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

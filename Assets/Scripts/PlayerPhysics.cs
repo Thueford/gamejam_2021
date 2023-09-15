@@ -40,6 +40,8 @@ public class PlayerPhysics : MonoBehaviour
     //private bool grounded => groundedFrames[0] || groundedFrames[1] || groundedFrames[2];
     private bool grounded = false;
 
+    public ButtonControll currentInteraction = null;
+
     private void Awake()
     {
         self = this;
@@ -133,46 +135,23 @@ public class PlayerPhysics : MonoBehaviour
     public void OnMove(InputValue value)
     {
         playerVelocity = value.Get<Vector2>() * moveMult;
-        //Debug.Log(context);
-        //Vector2 mov2 = new Vector2(20, 0);
+    }
 
-        //Debug.Log(mov);
-        //Debug.Log(value.isPressed);
-        //rb.AddForce(mov);
-        //Vector3.ClampMagnitude(rb.velocity, 10);
-
-
+    public void OnInteract(InputValue value)
+    {
+        if (currentInteraction)
+        {
+            currentInteraction.Toggle();
+        }
     }
     
     void OnCollisionEnter2D(Collision2D collision)
     {
-        
-        /*if (collision.gameObject.CompareTag("Platform") || collision.gameObject.CompareTag("Floor"))
-        {
-            RaycastHit2D rcHit = Physics2D.BoxCast(playerCollider.bounds.center, playerCollider.bounds.size, 0, Vector2.down * jump_inverted, 0.15f);
-            if (rcHit.collider)
-            {
-                Debug.Log("Hit");
-                grounded = true;
-                airjump = true;
-            }
-
-            //todo: Fix when player jumps from the bottom against a wall and gets a free jump
-        }
-        else */if (collision.gameObject.CompareTag("Kill"))
+        if (collision.gameObject.CompareTag("Kill"))
         {
             player.Die();
         }
     }
-    /*
-    void OnCollisionExit2D(Collision2D collision)
-    {
-        
-        if (collision.gameObject.CompareTag("Platform") || collision.gameObject.CompareTag("Floor"))
-        {
-            grounded = false;
-        }
-    }*/
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
@@ -182,10 +161,21 @@ public class PlayerPhysics : MonoBehaviour
             grounded = true;
             airjump = true;
         }
+        else if (collider.CompareTag("Interact")) {
+            currentInteraction = collider.gameObject.GetComponent(typeof(ButtonControll)) as ButtonControll;
+            currentInteraction.OnEnter();
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collider)
     {
         if (collider.CompareTag("Platform") || collider.CompareTag("Floor")) grounded = false;
+        else if (collider.CompareTag("Interact"))
+        {
+            ButtonControll obj = collider.gameObject.GetComponent(typeof(ButtonControll)) as ButtonControll;
+            obj.OnExit();
+
+            currentInteraction = null;
+        }
     }
 }
