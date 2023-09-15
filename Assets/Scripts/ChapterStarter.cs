@@ -32,12 +32,16 @@ public class ChapterStarter : MonoBehaviour
 
     }
 
+    private void FinishChapter()
+    {
+        ChangeScene.ChangeToScene("StartScene");
+    }
     public void NextLevel()
     {
         if (currentLevel >= transform.childCount - 1)
         {
             // finished chapter
-            FinishLevel();
+            FinishChapter();
         }
 
         levels[currentLevel].SetActive(false);

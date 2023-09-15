@@ -126,6 +126,8 @@ public class Player : MonoBehaviour
         deaths++;
         physics.ResetPhysics();
         UpdateUI();
+
+        // todo reset collectables
     }
 
     public void ResetCamera()
