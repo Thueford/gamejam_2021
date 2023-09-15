@@ -11,6 +11,7 @@ public class GravityButton : ButtonControll
 
     override public void Toggle()
     {
+        base.Toggle();
         player.physics.InvertJump();
         player.physics.InvertGravity();
     }

@@ -13,6 +13,7 @@ public class LaserButton : ButtonControll
 
     override public void Toggle()
     {
+        base.Toggle();
         foreach (DeactivateLaser Lock in Locks)
         {
             Lock.Activate(!Lock.activated);

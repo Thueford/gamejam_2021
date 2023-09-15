@@ -13,6 +13,7 @@ public class PlatformButton : ButtonControll
 
     override public void Toggle()
     {
+        base.Toggle();
         foreach (PlatformMover p in platforms)
             p.Activate(!p.activated);
     }
