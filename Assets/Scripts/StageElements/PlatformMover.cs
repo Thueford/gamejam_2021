@@ -107,6 +107,7 @@ public class PlatformMover : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D c)
     {
+        Debug.Log("Lol");
         if (activated && !active && c.gameObject.CompareTag("Player")) active = true;
     }
 }
