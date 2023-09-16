@@ -12,6 +12,7 @@ public class PlayerPhysics : MonoBehaviour
     public static PlayerPhysics self;
     public Rigidbody2D rb { get; private set; }
     public Collider2D playerCollider;
+    public CircleCollider2D playerGroundedCollider;
     //[SerializeField]
     //LayerMask pfLayerMask;
 
@@ -47,6 +48,7 @@ public class PlayerPhysics : MonoBehaviour
         self = this;
         rb = GetComponent<Rigidbody2D>();
         playerCollider = GetComponent<CapsuleCollider2D >();
+        playerGroundedCollider = GetComponent<CircleCollider2D>();
 
         playerInput = player.GetComponent<PlayerInput>();
         
@@ -75,7 +77,15 @@ public class PlayerPhysics : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.AddForce(playerVelocity);
+        //calculate if is inverted
+        if (jump_inverted < 0)
+        {
+            Vector2 tmpVel = playerVelocity;
+            tmpVel.y *= -1;
+            rb.AddForce(tmpVel);
+
+        } else rb.AddForce(playerVelocity);
+
         Vector3 max_velocity = Vector3.ClampMagnitude(rb.velocity, maxHSpeed * maxSpeedModifier);
         max_velocity.y = rb.velocity.y;
         rb.velocity = max_velocity;
@@ -101,6 +111,11 @@ public class PlayerPhysics : MonoBehaviour
     {
         player.spriteRenderer.flipY = !player.spriteRenderer.flipY;
         rb.gravityScale = rb.gravityScale * -1;
+
+        // invert the grounded collider
+        playerGroundedCollider.offset *= -1;
+
+
     }
     public void AddJump()
     {
