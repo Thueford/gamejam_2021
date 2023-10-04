@@ -41,6 +41,9 @@ public class PlayerPhysics : MonoBehaviour
     //private bool grounded => groundedFrames[0] || groundedFrames[1] || groundedFrames[2];
     private bool grounded = false;
 
+    public float groundedTimerTime = 1.2f;
+    private float groundedTimer;
+
     public ButtonControll currentInteraction = null;
 
     private void Awake()
@@ -101,6 +104,8 @@ public class PlayerPhysics : MonoBehaviour
         {
             player.Die();
         }
+
+        groundedTimer -= Time.deltaTime;
     }
 
     public void InvertJump()
@@ -147,7 +152,8 @@ public class PlayerPhysics : MonoBehaviour
         rb.AddForce(transform.up * jump_inverted * jumpMult * moveModifier, ForceMode2D.Impulse);
 
         jumps--;
-        if (!grounded) airjump = false;
+        Debug.Log(groundedTimer);
+        if (!grounded && groundedTimer < 0) airjump = false;
         player.UpdateUI();
 
         //Vector2 jumpForce = jumpMult * PlayerController.inverted * KeyHandler.ReadJumpInput();
@@ -191,7 +197,11 @@ public class PlayerPhysics : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collider)
     {
-        if (collider.CompareTag("Platform") || collider.CompareTag("Floor")) grounded = false;
+        if (collider.CompareTag("Platform") || collider.CompareTag("Floor"))
+        {
+            grounded = false;
+            groundedTimer = groundedTimerTime;
+        }
         else if (collider.CompareTag("Interact"))
         {
             ButtonControll obj = collider.gameObject.GetComponent(typeof(ButtonControll)) as ButtonControll;
