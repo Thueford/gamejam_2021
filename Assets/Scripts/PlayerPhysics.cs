@@ -16,15 +16,15 @@ public class PlayerPhysics : MonoBehaviour
     //[SerializeField]
     //LayerMask pfLayerMask;
 
-    [Range(0, 100)]
-    public float moveMult = 80;
+    [Range(0, 30)]
+    public float moveMult = 2.5f;
     public float moveModifier = 1;
 
     [Range(0, 100)]
     public float jumpMult = 15f;
 
-    [Range(0, 100)]
-    public float maxHSpeed = 9;
+    [Range(0, 20)]
+    public float maxHSpeed = 8;
     public float maxSpeedModifier = 1;
 
 
@@ -84,7 +84,14 @@ public class PlayerPhysics : MonoBehaviour
             tmpVel.y *= -1;
             rb.AddForce(tmpVel);
 
-        } else rb.AddForce(playerVelocity);
+        } else rb.AddForce(playerVelocity, ForceMode2D.Impulse);
+
+        if (playerVelocity == Vector2.zero)
+        {
+            Vector2 tmpVel = rb.velocity;
+            tmpVel.x /= 2;
+            rb.velocity = tmpVel;
+        }
 
         Vector3 max_velocity = Vector3.ClampMagnitude(rb.velocity, maxHSpeed * maxSpeedModifier);
         max_velocity.y = rb.velocity.y;
