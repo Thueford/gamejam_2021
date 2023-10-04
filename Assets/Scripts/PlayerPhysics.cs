@@ -163,6 +163,7 @@ public class PlayerPhysics : MonoBehaviour
     public void OnMove(InputValue value)
     {
         playerVelocity = value.Get<Vector2>() * moveMult;
+        playerVelocity.y = 0;
     }
 
     public void OnInteract(InputValue value)
@@ -171,6 +172,17 @@ public class PlayerPhysics : MonoBehaviour
         {
             currentInteraction.Toggle();
         }
+    }
+
+    public void DisableInput()
+    {
+        playerInput.actions.Disable();
+        playerInput.actions.FindAction("Pause").Enable();
+    }
+
+    public void EnableInput()
+    {
+        playerInput.actions.Enable();
     }
     
     void OnCollisionEnter2D(Collision2D collision)

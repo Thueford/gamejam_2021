@@ -63,12 +63,7 @@ public class LevelChooser : MonoBehaviour
                 counter++;
             }
 
-            //Buttons[0].GetComponent<Button>().Select();
+            Buttons[0].GetComponent<Button>().Select();
         }
-    }
-
-    public void SelectButton()
-    {
-        Buttons[0].GetComponent<Button>().Select();
     }
 }

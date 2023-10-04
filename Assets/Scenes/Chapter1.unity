@@ -138,6 +138,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1362372446306199218, guid: 1aa6fe2d384882e409253ee3e1f2e853, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Pause
+      objectReference: {fileID: 0}
+    - target: {fileID: 1362372446306199244, guid: 1aa6fe2d384882e409253ee3e1f2e853, type: 3}
+      propertyPath: m_Name
+      value: Pause
+      objectReference: {fileID: 0}
     - target: {fileID: 1362372447295568244, guid: 1aa6fe2d384882e409253ee3e1f2e853, type: 3}
       propertyPath: m_Name
       value: UI New
@@ -186,6 +194,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1362372447368721004, guid: 1aa6fe2d384882e409253ee3e1f2e853, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Resume
+      objectReference: {fileID: 0}
+    - target: {fileID: 3126420239878270318, guid: 1aa6fe2d384882e409253ee3e1f2e853, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1aa6fe2d384882e409253ee3e1f2e853, type: 3}
 --- !u!1 &114411483 stripped
@@ -209,6 +225,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c1b39a5892d017458397a4d9083f000, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1474052638 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1362372447368721006, guid: 1aa6fe2d384882e409253ee3e1f2e853, type: 3}
+  m_PrefabInstance: {fileID: 114411482}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1605906227 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1362372446306199244, guid: 1aa6fe2d384882e409253ee3e1f2e853, type: 3}
+  m_PrefabInstance: {fileID: 114411482}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1798160618 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8172264376691812192, guid: db441ae2cca135c49a25a227ecac62d9, type: 3}
@@ -281,7 +307,11 @@ PrefabInstance:
     - target: {fileID: 1751933612752783413, guid: 2b8b6f4dc40fda74ca12d1a3f2574f30, type: 3}
       propertyPath: m_Actions
       value: 
-      objectReference: {fileID: -944628639613478452, guid: 789454686cf18414384ed60fd828a858, type: 3}
+      objectReference: {fileID: -944628639613478452, guid: b4ce72bd7a8b6e74ea125ba9c3bb309e, type: 3}
+    - target: {fileID: 1751933612752783413, guid: 2b8b6f4dc40fda74ca12d1a3f2574f30, type: 3}
+      propertyPath: m_DefaultActionMap
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 2514808893139947073, guid: 2b8b6f4dc40fda74ca12d1a3f2574f30, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -338,6 +368,14 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 114411483}
+    - target: {fileID: 7301543872564065769, guid: 2b8b6f4dc40fda74ca12d1a3f2574f30, type: 3}
+      propertyPath: PauseButton
+      value: 
+      objectReference: {fileID: 1605906227}
+    - target: {fileID: 7301543872564065769, guid: 2b8b6f4dc40fda74ca12d1a3f2574f30, type: 3}
+      propertyPath: ResumeButton
+      value: 
+      objectReference: {fileID: 1474052638}
     - target: {fileID: 7301543872564065769, guid: 2b8b6f4dc40fda74ca12d1a3f2574f30, type: 3}
       propertyPath: LevelContainer
       value: 

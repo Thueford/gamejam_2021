@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 
-[RequireComponent(typeof(Player_controll), typeof(PlayerPhysics))]
+[RequireComponent(typeof(PlayerPhysics))]
 public class Player : MonoBehaviour
 {
     public static Player player { get; private set; }
@@ -22,6 +22,8 @@ public class Player : MonoBehaviour
         get { return PlayerPhysics.self; }
     }*/
 
+    public bool paused = false;
+
     public SpriteRenderer spriteRenderer;
     internal Collider coll;
 
@@ -32,6 +34,8 @@ public class Player : MonoBehaviour
 
     public GameObject statusPanelValue;
     public GameObject healthBar;
+    public GameObject PauseButton;
+    public GameObject ResumeButton;
 
     private void Awake()
     {
@@ -97,12 +101,36 @@ public class Player : MonoBehaviour
 
     public void OnResume()
     {
-        
+        ResumeButton.GetComponent<Button>().onClick.Invoke();
+        //Resume();
+    }
+
+    public void Resume()
+    {
+        Debug.Log("Resume");
+        PlayerPhysics.self.EnableInput();
+
+        paused = false;
     }
 
     public void OnPause()
     {
-        
+        if (paused)
+        {
+            OnResume();
+            return;
+        }
+
+        PauseButton.GetComponent<Button>().onClick.Invoke();
+        //Pause();
+    }
+
+    public void Pause()
+    {
+        Debug.Log("Pause");
+        PlayerPhysics.self.DisableInput();
+
+        paused = true;
     }
 
     public void OnRespawn()
