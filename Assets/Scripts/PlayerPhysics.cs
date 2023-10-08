@@ -41,7 +41,7 @@ public class PlayerPhysics : MonoBehaviour
     //private bool grounded => groundedFrames[0] || groundedFrames[1] || groundedFrames[2];
     private bool grounded = false;
 
-    public float groundedTimerTime = 1.2f;
+    public float groundedTimerTime = 10.2f;
     private float groundedTimer;
 
     public ButtonControll currentInteraction = null;
@@ -132,6 +132,7 @@ public class PlayerPhysics : MonoBehaviour
     public void AddJump()
     {
         jumps++;
+        airjump = true;
     }
 
     public void ResetPhysics()
@@ -144,7 +145,7 @@ public class PlayerPhysics : MonoBehaviour
     public void OnJump(InputValue value)
     {
         if (jumps <= 0) return;
-        if (!grounded && !airjump) return;
+        if (!grounded && !airjump && groundedTimer < 0) return;
 
         Vector2 vel = rb.velocity;
         vel.y = 0;
@@ -152,8 +153,9 @@ public class PlayerPhysics : MonoBehaviour
         rb.AddForce(transform.up * jump_inverted * jumpMult * moveModifier, ForceMode2D.Impulse);
 
         jumps--;
-        Debug.Log(groundedTimer);
+        //if (!grounded && groundedTimer < 0) airjump = false;
         if (!grounded && groundedTimer < 0) airjump = false;
+        groundedTimer -= 1;
         player.UpdateUI();
 
         //Vector2 jumpForce = jumpMult * PlayerController.inverted * KeyHandler.ReadJumpInput();

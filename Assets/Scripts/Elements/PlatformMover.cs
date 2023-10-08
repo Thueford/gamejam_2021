@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlatformMover : MonoBehaviour
+public class PlatformMover : BaseElement
 {
     public static Player player => Player.player;
     public float speed = 1;
@@ -19,14 +19,29 @@ public class PlatformMover : MonoBehaviour
 
     private void Awake()
     {
+        init();
+        
+    }
+
+    private void init()
+    {
         if (points.Length == 0) Destroy(this);
         if (points.Length >= 1) transform.position = points[0].transform.position;
         rb = GetComponent<Rigidbody2D>();
-        foreach(SpriteRenderer s in GetComponentsInChildren<SpriteRenderer>())
+        foreach (SpriteRenderer s in GetComponentsInChildren<SpriteRenderer>())
         {
             if (s.gameObject != gameObject) sr = s;
         }
         Activate(activated);
+    }
+
+    public override void Reset()
+    {
+        base.Reset();
+
+        init();
+        initstart();
+        // TODO: Reset got some bugs
     }
 
     public void Activate(bool setActive)
@@ -43,11 +58,17 @@ public class PlatformMover : MonoBehaviour
 
     private void Start()
     {
+        initstart();
+        player.elements.Add(GetComponent<PlatformMover>());
+    }
+
+    private void initstart()
+    {
         inverted = player.physics.jump_inverted;
         for (int i = 0; i < points.Length; i++)
         {
             LineRenderer lr = points[i].GetComponent<LineRenderer>();
-            if(lr)
+            if (lr)
             {
                 if (lr.GetPosition(0) != Vector3.zero)
                 {
@@ -75,16 +96,6 @@ public class PlatformMover : MonoBehaviour
     private void NextCheckpoint()
     {
         if (points.Length <= 1) return;
-
-        /*
-        if (points.Length-1 == pnum+1) {
-            pnum = pnext;
-            pnext = ((pnum + 1) % points.Length) -1;
-            Array.Reverse(points);
-        } else {
-            pnum = pnext;
-            pnext = pnum + 1;
-        } */
 
 
         pnum += pdir;

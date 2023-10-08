@@ -41,12 +41,6 @@ public class ButtonControll : MonoBehaviour
         buttonText.gameObject.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public virtual void Toggle()
     {
         if (buttonActive)

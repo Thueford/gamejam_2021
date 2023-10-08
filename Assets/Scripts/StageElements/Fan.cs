@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Fan : MonoBehaviour
 {
-    [Range(0, 20)]
+    [Range(0, 100)]
     public float force;
 
-    [Range(0, 20)]
+    [Range(0, 100)]
     public float maxSpeed = 8;
 
     HashSet<Rigidbody2D> affected = new HashSet<Rigidbody2D>();

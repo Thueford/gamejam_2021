@@ -220,11 +220,15 @@ MonoBehaviour:
   spawn: {fileID: 0}
   LevelContainer: {fileID: 0}
   physics: {fileID: 0}
+  paused: 0
   spriteRenderer: {fileID: 0}
   maxHealth: 100
   health: 100
   statusPanelValue: {fileID: 0}
   healthBar: {fileID: 0}
+  PauseButton: {fileID: 0}
+  ResumeButton: {fileID: 0}
+  elements: []
 --- !u!114 &1751933612752783413
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LaserButton : ButtonControll
 {
-    public DeactivateLaser[] Locks;
+    public LaserElement[] Locks;
 
     protected override string helpText
     {
@@ -15,9 +15,9 @@ public class LaserButton : ButtonControll
     {
         Debug.Log("ToggleLaser");
         base.Toggle();
-        foreach (DeactivateLaser Lock in Locks)
+        foreach (LaserElement Lock in Locks)
         {
-            Lock.Activate(!Lock.activated);
+            Lock.Activate(!Lock._activated);
         }
     }
 }

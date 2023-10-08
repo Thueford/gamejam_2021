@@ -37,6 +37,8 @@ public class Player : MonoBehaviour
     public GameObject PauseButton;
     public GameObject ResumeButton;
 
+    public List<BaseElement> elements = new List<BaseElement>();
+
     private void Awake()
     {
         physics = GetComponent<PlayerPhysics>();
@@ -107,7 +109,6 @@ public class Player : MonoBehaviour
 
     public void Resume()
     {
-        Debug.Log("Resume");
         PlayerPhysics.self.EnableInput();
 
         paused = false;
@@ -127,7 +128,6 @@ public class Player : MonoBehaviour
 
     public void Pause()
     {
-        Debug.Log("Pause");
         PlayerPhysics.self.DisableInput();
 
         paused = true;
@@ -155,7 +155,14 @@ public class Player : MonoBehaviour
         physics.ResetPhysics();
         UpdateUI();
 
+        foreach(BaseElement element in elements)
+        {
+            element.Reset();
+            element.gameObject.SetActive(true);
+        }
+
         // todo reset collectables
+        // rest platforms
     }
 
     public void ResetCamera()

@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Collectable : MonoBehaviour
+public class Collectable : BaseElement
 {
     public enum Type { NONE };
-    public static Player player => Player.player;
-
     public Type type;
+
+    public static Player player => Player.player;
 
     private void OnTriggerEnter2D(Collider2D c)
     {
@@ -17,6 +17,8 @@ public class Collectable : MonoBehaviour
 
         player.physics.AddJump();
         player.UpdateUI();
-        Destroy(gameObject);
+
+        player.elements.Add(gameObject.GetComponent<Collectable>());
+        gameObject.SetActive(false);
     }
 }
