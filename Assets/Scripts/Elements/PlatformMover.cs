@@ -9,6 +9,7 @@ public class PlatformMover : BaseElement
     public float speed = 1;
     public bool startOnContact = true, activated = true;
     public Transform[] points;
+    private Transform[] modifiedPoints;
     public float checkpointDistance;
 
     private int pnum = 0, pnext = 1, pdir = 1;
@@ -33,6 +34,8 @@ public class PlatformMover : BaseElement
             if (s.gameObject != gameObject) sr = s;
         }
         Activate(activated);
+
+        modifiedPoints = points;
     }
 
     public override void Reset()
@@ -65,21 +68,21 @@ public class PlatformMover : BaseElement
     private void initstart()
     {
         inverted = player.physics.jump_inverted;
-        for (int i = 0; i < points.Length; i++)
+        for (int i = 0; i < modifiedPoints.Length; i++)
         {
-            LineRenderer lr = points[i].GetComponent<LineRenderer>();
+            LineRenderer lr = modifiedPoints[i].GetComponent<LineRenderer>();
             if (lr)
             {
                 if (lr.GetPosition(0) != Vector3.zero)
                 {
-                    points[i] = Instantiate(points[i]);
-                    lr = points[i].GetComponent<LineRenderer>();
+                    modifiedPoints[i] = Instantiate(modifiedPoints[i]);
+                    lr = modifiedPoints[i].GetComponent<LineRenderer>();
                 }
 
                 lr.startColor = lr.endColor = new Color(0, 0, 0, 0.5f);
-                lr.SetPosition(0, points[i].position);
+                lr.SetPosition(0, modifiedPoints[i].position);
                 if (i == 0) lr.enabled = false;
-                else lr.SetPosition(1, points[i - 1].position);
+                else lr.SetPosition(1, modifiedPoints[i - 1].position);
             }
         }
     }
@@ -95,23 +98,23 @@ public class PlatformMover : BaseElement
 
     private void NextCheckpoint()
     {
-        if (points.Length <= 1) return;
+        if (modifiedPoints.Length <= 1) return;
 
 
         pnum += pdir;
-        if (pnum == 0 || pnum == points.Length - 1) pdir = -pdir;
+        if (pnum == 0 || pnum == modifiedPoints.Length - 1) pdir = -pdir;
         pnext = pnum + pdir;
     }
 
     void FixedUpdate()
     {
         // skip if no checkpoints
-        if (!active || points.Length <= 1) return;
+        if (!active || modifiedPoints.Length <= 1) return;
 
-        Vector2 dir = (points[pnext].position - points[pnum].position).normalized;
+        Vector2 dir = (modifiedPoints[pnext].position - modifiedPoints[pnum].position).normalized;
         rb.MovePosition(rb.position + dir * speed * Time.fixedDeltaTime);
 
-        checkpointDistance = Vector2.Distance(rb.position, points[pnext].position);
+        checkpointDistance = Vector2.Distance(rb.position, modifiedPoints[pnext].position);
         if (checkpointDistance < 2 * speed * Time.fixedDeltaTime)
             NextCheckpoint();
     }
