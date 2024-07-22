@@ -429,6 +429,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerNewMain
       objectReference: {fileID: 0}
+    - target: {fileID: 5813957366148607873, guid: 2b8b6f4dc40fda74ca12d1a3f2574f30, type: 3}
+      propertyPath: m_Interpolate
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5813957366148607873, guid: 2b8b6f4dc40fda74ca12d1a3f2574f30, type: 3}
+      propertyPath: m_GravityScale
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7301543872564065769, guid: 2b8b6f4dc40fda74ca12d1a3f2574f30, type: 3}
       propertyPath: spawn
       value: 

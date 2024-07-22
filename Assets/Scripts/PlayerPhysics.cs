@@ -40,6 +40,7 @@ public class PlayerPhysics : MonoBehaviour
     private List<bool> groundedFrames = new List<bool>();
     //private bool grounded => groundedFrames[0] || groundedFrames[1] || groundedFrames[2];
     private bool grounded = false;
+    private Vector2 platformVel;
 
     public float groundedTimerTime = 10.2f;
     private float groundedTimer;
@@ -80,6 +81,7 @@ public class PlayerPhysics : MonoBehaviour
 
     private void FixedUpdate()
     {
+        
         //calculate if is inverted
         if (jump_inverted < 0)
         {
@@ -89,12 +91,14 @@ public class PlayerPhysics : MonoBehaviour
 
         } else rb.AddForce(playerVelocity, ForceMode2D.Impulse);
 
-        if (playerVelocity == Vector2.zero)
+        /*if (playerVelocity == Vector2.zero)
         {
             Vector2 tmpVel = rb.velocity;
             tmpVel.x /= 2;
             rb.velocity = tmpVel;
-        }
+        }*/
+
+        
 
         Vector3 max_velocity = Vector3.ClampMagnitude(rb.velocity, maxHSpeed * maxSpeedModifier);
         max_velocity.y = rb.velocity.y;
@@ -104,6 +108,13 @@ public class PlayerPhysics : MonoBehaviour
         {
             player.Die();
         }
+
+        Vector2 vel = rb.velocity;
+        if (playerVelocity == Vector2.zero)
+        {
+            vel.x = (vel.x - platformVel.x) * 0.9f + platformVel.x;
+        }
+        rb.velocity = vel;
 
         groundedTimer -= Time.deltaTime;
     }
@@ -150,6 +161,7 @@ public class PlayerPhysics : MonoBehaviour
         Vector2 vel = rb.velocity;
         vel.y = 0;
         rb.velocity = vel;
+
         rb.AddForce(transform.up * jump_inverted * jumpMult * moveModifier, ForceMode2D.Impulse);
 
         jumps--;
@@ -202,6 +214,12 @@ public class PlayerPhysics : MonoBehaviour
         {
             grounded = true;
             airjump = true;
+
+            if (collider.CompareTag("Platform")) {
+                Rigidbody2D r = collider.GetComponent<Rigidbody2D>();
+                platformVel = new Vector2(r.velocity.x, r.velocity.y);
+            }
+            
         }
         else if (collider.CompareTag("Interact")) {
             currentInteraction = collider.gameObject.GetComponent(typeof(ButtonControll)) as ButtonControll;
