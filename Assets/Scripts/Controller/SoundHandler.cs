@@ -10,6 +10,7 @@ public class SoundHandler : MonoBehaviour
     public AudioSource MusicSource;
     public AudioSource EffectSource;
     public AudioSource MenuSource;
+    public AudioSource WalkingSource;
 
     [Range(0, 1)]
     public float volume = 1;
@@ -47,7 +48,7 @@ public class SoundHandler : MonoBehaviour
     public static void PlayClip(AudioClip c)
     {
         self.EffectSource.PlayOneShot(c);
-        Debug.Log(c.name);
+        //Debug.Log(c.name);
     }
 
     public static void PlayClip(AudioClip[] c)
@@ -67,12 +68,12 @@ public class SoundHandler : MonoBehaviour
     {
         //if (!self.WalkSource.isPlaying)
         Debug.Log("Play Walk");
-        self.EffectSource.Play();
+        self.WalkingSource.Play();
     }
 
     public static void StopWalk()
     {
-        self.EffectSource.Pause();
+        self.WalkingSource.Pause();
     }
 
 

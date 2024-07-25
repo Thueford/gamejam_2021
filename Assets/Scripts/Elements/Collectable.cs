@@ -20,5 +20,7 @@ public class Collectable : BaseElement
 
         player.elements.Add(gameObject.GetComponent<Collectable>());
         gameObject.SetActive(false);
+
+        SoundHandler.PlayClip("collect");
     }
 }

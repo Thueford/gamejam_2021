@@ -52,7 +52,8 @@ public class PlayerPhysics : MonoBehaviour
 
     public ButtonControll currentInteraction = null;
 
-    private bool interactSwitch = false;
+    public bool interactSwitch = false;
+    public bool inFan = false;
 
     //sound
     private bool moving = false;
@@ -82,6 +83,7 @@ public class PlayerPhysics : MonoBehaviour
             playerVelocity = Vector2.zero;
         };
 
+        SoundHandler.StopWalk();
         // player.Respawn();
     }
 
@@ -207,6 +209,8 @@ public class PlayerPhysics : MonoBehaviour
         if (!grounded && !airjump && groundedTimer < 0) return;
         if (groundedTimer >= 0 && !airjump) return;
 
+        SoundHandler.PlayClip("jump");
+
         Vector2 vel = rb.velocity;
         vel.y = 0;
         rb.velocity = vel;
@@ -231,7 +235,7 @@ public class PlayerPhysics : MonoBehaviour
         playerVelocity = value.Get<Vector2>() * moveMult;
         playerVelocity.y = 0;
 
-        if (playerVelocity != Vector2.zero)
+        if (playerVelocity.x != Vector2.zero.x)
         {
             SoundHandler.StartWalk();
         } else
@@ -246,16 +250,18 @@ public class PlayerPhysics : MonoBehaviour
         if (currentInteraction)
         {
             currentInteraction.Toggle();
-        } else
+        }
+
+        if (inFan)
         {
             if (interactSwitch)
             {
-                playerVelocity.y = -1 * jump_inverted;
+                //playerVelocity.y = -1 * jump_inverted;
                 interactSwitch = false;
             }
             else
             {
-                playerVelocity.y = 0;
+                //playerVelocity.y = 0;
                 interactSwitch = true;
             }
         }

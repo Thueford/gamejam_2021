@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class ChapterStarter : MonoBehaviour
 {
@@ -9,10 +10,13 @@ public class ChapterStarter : MonoBehaviour
     private List<GameObject> levels = new List<GameObject>();
     public static Player player => Player.player;
     public static GameObject currStage;
+    public static ChapterStarter chapterStarter;
     public static PlayerCamera playerCamera => PlayerCamera.self;
 
     private void Awake()
     {
+        if (!chapterStarter) chapterStarter = this;
+
         foreach (Transform child in transform)
         {
             levels.Add(child.gameObject);
@@ -54,6 +58,12 @@ public class ChapterStarter : MonoBehaviour
         player.physics.maxJumps = currStage.GetComponent<LevelController>().maxJumps;
 
         return currStage;
+    }
+
+    public static void ReloadStage()
+    {
+        Destroy(currStage);
+        chapterStarter.CreateNewLevel();
     }
 
     private void FinishLevel()

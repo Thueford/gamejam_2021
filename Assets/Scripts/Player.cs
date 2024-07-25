@@ -78,6 +78,7 @@ public class Player : MonoBehaviour
 
     public void Die()
     {
+        SoundHandler.PlayClip("death");
         Respawn();
     }
 
@@ -93,6 +94,7 @@ public class Player : MonoBehaviour
 
         if (health <= 0)
         {
+            //maybe special sound
             Die();
         }
         UpdateUI();
@@ -152,14 +154,18 @@ public class Player : MonoBehaviour
         physics.ResetPhysics();
         UpdateUI();
 
+        Debug.Log(elements.Count);
+
         foreach(BaseElement element in elements)
         {
             element.Reset();
             element.gameObject.SetActive(true);
         }
 
-        // todo reset collectables
-        // rest platforms
+        // reset platforms
+
+        ChapterStarter.ReloadStage();   
+
         player.ResetCamera();
     }
 

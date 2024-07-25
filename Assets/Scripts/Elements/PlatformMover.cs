@@ -7,7 +7,7 @@ public class PlatformMover : BaseElement
 {
     public static Player player => Player.player;
     public float speed = 1;
-    public bool startOnContact = true, activated = true;
+    public bool startOnContact = true, activated = true, baseActive = true;
     public Transform[] points;
     private Transform[] modifiedPoints;
     public float checkpointDistance;
@@ -24,7 +24,7 @@ public class PlatformMover : BaseElement
     private void Awake()
     {
         init();
-        
+        baseActive = activated;
     }
 
     private void init()
@@ -50,6 +50,7 @@ public class PlatformMover : BaseElement
 
         init();
         initstart();
+        Activate(baseActive);
         // TODO: Reset got some bugs
     }
 

@@ -18,11 +18,18 @@ public class Fan : MonoBehaviour
         foreach (Rigidbody2D c in affected)
         {
             //if (!PlayerMovement.self.reachedTerminal(dir * force * Time.fixedDeltaTime))
-            c.AddForce(dir * force);
+            
 
-            Vector3 max_velocity = Vector3.ClampMagnitude(c.velocity, maxSpeed);
-            max_velocity.y = c.velocity.y;
-            c.velocity = max_velocity;
+            PlayerPhysics pph = c.gameObject.GetComponent<PlayerPhysics>();
+            Debug.Log(transform.rotation.eulerAngles.z - 1 * pph.jump_inverted < 0);
+            if (!pph.interactSwitch || !((transform.rotation.eulerAngles.z - 1) * pph.jump_inverted < 0))
+            {
+                c.AddForce(dir * force);
+
+                Vector3 max_velocity = Vector3.ClampMagnitude(c.velocity, maxSpeed);
+                max_velocity.y = c.velocity.y;
+                c.velocity = max_velocity;
+            }
         }
     }
 
@@ -31,7 +38,14 @@ public class Fan : MonoBehaviour
         if (c.CompareTag("Player")) 
         { 
             affected.Add(c.GetComponent<Rigidbody2D>());
-            //SoundHandler.PlayClip("fanenter");
+            PlayerPhysics pph = c.gameObject.GetComponent<PlayerPhysics>();
+
+            //pph.inFan = true;
+            if ((transform.rotation.eulerAngles.z - 1) * pph.jump_inverted < 0) pph.inFan = true;
+            else pph.inFan = false;
+            // just if fan is faced down
+
+            SoundHandler.PlayClip("fanenter");
         }
     }
 
@@ -40,7 +54,9 @@ public class Fan : MonoBehaviour
         if (c.CompareTag("Player"))
         {
             affected.Remove(c.GetComponent<Rigidbody2D>());
-            //SoundHandler.PlayClip("fanexit");
+            PlayerPhysics pph = c.gameObject.GetComponent<PlayerPhysics>();
+            pph.inFan = false;
+            SoundHandler.PlayClip("fanexit");
         }
     }
 }
