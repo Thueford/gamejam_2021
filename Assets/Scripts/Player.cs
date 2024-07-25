@@ -65,9 +65,6 @@ public class Player : MonoBehaviour
 
     public void Goal()
     {
-        Respawn();
-        ResetStatistic();
-
         if (LevelContainer)
         {
             LevelContainer.GetComponent<ChapterStarter>().NextLevel();
@@ -163,12 +160,16 @@ public class Player : MonoBehaviour
 
         // todo reset collectables
         // rest platforms
+        player.ResetCamera();
     }
 
     public void ResetCamera()
     {
-        //playerCamera.transform.position = spawn.transform.position;
+        
         playerCamera.Initialize();
+        Vector3 pos = player.transform.position;
+        pos.z = -10;
+        playerCamera.transform.position = pos;
     }
 
     public static void GlobalRespawn()

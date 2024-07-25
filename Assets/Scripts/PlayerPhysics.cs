@@ -13,18 +13,21 @@ public class PlayerPhysics : MonoBehaviour
     public Rigidbody2D rb { get; private set; }
     public Collider2D playerCollider;
     public CircleCollider2D playerGroundedCollider;
+
+    [SerializeField]
+    LayerMask pfLayerMask;
     //[SerializeField]
     //LayerMask pfLayerMask;
 
     [Range(0, 30)]
-    public float moveMult = 2.5f;
+    public float moveMult = 18f;
     public float moveModifier = 1;
 
     [Range(0, 100)]
-    public float jumpMult = 15f;
+    public float jumpMult = 1.5f;
 
     [Range(0, 20)]
-    public float maxHSpeed = 8;
+    public float maxHSpeed = 6;
     public float maxSpeedModifier = 1;
 
 
@@ -40,12 +43,19 @@ public class PlayerPhysics : MonoBehaviour
     private List<bool> groundedFrames = new List<bool>();
     //private bool grounded => groundedFrames[0] || groundedFrames[1] || groundedFrames[2];
     private bool grounded = false;
+    private bool jumped = false;
+    PlatformMover pm;
     private Vector2 platformVel;
 
     public float groundedTimerTime = 10.2f;
     private float groundedTimer;
 
     public ButtonControll currentInteraction = null;
+
+    private bool interactSwitch = false;
+
+    //sound
+    private bool moving = false;
 
     private void Awake()
     {
@@ -71,6 +81,8 @@ public class PlayerPhysics : MonoBehaviour
         {
             playerVelocity = Vector2.zero;
         };
+
+        // player.Respawn();
     }
 
     // Update is called once per frame
@@ -81,15 +93,19 @@ public class PlayerPhysics : MonoBehaviour
 
     private void FixedUpdate()
     {
-        
+
         //calculate if is inverted
-        if (jump_inverted < 0)
+
+        /*if (jump_inverted < 0)
         {
             Vector2 tmpVel = playerVelocity;
             tmpVel.y *= -1;
             rb.AddForce(tmpVel);
 
         } else rb.AddForce(playerVelocity, ForceMode2D.Impulse);
+        //*/
+
+        Vector2 vel = new Vector2(playerVelocity.x, rb.velocity.y + playerVelocity.y);
 
         /*if (playerVelocity == Vector2.zero)
         {
@@ -100,23 +116,55 @@ public class PlayerPhysics : MonoBehaviour
 
         
 
-        Vector3 max_velocity = Vector3.ClampMagnitude(rb.velocity, maxHSpeed * maxSpeedModifier);
+        Vector2 max_velocity = Vector2.ClampMagnitude(vel, maxHSpeed);
         max_velocity.y = rb.velocity.y;
-        rb.velocity = max_velocity;
+        vel = max_velocity;
 
         if (player.transform.position.y < PlayerCamera.self.bottom)
         {
             player.Die();
         }
 
-        Vector2 vel = rb.velocity;
-        if (playerVelocity == Vector2.zero)
+        //IsGrounded();
+        if (pm != null)
         {
-            vel.x = (vel.x - platformVel.x) * 0.9f + platformVel.x;
+            vel.x += pm.customVelocity.x;//(vel.x - platformVel.x) * 0.9f + platformVel.x;
+            /*Vector3 tempPos = transform.position;
+            tempPos.x += platformVel.x;
+            transform.position = tempPos;*/
         }
+
+        
+
+
+
         rb.velocity = vel;
 
         groundedTimer -= Time.deltaTime;
+        
+        if (rb.velocity == Vector2.zero)
+        {
+            //SoundHandler.StopWalk();
+        }
+    }
+
+    private bool IsGrounded()
+    {
+        // TODO: Change Cast direction on Gravity Change
+        //RaycastHit2D rcHit = Physics2D.BoxCast(playerGroundedCollider.bounds.center, playerGroundedCollider.bounds.size, 0, (jump_inverted < 0 ? Vector2.down : Vector2.up) * PlayerController.inverted, 0.15f, pfLayerMask);
+        RaycastHit2D rcHit = Physics2D.BoxCast(playerGroundedCollider.bounds.center, playerGroundedCollider.bounds.size, 0, Vector2.down * jump_inverted, 0.15f, pfLayerMask);
+        if (rcHit.collider && rcHit.collider.gameObject.CompareTag("Platform"))
+        {
+            Rigidbody2D r = rcHit.collider.GetComponent<Rigidbody2D>();
+            if (r)
+            {
+                platformVel = new Vector2(r.velocity.x, r.velocity.y);
+                pm = rcHit.collider.GetComponent<PlatformMover>();
+                return true;
+            }
+        }
+        platformVel = Vector2.zero;
+        return rcHit.collider != null;
     }
 
     public void InvertJump()
@@ -157,6 +205,7 @@ public class PlayerPhysics : MonoBehaviour
     {
         if (jumps <= 0) return;
         if (!grounded && !airjump && groundedTimer < 0) return;
+        if (groundedTimer >= 0 && !airjump) return;
 
         Vector2 vel = rb.velocity;
         vel.y = 0;
@@ -165,10 +214,13 @@ public class PlayerPhysics : MonoBehaviour
         rb.AddForce(transform.up * jump_inverted * jumpMult * moveModifier, ForceMode2D.Impulse);
 
         jumps--;
+
         //if (!grounded && groundedTimer < 0) airjump = false;
-        if (!grounded && groundedTimer < 0) airjump = false;
+
+        if (!grounded && groundedTimer < 0 || jumped) airjump = false;
         groundedTimer -= 1;
         player.UpdateUI();
+        jumped = true;
 
         //Vector2 jumpForce = jumpMult * PlayerController.inverted * KeyHandler.ReadJumpInput();
         //SoundHandler.PlayClip("jump");
@@ -178,13 +230,34 @@ public class PlayerPhysics : MonoBehaviour
     {
         playerVelocity = value.Get<Vector2>() * moveMult;
         playerVelocity.y = 0;
+
+        if (playerVelocity != Vector2.zero)
+        {
+            SoundHandler.StartWalk();
+        } else
+        {
+            SoundHandler.StopWalk();
+        }
     }
+
 
     public void OnInteract(InputValue value)
     {
         if (currentInteraction)
         {
             currentInteraction.Toggle();
+        } else
+        {
+            if (interactSwitch)
+            {
+                playerVelocity.y = -1 * jump_inverted;
+                interactSwitch = false;
+            }
+            else
+            {
+                playerVelocity.y = 0;
+                interactSwitch = true;
+            }
         }
     }
 
@@ -214,10 +287,14 @@ public class PlayerPhysics : MonoBehaviour
         {
             grounded = true;
             airjump = true;
+            jumped = false;
 
             if (collider.CompareTag("Platform")) {
-                Rigidbody2D r = collider.GetComponent<Rigidbody2D>();
-                platformVel = new Vector2(r.velocity.x, r.velocity.y);
+                
+                pm = collider.GetComponent<PlatformMover>();
+                //Debug.Log(pm.customVelocity);
+                //platformVel = new Vector2(r.velocity.x, r.velocity.y);
+                //platformVel = pm.customVelocity;
             }
             
         }
@@ -233,6 +310,17 @@ public class PlayerPhysics : MonoBehaviour
         {
             grounded = false;
             groundedTimer = groundedTimerTime;
+            //platformVel = Vector2.zero;
+            pm = null;
+            RaycastHit2D rcHit = Physics2D.BoxCast(playerCollider.bounds.center, playerCollider.bounds.size, 0, Vector2.down * jump_inverted, 0.15f, pfLayerMask);
+            if (rcHit)
+            {
+                //Debug.Log(rcHit.transform.gameObject.name);
+                pm = rcHit.collider.GetComponent<PlatformMover>();
+            }
+            
+            
+
         }
         else if (collider.CompareTag("Interact"))
         {

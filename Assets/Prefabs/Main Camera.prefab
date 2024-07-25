@@ -102,10 +102,10 @@ MonoBehaviour:
   camera: {fileID: 0}
   lazyness: 10
   baseOffset: 2
-  cameraZoom: 2
+  cameraZoom: 3
   cameraZoomSteps: 3
   cameraZoomMax: 6
-  cameraZoomMin: 2
+  cameraZoomMin: 3
   left: 0
   top: 0
   right: 0

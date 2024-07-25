@@ -169,6 +169,7 @@ MonoBehaviour:
   points: []
   checkpointDistance: 0
   sr: {fileID: 0}
+  customVelocity: {x: 0, y: 0}
 --- !u!1 &8951260797050705782
 GameObject:
   m_ObjectHideFlags: 0

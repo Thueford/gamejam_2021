@@ -106,9 +106,9 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 3
+  m_LinearDrag: 2
   m_AngularDrag: 0.05
-  m_GravityScale: 6.5
+  m_GravityScale: 4
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -148,7 +148,7 @@ CircleCollider2D:
   m_Radius: 0.7
 --- !u!95 &8614536475028111165
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -165,7 +165,8 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!111 &2399401036965853963
 Animation:
   m_ObjectHideFlags: 0
@@ -195,10 +196,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCollider: {fileID: 0}
   playerGroundedCollider: {fileID: 0}
+  pfLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
   moveMult: 13
   moveModifier: 1
-  jumpMult: 20
-  maxHSpeed: 10
+  jumpMult: 18
+  maxHSpeed: 8
   maxSpeedModifier: 1
   maxJumps: 100
   airjump: 1

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class PlayerCamera : MonoBehaviour
@@ -13,10 +14,12 @@ public class PlayerCamera : MonoBehaviour
     public float baseOffset = 2;
     private float offset = 4;
     
-    public int cameraZoom = 2;
+    public int cameraZoom = 3;
     public int cameraZoomSteps = 3;
     public int cameraZoomMax = 8;
-    public int cameraZoomMin = 2;
+    public int cameraZoomMin = 3;
+
+    public static GameObject currStage => ChapterStarter.currStage;
 
     public float left, top, right, bottom;
 
@@ -28,7 +31,7 @@ public class PlayerCamera : MonoBehaviour
 
     void Start()
     {
-        Initialize();
+        
     }
 
     // Update is called once per frame
@@ -39,11 +42,29 @@ public class PlayerCamera : MonoBehaviour
 
     public void Initialize()
     {
+        GameObject border = currStage.transform.Find("Borders").gameObject;
         Transform
-            l = FindChildWithTag(GameObject.Find("Borders"), "LeftWall"),
-            t = FindChildWithTag(GameObject.Find("Borders"), "TopWall"),
-            r = FindChildWithTag(GameObject.Find("Borders"), "RightWall"),
-            b = FindChildWithTag(GameObject.Find("Borders"), "BottomWall");
+            l = FindChildWithTag(border, "LeftWall"),
+            t = FindChildWithTag(border, "TopWall"),
+            r = FindChildWithTag(border, "RightWall"),
+            b = FindChildWithTag(border, "BottomWall");
+
+
+        left = l ? l.transform.position.x : 0;
+        top = t ? t.transform.position.y : 0;
+        right = r ? r.transform.position.x : 0;
+        bottom = b ? b.transform.position.y : 0;
+    }
+
+    public void Initialize(GameObject stage)
+    {
+        GameObject border = stage.transform.Find("Borders").gameObject;
+        Transform
+            l = FindChildWithTag(border, "LeftWall"),
+            t = FindChildWithTag(border, "TopWall"),
+            r = FindChildWithTag(border, "RightWall"),
+            b = FindChildWithTag(border, "BottomWall");
+
 
         left = l ? l.transform.position.x : 0;
         top = t ? t.transform.position.y : 0;

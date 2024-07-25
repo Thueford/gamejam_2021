@@ -38,6 +38,9 @@ public class InputController : MonoBehaviour
 
         // gameplayActions["Pause"].performed += ctx => pause.enterPause();
         gameplayActions["Respawn"].performed += ctx => Player.player.Respawn();
+
+        //moveAction.started += ctx => SoundHandler.StartWalk();
+        //moveAction.performed += ctx => SoundHandler.StopWalk();
     }
 
     void OnDisable()

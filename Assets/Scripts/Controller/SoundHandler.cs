@@ -10,7 +10,6 @@ public class SoundHandler : MonoBehaviour
     public AudioSource MusicSource;
     public AudioSource EffectSource;
     public AudioSource MenuSource;
-    public AudioSource WalkSource;
 
     [Range(0, 1)]
     public float volume = 1;
@@ -35,35 +34,26 @@ public class SoundHandler : MonoBehaviour
         foreach (NamedClip c in clipArray)
         {
             if (clips.ContainsKey(c.name))
-                throw new ArgumentException("Two same Audio Clip Names");
-            else 
+            {
+                //Debug.Log(c.name);
+                //TODO
+                //throw new ArgumentException("Two same Audio Clip Names");
+            }
+            else
                 clips.Add(c.name, c.clip);
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     public static void PlayClip(AudioClip c)
     {
         self.EffectSource.PlayOneShot(c);
+        Debug.Log(c.name);
     }
 
     public static void PlayClip(AudioClip[] c)
     {
         //play random clip from list
         PlayClip(c[UnityEngine.Random.Range(0, c.Length)]);
-    }
-
-    public static void SetVolume(float volMusic, float volEffects)
-    {
-        self.MusicSource.volume = volMusic;
-        self.EffectSource.volume = volEffects;
-        self.MenuSource.volume = volEffects;
-        self.WalkSource.volume = volEffects;
     }
 
     public static void PlayClip(string s) => PlayClip(clips[s]);
@@ -75,14 +65,17 @@ public class SoundHandler : MonoBehaviour
 
     public static void StartWalk()
     {
-        if (!self.WalkSource.isPlaying)
-            self.WalkSource.Play();
+        //if (!self.WalkSource.isPlaying)
+        Debug.Log("Play Walk");
+        self.EffectSource.Play();
     }
 
     public static void StopWalk()
     {
-        self.WalkSource.Pause();
+        self.EffectSource.Pause();
     }
+
+
 
     //public static void SetHPTarget(float frequency) => filterHighValue = frequency;
     //public static void SetLPTarget(float frequency) => filterLowValue = frequency;

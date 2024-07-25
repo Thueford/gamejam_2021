@@ -18,6 +18,9 @@ public class PlatformMover : BaseElement
     private int inverted;
     public SpriteRenderer sr;
 
+    private Vector3 lastPosition = Vector3.zero;
+    public Vector2 customVelocity = Vector2.zero;
+
     private void Awake()
     {
         init();
@@ -36,6 +39,9 @@ public class PlatformMover : BaseElement
         Activate(activated);
 
         modifiedPoints = points;
+
+        // Testing if teleporting bug is gone 
+        //transform.position = points[0].transform.position;
     }
 
     public override void Reset()
@@ -63,6 +69,7 @@ public class PlatformMover : BaseElement
     {
         initstart();
         player.elements.Add(GetComponent<PlatformMover>());
+        lastPosition = transform.position;
     }
 
     private void initstart()
@@ -109,14 +116,23 @@ public class PlatformMover : BaseElement
     void FixedUpdate()
     {
         // skip if no checkpoints
-        if (!active || modifiedPoints.Length <= 1) return;
+        if (!active || modifiedPoints.Length <= 1)
+        {
+            // otherwise platoform would have a custom velocity when deactivated
+            customVelocity = Vector2.zero;
+            return;
+        }
 
         Vector2 dir = (modifiedPoints[pnext].position - modifiedPoints[pnum].position).normalized;
         rb.MovePosition(rb.position + dir * speed * Time.fixedDeltaTime);
 
+        customVelocity = (transform.position - lastPosition) / Time.deltaTime;
+
         checkpointDistance = Vector2.Distance(rb.position, modifiedPoints[pnext].position);
         if (checkpointDistance < 2 * speed * Time.fixedDeltaTime)
             NextCheckpoint();
+
+        lastPosition = transform.position;
     }
 
     private void OnCollisionEnter2D(Collision2D c)

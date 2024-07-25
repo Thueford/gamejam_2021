@@ -68,6 +68,7 @@ public class Door : MonoBehaviour
     {
         if (collider.gameObject.CompareTag("Player") && open)
         {
+            Debug.Log("Goaaaaaal");
             player.Goal();
         }
     }

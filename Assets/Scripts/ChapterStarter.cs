@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,8 @@ public class ChapterStarter : MonoBehaviour
     public int currentLevel = 0;
     private List<GameObject> levels = new List<GameObject>();
     public static Player player => Player.player;
+    public static GameObject currStage;
+    public static PlayerCamera playerCamera => PlayerCamera.self;
 
     private void Awake()
     {
@@ -21,15 +24,41 @@ public class ChapterStarter : MonoBehaviour
 
     void Start()
     {
-        GameObject level = levels[currentLevel];
-        level.SetActive(true);
-        player.spawn = level.transform.Find("Spawn").gameObject.GetComponent<Door>();
-        player.physics.maxJumps = level.GetComponent<LevelController>().maxJumps;
+        //GameObject level = levels[currentLevel];
+        //currLevel = Instantiate(level);
+        //currLevel.transform.position = Vector3.zero;
+
+        //currStage.SetActive(true);
+        //player.spawn = currStage.transform.Find("Spawn").gameObject.GetComponent<Door>();
+        //player.physics.maxJumps = currStage.GetComponent<LevelController>().maxJumps;
+        GameObject level = CreateNewLevel();
+
+        Vector3 pos = player.spawn.transform.position;
+        pos.z -= .1f;
+        player.transform.position = pos;
+
+        playerCamera.Initialize(level);
+        pos = player.transform.position;
+        pos.z = -10;
+        playerCamera.transform.position = pos;
+
+    }
+
+    private GameObject CreateNewLevel()
+    {
+        currStage = Instantiate(levels[currentLevel]);
+        currStage.SetActive(true);
+        currStage.transform.position = Vector3.zero;
+
+        player.spawn = currStage.transform.Find("Spawn").gameObject.GetComponent<Door>();
+        player.physics.maxJumps = currStage.GetComponent<LevelController>().maxJumps;
+
+        return currStage;
     }
 
     private void FinishLevel()
     {
-
+        Destroy(currStage);
     }
 
     private void FinishChapter()
@@ -38,24 +67,24 @@ public class ChapterStarter : MonoBehaviour
     }
     public void NextLevel()
     {
+        Debug.LogError("Next Level");
+        Debug.Log(currentLevel);
         if (currentLevel >= transform.childCount - 1)
         {
             // finished chapter
             FinishChapter();
         }
 
-        levels[currentLevel].SetActive(false);
+        //levels[currentLevel].SetActive(false);
         FinishLevel();
         currentLevel++;
-        GameObject level = levels[currentLevel];
-        level.SetActive(level);
-        GameObject spawn = level.transform.Find("Spawn").gameObject;
-        player.spawn = spawn.GetComponent<Door>();
-        player.physics.maxJumps = level.GetComponent<LevelController>().maxJumps;
+        Debug.Log("You dead");
+
+        GameObject level = CreateNewLevel();
         
         player.Respawn();
         player.ResetStatistic();
-        player.ResetCamera();
+        //player.ResetCamera(level);
 
         // todo back to chapters and mark as solveds
     }
