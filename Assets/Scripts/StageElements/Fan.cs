@@ -21,7 +21,7 @@ public class Fan : MonoBehaviour
             
 
             PlayerPhysics pph = c.gameObject.GetComponent<PlayerPhysics>();
-            Debug.Log(transform.rotation.eulerAngles.z - 1 * pph.jump_inverted < 0);
+            //Debug.Log(transform.rotation.eulerAngles.z - 1 * pph.jump_inverted < 0);
             if (!pph.interactSwitch || !((transform.rotation.eulerAngles.z - 1) * pph.jump_inverted < 0))
             {
                 c.AddForce(dir * force);

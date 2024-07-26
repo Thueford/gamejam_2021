@@ -10,6 +10,8 @@ using UnityEngine.SceneManagement;
 
 public class ChangeScene : MonoBehaviour
 {
+    public static Player player => Player.player;
+
     public static void ChangeToScene(string scene)
     {
         SceneManager.LoadScene(scene);
@@ -18,5 +20,15 @@ public class ChangeScene : MonoBehaviour
     public static void Exit()
     {
         Application.Quit();
+    }
+
+    public void Pause()
+    {
+        player.Pause();
+    }
+
+    public void Resume()
+    {
+        player.Resume();
     }
 }

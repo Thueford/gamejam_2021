@@ -22,22 +22,31 @@ public class ButtonControll : MonoBehaviour
     private void Awake()
     {
         animator = GetComponent<Animator>();
-        buttonText = this.GetComponentInChildren<TMPro.TextMeshPro>();
+        buttonText = GetComponentInChildren<TMPro.TextMeshPro>();
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        doInit();
+    }
+
+    public void doInit()
+    {
         buttonActive = true;
         playerInput = Player.player.GetComponent<PlayerInput>();
 
-        // TODO: Concat string
+        buttonText.SetText("Press [" + playerInput.actions.FindAction("Interact").GetBindingDisplayString(0) + "] to " + helpText);
+
+        /*
         foreach (InputBinding binding in playerInput.actions.FindAction("Interact").bindings)
         {
-            //Debug.Log(binding.path);
+            Debug.Log(playerInput.actions.FindAction("Interact").GetBindingDisplayString(0));
             buttonText.SetText("Press [" + binding.path + "] to " + helpText);
             break;
-        }
+        }*/
+
+
         buttonText.gameObject.SetActive(false);
     }
 

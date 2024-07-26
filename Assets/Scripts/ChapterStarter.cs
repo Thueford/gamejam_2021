@@ -15,7 +15,9 @@ public class ChapterStarter : MonoBehaviour
 
     private void Awake()
     {
-        if (!chapterStarter) chapterStarter = this;
+        //TODO: This can get tricky 
+        //if (!chapterStarter) chapterStarter = this;
+        chapterStarter = this;
 
         foreach (Transform child in transform)
         {
@@ -24,6 +26,11 @@ public class ChapterStarter : MonoBehaviour
         }
 
         currentLevel = PlayerPrefs.GetInt("CurrentLevel");
+
+        if (currentLevel + 1 > levels.Count)
+        {
+            currentLevel = 0;
+        }
     }
 
     void Start()

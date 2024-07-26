@@ -67,7 +67,7 @@ public class SoundHandler : MonoBehaviour
     public static void StartWalk()
     {
         //if (!self.WalkSource.isPlaying)
-        Debug.Log("Play Walk");
+        //Debug.Log("Play Walk");
         self.WalkingSource.Play();
     }
 
