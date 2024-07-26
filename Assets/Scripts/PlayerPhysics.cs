@@ -55,6 +55,9 @@ public class PlayerPhysics : MonoBehaviour
     public bool interactSwitch = false;
     public bool inFan = false;
 
+    public Animator anim;
+
+
     //sound
     private bool moving = false;
 
@@ -64,6 +67,7 @@ public class PlayerPhysics : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         playerCollider = GetComponent<CapsuleCollider2D >();
         playerGroundedCollider = GetComponent<CircleCollider2D>();
+        anim = GetComponent<Animator>();
 
         playerInput = player.GetComponent<PlayerInput>();
         
@@ -137,6 +141,14 @@ public class PlayerPhysics : MonoBehaviour
         }
 
         
+        if (rb.velocity.y * jump_inverted < -0.3)
+        {
+            if (anim.GetBool("isJumping")) anim.SetBool("isJumping", false);
+            if (!anim.GetBool("isFalling")) anim.SetBool("isFalling", true);
+        } else
+        {
+            anim.SetBool("isFalling", false);
+        }//*/
 
 
 
@@ -167,6 +179,8 @@ public class PlayerPhysics : MonoBehaviour
         }
         platformVel = Vector2.zero;
         return rcHit.collider != null;
+
+
     }
 
     public void InvertJump()
@@ -209,6 +223,7 @@ public class PlayerPhysics : MonoBehaviour
         if (!grounded && !airjump && groundedTimer < 0) return;
         if (groundedTimer >= 0 && !airjump) return;
 
+        anim.SetBool("isJumping", true);
         SoundHandler.PlayClip("jump");
 
         Vector2 vel = rb.velocity;
@@ -235,11 +250,26 @@ public class PlayerPhysics : MonoBehaviour
         playerVelocity = value.Get<Vector2>() * moveMult;
         playerVelocity.y = 0;
 
+        if (playerVelocity.x < 0 && transform.localScale.x > 0)
+        {
+            Vector3 tmpScale = transform.localScale;
+            tmpScale.x *= -1;
+            transform.localScale = tmpScale;
+        } else if (playerVelocity.x > 0 && transform.localScale.x < 0)
+        {
+            Vector3 tmpScale = transform.localScale;
+            tmpScale.x *= -1;
+            transform.localScale = tmpScale;
+        }
+
         if (playerVelocity.x != Vector2.zero.x)
         {
+            anim.SetBool("isWalking", true);
             SoundHandler.StartWalk();
+
         } else
         {
+            anim.SetBool("isWalking", false);
             SoundHandler.StopWalk();
         }
     }

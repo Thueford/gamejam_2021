@@ -79,6 +79,7 @@ public class Player : MonoBehaviour
     public void Die()
     {
         SoundHandler.PlayClip("death");
+        //player.physics.anim.SetBool("isDieing", true);
         Respawn();
     }
 
@@ -164,8 +165,9 @@ public class Player : MonoBehaviour
 
         // reset platforms
 
-        ChapterStarter.ReloadStage();   
+        ChapterStarter.ReloadStage();
 
+        player.physics.anim.SetBool("isDieing", false);
         player.ResetCamera();
     }
 
