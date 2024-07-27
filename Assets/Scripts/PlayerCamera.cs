@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class PlayerCamera : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class PlayerCamera : MonoBehaviour
     public static GameObject currStage => ChapterStarter.currStage;
 
     public float left, top, right, bottom;
+    public GameObject target;
 
     private void Awake()
     {
@@ -71,9 +73,31 @@ public class PlayerCamera : MonoBehaviour
         bottom = b ? b.transform.position.y : 0;
     }
 
+    public void StartLevelPreview()
+    {
+        StartCoroutine(LevelPreview());
+    }
+
+    IEnumerator LevelPreview()
+    {
+        lazyness *= 8;
+        //allowMoving = false;
+        player.Pause();
+        yield return new WaitForSeconds(1f);
+        target = FindChildWithTag(currStage, "Goal").gameObject;
+        yield return new WaitForSeconds(4.5f);
+        target = player.gameObject;
+        yield return new WaitForSeconds(1);
+        player.Resume();
+        lazyness /= 8;
+    }
+
+
     private void FixedUpdate()
     {
-        Vector2 dir = player.transform.position - transform.position;
+        if (!target) return;
+
+        Vector2 dir = target.transform.position - transform.position;
         Vector3 pos = transform.position += (Vector3)dir / lazyness;
 
         if (top != 0 && pos.y + offset/2 > top) pos.y = top + offset/2;

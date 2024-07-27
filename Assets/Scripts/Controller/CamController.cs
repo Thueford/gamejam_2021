@@ -49,8 +49,8 @@ public class CamController : MonoBehaviour
     IEnumerator LevelPreview()
     {
         lazyness *= 3;
-        allowMoving = false;
-        yield return new WaitForSeconds(0.7f);
+        //allowMoving = false;
+        //yield return new WaitForSeconds(0.7f);
         target = StageManager.curStage.goal;
         yield return new WaitForSeconds(2);
         target = PlayerMovement.self.gameObject;

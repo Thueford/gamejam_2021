@@ -778,6 +778,26 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: -14.92
       objectReference: {fileID: 0}
+    - target: {fileID: 759054632406298700, guid: db441ae2cca135c49a25a227ecac62d9, type: 3}
+      propertyPath: m_margin.y
+      value: -6.3710895
+      objectReference: {fileID: 0}
+    - target: {fileID: 2220221958814632169, guid: db441ae2cca135c49a25a227ecac62d9, type: 3}
+      propertyPath: activated
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2220221958814632169, guid: db441ae2cca135c49a25a227ecac62d9, type: 3}
+      propertyPath: baseActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2446312405827644146, guid: db441ae2cca135c49a25a227ecac62d9, type: 3}
+      propertyPath: m_TagString
+      value: Floor
+      objectReference: {fileID: 0}
+    - target: {fileID: 2473184340053869543, guid: db441ae2cca135c49a25a227ecac62d9, type: 3}
+      propertyPath: m_TagString
+      value: Floor
+      objectReference: {fileID: 0}
     - target: {fileID: 3011257461892037423, guid: db441ae2cca135c49a25a227ecac62d9, type: 3}
       propertyPath: m_LocalPosition.y
       value: -1.55
@@ -809,6 +829,10 @@ PrefabInstance:
     - target: {fileID: 3566996669104385396, guid: db441ae2cca135c49a25a227ecac62d9, type: 3}
       propertyPath: m_LocalPosition.y
       value: 48.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4028558630364250555, guid: db441ae2cca135c49a25a227ecac62d9, type: 3}
+      propertyPath: m_margin.y
+      value: -8.796092
       objectReference: {fileID: 0}
     - target: {fileID: 5111375502567868555, guid: db441ae2cca135c49a25a227ecac62d9, type: 3}
       propertyPath: force

@@ -53,6 +53,10 @@ public class ChapterStarter : MonoBehaviour
         pos.z = -10;
         playerCamera.transform.position = pos;
 
+        
+        playerCamera.StartLevelPreview();
+        //playerCamera.target = player.gameObject;
+
     }
 
     private GameObject CreateNewLevel()

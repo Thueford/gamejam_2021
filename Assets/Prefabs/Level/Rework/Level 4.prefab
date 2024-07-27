@@ -194,6 +194,7 @@ Transform:
   - {fileID: 7882814424319973245}
   - {fileID: 9178639615739376227}
   - {fileID: 6638883274096623900}
+  - {fileID: 7459912770089432302}
   m_Father: {fileID: 185005391936911023}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1797,6 +1798,73 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 8039842618504473101, guid: b34329914eb009b4588f89e2cdda9cdc, type: 3}
   m_PrefabInstance: {fileID: 3564924846862497250}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3600767200942367680
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 185005390829425050}
+    m_Modifications:
+    - target: {fileID: 6232578993935316874, guid: b7bbd26d6f1e0734c86762419728443b, type: 3}
+      propertyPath: m_text
+      value: "Hier sind wir im Trainingsraum in dem man die Gravitation manipulieren
+        kann. \r\nMal sehen was f\xFCr \xDCberraschungen hier auf dich warten\u2026\r\n"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6232578994195699501, guid: b7bbd26d6f1e0734c86762419728443b, type: 3}
+      propertyPath: m_Name
+      value: NPCNew
+      objectReference: {fileID: 0}
+    - target: {fileID: 6232578994195699502, guid: b7bbd26d6f1e0734c86762419728443b, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6232578994195699502, guid: b7bbd26d6f1e0734c86762419728443b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 6232578994195699502, guid: b7bbd26d6f1e0734c86762419728443b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.49
+      objectReference: {fileID: 0}
+    - target: {fileID: 6232578994195699502, guid: b7bbd26d6f1e0734c86762419728443b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6232578994195699502, guid: b7bbd26d6f1e0734c86762419728443b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6232578994195699502, guid: b7bbd26d6f1e0734c86762419728443b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6232578994195699502, guid: b7bbd26d6f1e0734c86762419728443b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6232578994195699502, guid: b7bbd26d6f1e0734c86762419728443b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6232578994195699502, guid: b7bbd26d6f1e0734c86762419728443b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6232578994195699502, guid: b7bbd26d6f1e0734c86762419728443b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6232578994195699502, guid: b7bbd26d6f1e0734c86762419728443b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b7bbd26d6f1e0734c86762419728443b, type: 3}
+--- !u!4 &7459912770089432302 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6232578994195699502, guid: b7bbd26d6f1e0734c86762419728443b, type: 3}
+  m_PrefabInstance: {fileID: 3600767200942367680}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3717278095536417030
 PrefabInstance:
