@@ -43,6 +43,7 @@ public class ChapterStarter : MonoBehaviour
         //player.spawn = currStage.transform.Find("Spawn").gameObject.GetComponent<Door>();
         //player.physics.maxJumps = currStage.GetComponent<LevelController>().maxJumps;
         GameObject level = CreateNewLevel();
+        PlayerPhysics.jumps = currStage.GetComponent<LevelController>().maxJumps;
 
         Vector3 pos = player.spawn.transform.position;
         pos.z -= .1f;
