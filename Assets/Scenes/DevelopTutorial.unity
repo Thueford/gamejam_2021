@@ -440,6 +440,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 206614710}
     - target: {fileID: 7301543872564065769, guid: 2b8b6f4dc40fda74ca12d1a3f2574f30, type: 3}
+      propertyPath: LevelContainer
+      value: 
+      objectReference: {fileID: 135258506}
+    - target: {fileID: 7301543872564065769, guid: 2b8b6f4dc40fda74ca12d1a3f2574f30, type: 3}
       propertyPath: statusPanelValue
       value: 
       objectReference: {fileID: 1792485769}

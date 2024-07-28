@@ -160,6 +160,9 @@ public class PlayerPhysics : MonoBehaviour
         {
             //SoundHandler.StopWalk();
         }
+
+        //TODO
+        //if (groundedTimer >= 1) RaycastDoubleCheck();
     }
 
     private bool IsGrounded()
@@ -240,6 +243,8 @@ public class PlayerPhysics : MonoBehaviour
         groundedTimer -= 1;
         player.UpdateUI();
         jumped = true;
+
+        RaycastDoubleCheck();
 
         //Vector2 jumpForce = jumpMult * PlayerController.inverted * KeyHandler.ReadJumpInput();
         //SoundHandler.PlayClip("jump");
@@ -328,15 +333,24 @@ public class PlayerPhysics : MonoBehaviour
             if (collider.CompareTag("Platform")) {
                 
                 pm = collider.GetComponent<PlatformMover>();
+                //transform.SetParent(collider.transform, false);
                 //Debug.Log(pm.customVelocity);
                 //platformVel = new Vector2(r.velocity.x, r.velocity.y);
                 //platformVel = pm.customVelocity;
+            } else
+            {
+                pm = null;
+                //RaycastDoubleCheck();
             }
             
         }
         else if (collider.CompareTag("Interact")) {
             currentInteraction = collider.gameObject.GetComponent(typeof(ButtonControll)) as ButtonControll;
             currentInteraction.OnEnter();
+        } else
+        {
+            //Debug.Log("Reset");
+            //pm = null;
         }
     }
 
@@ -348,13 +362,8 @@ public class PlayerPhysics : MonoBehaviour
             groundedTimer = groundedTimerTime;
             //platformVel = Vector2.zero;
             pm = null;
-            RaycastHit2D rcHit = Physics2D.BoxCast(playerCollider.bounds.center, playerCollider.bounds.size, 0, Vector2.down * jump_inverted, 0.15f, pfLayerMask);
-            if (rcHit)
-            {
-                //Debug.Log(rcHit.transform.gameObject.name);
-                pm = rcHit.collider.GetComponent<PlatformMover>();
-            }
-            
+
+            RaycastDoubleCheck();
             
 
         }
@@ -365,5 +374,25 @@ public class PlayerPhysics : MonoBehaviour
 
             currentInteraction = null;
         }
+    }
+
+    private void RaycastDoubleCheck()
+    {
+        RaycastHit2D rcHit = Physics2D.BoxCast(playerGroundedCollider.bounds.center, playerGroundedCollider.bounds.size, 0, Vector2.down * jump_inverted, 0.1f, pfLayerMask);
+        if (rcHit)
+        {
+            
+            Debug.Log(rcHit.transform.gameObject.name);
+            pm = rcHit.collider.GetComponent<PlatformMover>();
+            //transform.SetParent(null);
+        }
+        else
+        {
+            Debug.LogError("Do you need me?");
+            pm = null;
+            Debug.Log("Reset");
+        }
+
+        //*/
     }
 }

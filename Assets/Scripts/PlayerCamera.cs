@@ -80,16 +80,16 @@ public class PlayerCamera : MonoBehaviour
 
     IEnumerator LevelPreview()
     {
-        lazyness *= 8;
+        lazyness *= 5;
         //allowMoving = false;
         player.Pause();
         yield return new WaitForSeconds(1f);
         target = FindChildWithTag(currStage, "Goal").gameObject;
-        yield return new WaitForSeconds(4.5f);
+        yield return new WaitForSeconds(3f);
         target = player.gameObject;
         yield return new WaitForSeconds(1);
         player.Resume();
-        lazyness /= 8;
+        lazyness /= 5;
     }
 
 

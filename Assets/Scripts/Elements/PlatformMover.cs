@@ -139,5 +139,24 @@ public class PlatformMover : BaseElement
     private void OnCollisionEnter2D(Collision2D c)
     {
         if (activated && !active && c.gameObject.CompareTag("Player")) active = true;
+
+
     }
+    /*
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            collision.transform.SetParent(transform, true);
+            //player.transform.parent = transform;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            collision.transform.SetParent(null);
+        }
+    }//*/
 }

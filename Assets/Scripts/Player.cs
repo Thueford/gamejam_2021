@@ -155,13 +155,14 @@ public class Player : MonoBehaviour
         physics.ResetPhysics();
         UpdateUI();
 
-        Debug.Log(elements.Count);
-
+        // No need to reset because stage gets respawned 
+        /*
+        //Debug.Log(elements.Count);
         foreach(BaseElement element in elements)
         {
-            element.Reset();
-            element.gameObject.SetActive(true);
-        }
+            //element.Reset();
+            //element.gameObject.SetActive(true);
+        }*/
 
         // reset platforms
 

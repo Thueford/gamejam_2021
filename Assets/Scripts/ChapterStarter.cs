@@ -105,6 +105,7 @@ public class ChapterStarter : MonoBehaviour
         
         player.Respawn();
         player.ResetStatistic();
+        playerCamera.StartLevelPreview();
         //player.ResetCamera(level);
 
         // todo back to chapters and mark as solveds
