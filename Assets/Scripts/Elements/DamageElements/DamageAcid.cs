@@ -18,7 +18,7 @@ public class DamageAcid : DamageElementBase
     {
         base.DoHit();
         player.physics.moveModifier = 0.3f;
-        player.physics.maxSpeedModifier = 0.3f; 
+        player.physics.maxSpeedModifier = 0.3f;
     }
 
     public override void DoExit()

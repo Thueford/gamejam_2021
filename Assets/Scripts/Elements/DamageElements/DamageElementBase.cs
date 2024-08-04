@@ -31,12 +31,23 @@ public class DamageElementBase : MonoBehaviour
     {
         if (collider.CompareTag("Player")) {
             InvokeRepeating(nameof(DoHit), .1f, repeatingTime);
+
+            collider.gameObject.GetComponent<PlayerPhysics>().damageElementBases.Add(this);
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        Reset();
+        Player.player.physics.damageElementBases.Remove(this);
+    }
+
+    public void Reset()
+    {
         CancelInvoke(nameof(DoHit));
         DoExit();
+
+        // this throws an exception but avoids the bug
+        Player.player.physics.damageElementBases.Remove(this);
     }
 }

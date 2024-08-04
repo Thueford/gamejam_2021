@@ -152,7 +152,7 @@ public class Player : MonoBehaviour
 
         health = maxHealth;
         deaths++;
-        physics.ResetPhysics();
+        
         UpdateUI();
 
         // No need to reset because stage gets respawned 
@@ -167,6 +167,7 @@ public class Player : MonoBehaviour
         // reset platforms
 
         ChapterStarter.ReloadStage();
+        physics.ResetPhysics();
 
         player.physics.anim.SetBool("isDieing", false);
         player.ResetCamera();

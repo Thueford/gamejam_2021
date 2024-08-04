@@ -51,6 +51,7 @@ public class PlayerPhysics : MonoBehaviour
     private float groundedTimer;
 
     public ButtonControll currentInteraction = null;
+    public List<DamageElementBase> damageElementBases = new List<DamageElementBase>();
 
     public bool interactSwitch = false;
     public bool inFan = false;
@@ -125,6 +126,8 @@ public class PlayerPhysics : MonoBehaviour
         Vector2 max_velocity = Vector2.ClampMagnitude(vel, maxHSpeed);
         max_velocity.y = rb.velocity.y;
         vel = max_velocity;
+
+        vel *= moveModifier;
 
         if (player.transform.position.y < PlayerCamera.self.bottom)
         {
@@ -217,6 +220,14 @@ public class PlayerPhysics : MonoBehaviour
 
     public void ResetPhysics()
     {
+        
+
+        foreach (DamageElementBase damageElementBase in damageElementBases) {
+            damageElementBase.Reset();
+
+        }
+        damageElementBases.Clear();
+
         jumps = maxJumps;
         maxSpeedModifier = 1;
         moveModifier = 1;
@@ -390,9 +401,9 @@ public class PlayerPhysics : MonoBehaviour
         }
         else
         {
-            Debug.LogError("Do you need me?");
+
             pm = null;
-            Debug.Log("Reset");
+
         }
 
         //*/
