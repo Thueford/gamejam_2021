@@ -203,7 +203,9 @@ public class PlayerPhysics : MonoBehaviour
         rb.gravityScale = rb.gravityScale * -1;
 
         // invert the grounded collider
-        playerGroundedCollider.offset *= -1;
+        Vector3 tmp = playerGroundedCollider.offset;
+        tmp.y *= -1;
+        playerGroundedCollider.offset = tmp;
 
 
     }
