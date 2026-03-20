@@ -103,8 +103,8 @@ public class Player : MonoBehaviour
 
     public void OnResume()
     {
-        ResumeButton.GetComponent<Button>().onClick.Invoke();
-        //Resume();
+        //ResumeButton.GetComponent<Button>().onClick.Invoke();
+        Resume();
     }
 
     public void Resume()
@@ -185,6 +185,7 @@ public class Player : MonoBehaviour
     public static void GlobalRespawn()
     {
         player.Respawn();
+  
     }
 
     public void OnCameraZoom()

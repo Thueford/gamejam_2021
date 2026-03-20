@@ -1839,10 +1839,10 @@ RectTransform:
   m_Father: {fileID: 580776331}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 400, y: 0}
-  m_SizeDelta: {x: -800, y: 0}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -250, y: 0}
+  m_SizeDelta: {x: 500, y: 550}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1314792157
 GameObject:
@@ -2039,6 +2039,10 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'This game was created during a 48h game jam. The origional version can
     be found on itch.io or Github. We hope you enjoy our game.
+
+
+    This game has
+    some "intended" Bugs you can and need to abuse to solve some of the levels
 
 
 '
@@ -2664,10 +2668,10 @@ RectTransform:
   m_Father: {fileID: 580776331}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -250, y: 0}
-  m_SizeDelta: {x: -500, y: 0}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 450, y: 0}
+  m_SizeDelta: {x: 900, y: 550}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1894380703
 GameObject:
